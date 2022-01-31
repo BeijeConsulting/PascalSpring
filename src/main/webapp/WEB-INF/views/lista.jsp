@@ -16,5 +16,9 @@ Questi i contatti:<br>
 	<c:otherwise>${contatto.nome}&nbsp;${contatto.cognome}</c:otherwise>
 </c:choose>
 
+<c:foreach items=${listContatti } var="i">
+<c:out value="${i.nome }"/>
+</c:foreach>
+
 </body>
 </html>
