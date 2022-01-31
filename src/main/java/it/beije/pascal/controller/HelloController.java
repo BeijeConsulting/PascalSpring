@@ -13,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
 	
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public String hello() {
-		System.out.println("GET hello");
-		
-		return "hello"; // /WEB-INF/views/hello.jsp
-	}
-
+	
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping(value = "/")
 	public String index(Model model) {
@@ -29,8 +23,15 @@ public class HelloController {
 		return "index"; // /WEB-INF/views/index.jsp
 	}
 	
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	public String hello() {
+		System.out.println("GET hello");
+		
+		return "hello"; // /WEB-INF/views/hello.jsp
+	}
+	
 	@RequestMapping(value = "/hello", method = RequestMethod.POST)
-	public String hello(Model model, @RequestParam String fname, @RequestParam(required = false) String lname) {
+	public String hello(Model model, @RequestParam String fname, @RequestParam String lname) {
 		System.out.println("POST hello");
 		System.out.println("fname : " + fname);
 		System.out.println("lname : " + lname);
