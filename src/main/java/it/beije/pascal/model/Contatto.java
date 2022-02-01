@@ -1,6 +1,5 @@
 package it.beije.pascal.model;
 
-
 public class Contatto {
 	
 	private int id;

@@ -8,13 +8,16 @@
 <title>RUBRICA</title>
 </head>
 <body>
-Questi i contatti:<br>
-<br>
 <%-- c:if test="${empty contatto}">NESSUN CONTATTO</c:if --%>
-<c:choose>
-	<c:when test="${empty contatto}">NESSUN CONTATTO</c:when>
-	<c:otherwise>${contatto.nome}&nbsp;${contatto.cognome}</c:otherwise>
-</c:choose>
+	
+	
+	
+<form action="rubrica" method="post">
+	<label for="type">scegli il tipo di file che vuoi leggere</label>
+	<input type="text" name="type" />
+	
+	<input type="submit" value="Invia" />
+</form>
 
 </body>
 </html>
