@@ -43,7 +43,7 @@ public class RubricaController {
 		List<Contatto> contatti = rubricaService.getList();
 		System.out.println("contatti : " + contatti.size());
 		
-		model.addAttribute("contatto", c);
+		model.addAttribute("contatto", contatti);
 		
 		return "contatto"; // /WEB-INF/views/hello.jsp
 	}
