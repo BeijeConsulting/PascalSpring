@@ -10,13 +10,30 @@
 
 Ciao ${name}!
 
-<form action="hello" method="post">
+<form action="rubrica" method="post">
   <label>fname:</label><br>
   <input type="text" name="fname"><br>
   <label>lname:</label><br>
   <input type="text" name="lname2"><br><br>
   <input type="submit" value="Submit">
 </form> 
+
+<br><hr><br>
+
+<form action="rubrica" method="post">
+  <label>Path del file CSV da leggere:</label><br>
+  <input type="text" name="path"><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<br><hr><br>
+
+<form action="database" method="get">
+  <label>Vuoi vedere tutti i contatti della rubrica?</label><br><br>
+  
+  <input type="submit" value="Vedi">
+</form>
 
 </body>
 </html>

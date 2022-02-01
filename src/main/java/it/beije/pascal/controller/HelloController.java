@@ -29,7 +29,7 @@ public class HelloController {
 		
 		List<Contatto> contatti = rubricaService.getList();
 		System.out.println("contatti : " + contatti.size());
-
+		
 		return "hello"; // /WEB-INF/views/hello.jsp
 	}
 

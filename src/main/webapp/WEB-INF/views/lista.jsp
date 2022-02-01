@@ -8,8 +8,11 @@
 <title>RUBRICA</title>
 </head>
 <body>
-Questi i contatti:<br>
-<br>
+
+Questi i contatti:
+
+<br><br>
+
 <%-- c:if test="${empty contatto}">NESSUN CONTATTO</c:if --%>
 <c:choose>
 	<c:when test="${empty contatto}">NESSUN CONTATTO</c:when>
