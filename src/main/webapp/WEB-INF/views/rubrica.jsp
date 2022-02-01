@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-prova
+Lista contatti in rubrica
 <br>
 	<c:forEach items="${l}" var="item">
 	     Item <c:out value="${l}"/><p>

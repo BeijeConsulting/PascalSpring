@@ -57,7 +57,7 @@ public class RubricaController {
 		
 		return "contatto"; // /WEB-INF/views/hello.jsp
 	}
-	
+	/*
 	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)
 	public String rubrica(Model model) {
 		System.out.println("GET rubrica");
@@ -79,5 +79,5 @@ public class RubricaController {
 		
 		return "rubrica"; // /WEB-INF/views/hello.jsp
 	}
-
+*/
 }
