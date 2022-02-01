@@ -28,7 +28,7 @@ public class RubricaControllerCSV {
 		
 		model.addAttribute("rub",rubrica);
 
-		return "db"; // /WEB-INF/views/hello.jsp
+		return "db"; // /WEB-INF/views/db.jsp
 	}
 	
 
