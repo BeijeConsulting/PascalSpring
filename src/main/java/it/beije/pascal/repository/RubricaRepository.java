@@ -14,5 +14,10 @@ public interface RubricaRepository extends JpaRepository<Contatto, Integer> {
 	public List<Contatto> findByCognome(String cognome);
 
 	public List<Contatto> findByNomeAndCognome(String nome, String cognome);
+	
+	public List<Contatto> findByEmailNotNull();
+	
+	public List<Contatto> findByTelefonoNotNull();
+	
 
 }
