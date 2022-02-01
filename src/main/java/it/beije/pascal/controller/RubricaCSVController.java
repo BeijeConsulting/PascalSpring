@@ -28,7 +28,7 @@ public class RubricaCSVController {
 		List<Contatto> contatti = rubricaCSVService.loadRubricaFromCSV(pathFile, separator);
 		System.out.println("contatti : " + contatti.size());
 		
-		model.addAttribute("listaContatti", contatti);
+		model.addAttribute("contatti", contatti);
 		
 		return "lista"; // /WEB-INF/views/hello.jsp
 	}

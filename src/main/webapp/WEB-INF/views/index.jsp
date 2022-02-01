@@ -17,6 +17,17 @@ Ciao ${name}!
   <input type="text" name="lname2"><br><br>
   <input type="submit" value="Submit">
 </form> 
+<br>
+<form action="rubricaTipo" method="post">
+  <label>Vedi Contatti Rubrica da File</label><br><br>
+  <input type="submit" value="Vedi">
+</form>
+
+<br>
+<form action="database" method="get">
+  <label>Vedi Contatti Rubrica da DB</label><br><br>
+  <input type="submit" value="Vedi">
+</form>
 
 </body>
 </html>

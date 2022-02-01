@@ -22,6 +22,11 @@ public class RubricaTipoController {
 	@Autowired
 	private RubricaXMLService rubricaXMLService;
 	
+	@RequestMapping(value = "/rubricaTipo", method = RequestMethod.POST)
+	public String paginaForm(Model model) {
+		return "LetturaFile";
+	}
+	
 	@RequestMapping(value = "/rubricaTipo", method = RequestMethod.GET)
 	public String listContatti(Model model, @RequestParam String pathFile, @RequestParam String button) throws Exception {
 		List<Contatto> contatti = null;
@@ -32,9 +37,9 @@ public class RubricaTipoController {
 			contatti = rubricaXMLService.loadRubricaFromXML(pathFile);
 		}
 		
-		model.addAttribute("listaContatti", contatti);
+		model.addAttribute("contatti", contatti);
 		
-		return "StampaContatti";
+		return "lista";
 		
 	}
 

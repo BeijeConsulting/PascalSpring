@@ -9,26 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.pascal.model.Contatto;
-import it.beije.pascal.service.RubricaXMLService;
+import it.beije.pascal.service.RubricaDBService;
 
 @Controller
-public class RubricaXMLController {
+public class RubricaDBController {
 
 	@Autowired
-	private RubricaXMLService rubricaXMLService;
+	private RubricaDBService rubricaDBService;
 	
-	@RequestMapping(value = "/rubricaXML", method = RequestMethod.GET)
-	public String listaCSV(Model model) throws Exception {
-		System.out.println("GET rubricaXML");
+	@RequestMapping(value = "/database", method = RequestMethod.GET)
+	public String selectAllUser(Model model) {
+		System.out.println("GET database");
 		
-		String pathFile = "/rubrica.xml";
-		
-		//carica rubrica da CSV
-		List<Contatto> contatti = rubricaXMLService.loadRubricaFromXML(pathFile);
+		List<Contatto> contatti = rubricaDBService.getList();
 		System.out.println("contatti : " + contatti.size());
 		
 		model.addAttribute("contatti", contatti);
 		
-		return "lista"; // /WEB-INF/views/hello.jsp
+		return "lista"; 
 	}
+	
 }
