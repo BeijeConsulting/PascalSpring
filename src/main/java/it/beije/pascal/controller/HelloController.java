@@ -1,7 +1,10 @@
 package it.beije.pascal.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,18 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
+import it.beije.pascal.model.Contatto;
+import it.beije.pascal.service.RubricaService;
 
 
 @Controller
 public class HelloController {
 	
+	@Autowired
+	private RubricaService rubricaService;
+
+	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String hello() {
 		System.out.println("GET hello");
 		
+		List<Contatto> contatti = rubricaService.getList();
+		System.out.println("contatti : " + contatti.size());
+
 		return "hello"; // /WEB-INF/views/hello.jsp
 	}
 
@@ -48,16 +57,5 @@ public class HelloController {
 		return "hello";
 	}
 
-	@RequestMapping(value = "/lsit", method = RequestMethod.GET)
-	public  String loadTable(Model model){
-		System.out.println("GET list ");
-		List<String> mesi = new ArrayList<>();
-		for(Month month : java.time.Month.values()){
-			mesi.add(month.toString());
-		}
-		model.addAttribute("mesiList", mesi);
-
-		return "mesiList";
-	}
 
 }
