@@ -15,10 +15,15 @@ Questi i contatti:<br>
 	<c:when test="${empty contatto}">NESSUN CONTATTO</c:when>
 	<c:otherwise>${contatto.nome}&nbsp;${contatto.cognome}</c:otherwise>
 </c:choose>
+<br>
 
-<c:foreach items=${listContatti } var="i">
-	<c:out value="${i.nome }"/>
-</c:foreach>
+<h2>Filtri</h2>
+<form action=""></form>
+
+<br>
+<c:forEach items= "${listaContatti }" var="i">
+	<c:out value="${i.toString() }"/><br>
+</c:forEach>
 
 </body>
 </html>

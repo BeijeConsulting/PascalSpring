@@ -18,5 +18,23 @@ Ciao ${name}!
   <input type="submit" value="Submit">
 </form> 
 
+<form action="rubrica">
+	<h3>Tipo File:</h3>
+	<input type="radio" name="tipo" value="CSV">
+	<label>CSV</label>
+	<input type="radio" name="tipo" value="XML">
+	<label>XML</label>
+
+	<br>
+	<h3>Filtra per: </h3>
+	<input type="radio" name="dato" value="email">
+	<label>email</label>
+	<br>
+	<input type="radio" name="dato" value="tel">
+	<label>elefono</label>
+	<br>
+		<input type="submit" value="import">
+</form>
+
 </body>
 </html>
