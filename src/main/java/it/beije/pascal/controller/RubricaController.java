@@ -16,8 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Contatto;
+import it.beije.pascal.repository.RubricaRepository;
 import it.beije.pascal.service.RubricaService;
 
 
@@ -30,20 +32,28 @@ public class RubricaController {
 	
 	@Autowired
 	private RubricaService rubricaService;
-	
 
-	@RequestMapping(value = "/contatto", method = RequestMethod.GET)
-	public String contatto(Model model) {
-		System.out.println("GET contatto");
+	@Autowired
+	private RubricaRepository rubricaRepository;
+
+
+
+	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)
+	public String lista(Model model, @RequestParam(value = "surname", required = false) String cognome) {
+		System.out.println("GET rubrica");
+
 		
 		//carica rubrica da DB, CSV, XML...
 		//RubricaService.getList()
 		//RubricaService rubricaService = new RubricaService();
 		
-		List<Contatto> contatti = rubricaService.getList();
+		//List<Contatto> contatti = rubricaService.getList();
+
+		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
 		System.out.println("contatti : " + contatti.size());
 		
-		model.addAttribute("contatto", contatti);
+		model.addAttribute("contatti", contatti);
+
 		
 		return "contatto"; // /WEB-INF/views/hello.jsp
 	}
