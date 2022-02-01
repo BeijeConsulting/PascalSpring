@@ -12,7 +12,7 @@
     <!-- here should go some titles... -->
     <tr>
         <th>NOME</th>
-        <th>COGNOMR</th>
+        <th>COGNOME</th>
         <th>EMAIL</th>
         <th>TELEFONO</th>
         <th>NOTE</th>
@@ -33,6 +33,18 @@
         </td>
         <td>
             <c:out value="${contatto.note}" />
+        </td>
+        <td>
+        	<form action="webDeleteContatto" method="post">
+        		<input type="hidden" value="${contatto.id}" name="id"/>
+        		<input type="submit" value="Elimina" />
+        	</form>
+        </td>
+        <td>
+        	<form action="webDeleteContatto" method="get">
+        		<input type="hidden" value="${contatto.id}" name="id"/>
+        		<input type="submit" value="Elimina" />
+        	</form>
         </td>
     </tr>
     </c:forEach>
