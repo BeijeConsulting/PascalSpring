@@ -1,9 +1,5 @@
 package it.beije.pascal.controller;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +37,16 @@ public class RubricaController {
 		//model.addAttribute("contatto", c);
 		
 		return "lista"; // /WEB-INF/views/hello.jsp
+	}
+
+	@RequestMapping(value = "/rubrica/CSV", method = RequestMethod.GET)
+	public String listCSV(Model model){
+		System.out.println("lista da CSV");
+
+		List<Contatto> contattoList = rubricaService.getCSV();
+		model.addAttribute("listaContatti", contattoList);
+
+		return "lista";
 	}
 
 }

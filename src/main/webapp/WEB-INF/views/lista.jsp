@@ -17,7 +17,7 @@ Questi i contatti:<br>
 </c:choose>
 
 <c:foreach items=${listContatti } var="i">
-<c:out value="${i.nome }"/>
+	<c:out value="${i.nome }"/>
 </c:foreach>
 
 </body>
