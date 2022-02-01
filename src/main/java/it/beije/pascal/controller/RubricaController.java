@@ -25,7 +25,7 @@ public class RubricaController {
 	
 	@Autowired
 	private RubricaService rubricaService;
-	
+
 
 	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)
 	public String lista(Model model) {
@@ -42,5 +42,5 @@ public class RubricaController {
 		
 		return "lista"; // /WEB-INF/views/hello.jsp
 	}
-
+	
 }
