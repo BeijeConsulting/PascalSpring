@@ -20,6 +20,9 @@
          Note: <c:out value = "${Contatto.getNote()}"/><p>
 </c:forEach>
 
+<form action= "xml" method= "get">
+	<input type= "submit" value= "Torna alla Pagina di Scelta">
+</form>
 
 </body>
 </html>

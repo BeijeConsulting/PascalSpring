@@ -18,6 +18,12 @@
 	<input type="submit" value="Stampa la Rubrica da un File CSV">
 </form>
 
+<br>
+<br>
+<form action= "xml" method= "post">
+	<input type= "submit" value= "Stampa la Rubrica da un File XML">
+</form>
+
 
 
 </body>

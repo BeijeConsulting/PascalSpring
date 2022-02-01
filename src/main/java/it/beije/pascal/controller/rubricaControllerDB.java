@@ -11,13 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.beije.pascal.model.Contatto;
+import it.beije.pascal.repository.RubricaRepository;
 import it.beije.pascal.service.DBConnection;
 
 @Controller
 public class rubricaControllerDB {
 	
+	
+//	@Autowired
+//	private DBConnection DBConnection;
+	
 	@Autowired
-	private DBConnection DBConnection;
+	private RubricaRepository rubricaRepository;
 	
 	@GetMapping(value = "/")
 	public String index(Model model) {
@@ -30,7 +35,9 @@ public class rubricaControllerDB {
 		
 		List<Contatto> rubrica = new ArrayList<>();
 		
-		rubrica = DBConnection.getListJDBC();
+//		rubrica = DBConnection.getListJDBC();
+		
+		rubrica = rubricaRepository.findAll();
 		
 		model.addAttribute("rub",rubrica);
 		

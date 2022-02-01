@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.pascal.model.Contatto;
 import it.beije.pascal.service.CSVService;
+import it.beije.pascal.service.XMLService;
 
 @Controller
-public class RubricaControllerCSV {
+public class RubricaControllerXML {
 	
 	@Autowired
-	private CSVService CSVService;
-		
-	@RequestMapping(value = "/csv", method = RequestMethod.POST)
-	public String csv(Model model) throws Exception {
+	private XMLService XMLService;
+	
+	@RequestMapping(value = "/xml", method = RequestMethod.POST)
+	public String xml(Model model) throws Exception {
 		
 		
 		List<Contatto> rubrica = new ArrayList<>();
-		rubrica = CSVService.readContatti("C:/temp/rubrica2.csv");
+		rubrica = XMLService.getXML("C:/temp/rubricaX.xml");
 		
 		model.addAttribute("rub",rubrica);
 
