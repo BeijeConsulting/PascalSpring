@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.pascal.model.Contatto;
 import it.beije.pascal.service.RubricaService;
+import it.beije.pascal.service.CSVService;
 
 
 @Controller
@@ -25,6 +26,8 @@ public class RubricaController {
 	
 	@Autowired
 	private RubricaService rubricaService;
+	
+
 	
 
 	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)

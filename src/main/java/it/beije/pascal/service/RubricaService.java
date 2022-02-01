@@ -39,5 +39,7 @@ public class RubricaService {
 		
 		return list;
 	}
+	
+	
 
 }

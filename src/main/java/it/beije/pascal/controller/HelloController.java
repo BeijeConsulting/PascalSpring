@@ -34,13 +34,13 @@ public class HelloController {
 	}
 
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
-	@GetMapping(value = "/")
-	public String index(Model model) {
-		
-		model.addAttribute("name", "Pascal");
-		
-		return "index"; // /WEB-INF/views/index.jsp
-	}
+//	@GetMapping(value = "/")
+//	public String index(Model model) {
+//		
+//		model.addAttribute("name", "Pascal");
+//		
+//		return "index"; // /WEB-INF/views/index.jsp
+//	}
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.POST)
 	public String hello(Model model, @RequestParam String fname, @RequestParam(required = false) String lname) {
