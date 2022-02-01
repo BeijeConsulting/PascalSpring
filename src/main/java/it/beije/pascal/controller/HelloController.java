@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 public class HelloController {
@@ -44,5 +48,16 @@ public class HelloController {
 		return "hello";
 	}
 
+	@RequestMapping(value = "/lsit", method = RequestMethod.GET)
+	public  String loadTable(Model model){
+		System.out.println("GET list ");
+		List<String> mesi = new ArrayList<>();
+		for(Month month : java.time.Month.values()){
+			mesi.add(month.toString());
+		}
+		model.addAttribute("mesiList", mesi);
+
+		return "mesiList";
+	}
 
 }
