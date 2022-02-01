@@ -1,23 +1,52 @@
 package it.beije.pascal.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/*
+CREATE TABLE `rubrica`.`contatti` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`cognome` VARCHAR(45) NULL,
+`nome` VARCHAR(45) NULL,
+`telefono` VARCHAR(20) NULL,
+`email` VARCHAR(100) NULL,
+`note` VARCHAR(200) NULL,
+PRIMARY KEY (`id`));
+*/
+
+
+@Entity
+@Table(name = "contatti")
 public class Contatto {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
 	
+	@Column(name = "cognome")
 	private String cognome;
 
+	@Column(name = "nome")
 	private String nome;
 
+	@Column(name = "telefono")
 	private String telefono;
 
+	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "note")
 	private String note;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
