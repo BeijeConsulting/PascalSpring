@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +8,20 @@
 </head>
 <body>
 
-Ciao ${name}!
+	Ciao ${name}!
 
-<form action="hello" method="post">
-  <label>fname:</label><br>
-  <input type="text" name="fname"><br>
-  <label>lname:</label><br>
-  <input type="text" name="lname2"><br><br>
-  <input type="submit" value="Submit">
-</form> 
+	<form action="hello" method="post">
+		<label>fname:</label><br> <input type="text" name="fname"><br>
+		<label>lname:</label><br> <input type="text" name="lname2"><br>
+		<br> <input type="submit" value="Submit">
+	</form>
 
+	<br />
+	
+	<form action="csv" method="post">
+		<input type="submit" value="file">
+	</form>
+	
+	
 </body>
 </html>
