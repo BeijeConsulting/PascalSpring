@@ -18,6 +18,8 @@ public class RubricaTipoController {
 	
 	@Autowired
 	private RubricaCSVService rubricaCSVService;
+	
+	@Autowired
 	private RubricaXMLService rubricaXMLService;
 	
 	@RequestMapping(value = "/rubricaTipo", method = RequestMethod.GET)
