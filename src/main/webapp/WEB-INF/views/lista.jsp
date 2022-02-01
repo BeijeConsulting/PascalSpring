@@ -10,7 +10,7 @@
 <body>
 Questi i contatti:<br>
 <br>
-<%-- c:if test="${empty contatto}">NESSUN CONTATTO</c:if --%>
+<%-- c:if test="${empty contatto}">NESSUN CONTATTO</c:if>
 <c:choose>
 	<c:when test="${empty contatto}">NESSUN CONTATTO</c:when>
 	<c:otherwise>${contatto.nome}&nbsp;${contatto.cognome}</c:otherwise>
@@ -24,6 +24,14 @@ Questi i contatti:<br>
 <c:forEach items= "${listaContatti }" var="i">
 	<c:out value="${i.toString() }"/><br>
 </c:forEach>
+=======
+</c:choose --%>
+
+<c:forEach items="${contatti}" var="contatto">
+${contatto.nome}&nbsp;${contatto.cognome}<br>
+</c:forEach>
+
+>>>>>>> branch 'main' of git@github.com:BeijeConsulting/PascalSpring.git
 
 </body>
 </html>

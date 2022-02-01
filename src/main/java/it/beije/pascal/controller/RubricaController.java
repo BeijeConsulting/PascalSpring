@@ -1,6 +1,9 @@
 package it.beije.pascal.controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Contatto;
 import it.beije.pascal.service.RubricaDbService;
+import it.beije.pascal.repository.RubricaRepository;
 import it.beije.pascal.service.RubricaService;
 
 
@@ -31,20 +35,26 @@ public class RubricaController {
 	private RubricaService rubricaService;
 
 	@Autowired
+	private RubricaRepository rubricaRepository;
+
+
+	@Autowired
 	private RubricaDbService rubricaDbService;
 
 	@RequestMapping(value = "/rubricaOld", method = RequestMethod.GET)
-	public String lista(Model model) {
+	public String lista(Model model, @RequestParam(value = "surname", required = false) String cognome) {
 		System.out.println("GET rubrica");
 
 		//carica rubrica da DB, CSV, XML...
 		//RubricaService.getList()
 		//RubricaService rubricaService = new RubricaService();
 
-		List<Contatto> contatti = rubricaService.getList();
+		//List<Contatto> contatti = rubricaService.getList();
+
+		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
 		System.out.println("contatti : " + contatti.size());
 
-		//model.addAttribute("contatto", c);
+		model.addAttribute("contatti", contatti);
 
 		return "lista"; // /WEB-INF/views/hello.jsp
 	}
