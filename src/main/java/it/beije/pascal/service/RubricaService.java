@@ -12,7 +12,7 @@ import it.beije.pascal.model.Contatto;
 public class RubricaService {
 	
 	public RubricaService() {
-		System.out.println("creo RubricaService");
+		
 	}
 	
 	public List<Contatto> getList() {

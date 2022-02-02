@@ -8,19 +8,19 @@
 </head>
 <body>
 
-	Ciao ${name}!
+	<%-- Ciao ${name}! --%>
 
-	<form action="hello" method="post">
+<!-- 	<form action="hello" method="post">
 		<label>fname:</label><br> <input type="text" name="fname"><br>
 		<label>lname:</label><br> <input type="text" name="lname2"><br>
 		<br> <input type="submit" value="Submit">
 	</form>
 
-	<br />
+	<br /> -->
 	
 	<a href = "csv">File</a> <br/>
-	<a href = "rubrica">Rubrica</a>
-		
+	<a href = "rubrica">Rubrica</a> <br/>
+	<a href = "ecommerce">Ecommerce</a>
 	
 </body>
 </html>
