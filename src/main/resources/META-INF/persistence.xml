@@ -3,6 +3,12 @@
 	<persistence-unit name="PascalSpring">
 
 		<class>it.beije.pascal.model.Contatto</class>
+		<class>it.beije.pascal.model.User</class>
+		<class>it.beije.pascal.model.Order</class>
+		<class>it.beije.pascal.model.Order_item</class>
+		<class>it.beije.pascal.model.Product</class>
+		
+		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
