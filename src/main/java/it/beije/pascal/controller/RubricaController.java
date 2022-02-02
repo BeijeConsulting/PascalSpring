@@ -1,13 +1,6 @@
 package it.beije.pascal.controller;
 
-<<<<<<< HEAD
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-=======
->>>>>>> refs/remotes/origin/main
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Contatto;
-<<<<<<< HEAD
 import it.beije.pascal.service.RubricaDbService;
-import it.beije.pascal.repository.RubricaRepository;
-=======
->>>>>>> refs/remotes/origin/main
 import it.beije.pascal.service.RubricaService;
 
 
@@ -47,21 +36,6 @@ public class RubricaController {
 	@RequestMapping(value = "/rubricaOld", method = RequestMethod.GET)
 	public String lista(Model model, @RequestParam(value = "surname", required = false) String cognome) {
 		System.out.println("GET rubrica");
-
-		//carica rubrica da DB, CSV, XML...
-		//RubricaService.getList()
-		//RubricaService rubricaService = new RubricaService();
-<<<<<<< HEAD
-
-		//List<Contatto> contatti = rubricaService.getList();
-=======
-		
-		List<Contatto> contatti = rubricaService.getList(cognome);
->>>>>>> refs/remotes/origin/main
-
-		System.out.println("contatti : " + contatti.size());
-
-		model.addAttribute("contatti", contatti);
 
 		return "lista"; // /WEB-INF/views/hello.jsp
 	}

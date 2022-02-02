@@ -1,83 +1,64 @@
 package it.beije.pascal.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-/*
- * CREATE TABLE `product` (
-  `id` Integer(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `price` double DEFAULT NULL,
-  `quantity` Integer(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+
+/**
+ * The persistent class for the product database table.
+ * 
  */
-
 @Entity
-@Table(name = "product")
-public class Product {
-	
+@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p")
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "description")
+
 	private String description;
-	
-	@Column(name= "price")
+
+	private String name;
+
 	private double price;
-	
-	@Column(name = "quantity")
+
 	private Integer quantity;
 
-	public Product() {
-		super();
-	}
+	//bi-directional many-to-one association to OrderItem
+	@OneToMany(mappedBy="product")
+	private List<OrderItem> orderItems;
 
-	public Product(Integer id, String name, String description, double price, Integer quantity) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.quantity = quantity;
+	public Product() {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public double getPrice() {
-		return price;
+		return this.price;
 	}
 
 	public void setPrice(double price) {
@@ -85,17 +66,33 @@ public class Product {
 	}
 
 	public Integer getQuantity() {
-		return quantity;
+		return this.quantity;
 	}
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", quantity=" + quantity + "]";
+	public List<OrderItem> getOrderItems() {
+		return this.orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	public OrderItem addOrderItem(OrderItem orderItem) {
+		getOrderItems().add(orderItem);
+		orderItem.setProduct(this);
+
+		return orderItem;
+	}
+
+	public OrderItem removeOrderItem(OrderItem orderItem) {
+		getOrderItems().remove(orderItem);
+		orderItem.setProduct(null);
+
+		return orderItem;
 	}
 
 }

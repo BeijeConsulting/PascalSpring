@@ -1,100 +1,82 @@
 package it.beije.pascal.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-/*
-CREATE TABLE `rubrica`.`contatti` (
-`id` INT NOT NULL AUTO_INCREMENT,
-`cognome` VARCHAR(45) NULL,
-`nome` VARCHAR(45) NULL,
-`telefono` VARCHAR(20) NULL,
-`email` VARCHAR(100) NULL,
-`note` VARCHAR(200) NULL,
-PRIMARY KEY (`id`));
-*/
+import java.io.Serializable;
+import javax.persistence.*;
 
 
+/**
+ * The persistent class for the contatti database table.
+ * 
+ */
 @Entity
 @Table(name="contatti")
-public class Contatto {
-	
+@NamedQuery(name="Contatti.findAll", query="SELECT c FROM Contatto c")
+public class Contatto implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
 	private Integer id;
-	
-	@Column(name = "cognome")
+
 	private String cognome;
 
-	@Column(name = "nome")
+	private String email;
+
 	private String nome;
 
-	@Column(name = "telefono")
+	private String note;
+
 	private String telefono;
 
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "note")
-	private String note;
-	
-	public Integer getId() {
-		return id;
+	public Contatto() {
 	}
+
+	public Integer getId() {
+		return this.id;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getCognome() {
-		return cognome;
+		return this.cognome;
 	}
+
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public String getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-	
+
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getNote() {
-		return note;
+
+	public String getNome() {
+		return this.nome;
 	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNote() {
+		return this.note;
+	}
+
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	public String toString() {
-		StringBuilder builder = new StringBuilder()
-				.append("{ id : ").append(this.id)
-				.append(", cognome : ").append(this.cognome)
-				.append(", nome : ").append(this.nome)
-				.append(", telefono : ").append(this.telefono)
-				.append(", email : ").append(this.email)
-				.append(", note : ").append(this.note).append(" }");
-		
-		return builder.toString();
+
+	public String getTelefono() {
+		return this.telefono;
 	}
-	
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 }

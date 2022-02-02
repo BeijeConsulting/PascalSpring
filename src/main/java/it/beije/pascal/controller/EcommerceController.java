@@ -1,8 +1,7 @@
 package it.beije.pascal.controller;
 
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Order;
-import it.beije.pascal.model.OrderItem;
 import it.beije.pascal.model.Product;
 import it.beije.pascal.model.User;
 import it.beije.pascal.service.EcommerceDbService;
@@ -86,13 +84,23 @@ public class EcommerceController {
 		}
 		if(currentOrder==null) {
 			currentOrder = new Order();
-			currentOrder.setUserId(loggedUser.getId());
+			currentOrder.setUser(loggedUser);
 		}
 		
-		OrderItem item = new OrderItem(null, currentOrder.getId(), itemId, price, amt);
+//		OrderItem item = new OrderItem(null, currentOrder.getId(), itemId, price, amt);
 		//TODO
 
 		request.getSession().setAttribute("currentOrder", currentOrder);
+		return "ecommerce_home";
+	}
+	
+	@RequestMapping(value="ecomViewProduct", method = RequestMethod.GET)
+	public String viewProduct(Model model, @RequestParam Integer productId) {
+		
+		Product product = dbService.fetchProduct(productId).get();
+		model.addAttribute("product", product);
+		
+		//TODO sposta tutto su un solo html
 		return "ecommerce_home";
 	}
 }

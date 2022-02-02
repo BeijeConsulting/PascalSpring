@@ -24,7 +24,7 @@ public class OrderController {
 		List<Order> orders = orderRepository.findAll();
 		System.out.println("orders : " + orders.size());
 		System.out.println("order : " + orders.get(0));
-		System.out.println("order items : " + orders.get(0).getItems());
+		System.out.println("order items : " + orders.get(0).getOrderItems());
 
 		return "hello";
 	}

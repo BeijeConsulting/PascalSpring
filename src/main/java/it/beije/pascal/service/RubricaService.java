@@ -7,14 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-=======
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> refs/remotes/origin/main
 import org.springframework.stereotype.Service;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -25,7 +22,6 @@ import org.xml.sax.SAXException;
 
 import it.beije.pascal.model.Contatto;
 import it.beije.pascal.repository.RubricaRepository;
-
 
 @Service
 public class RubricaService {
@@ -40,7 +36,6 @@ public class RubricaService {
 	private RubricaRepository rubricaRepository;
 
 	public List<Contatto> getList() {
-<<<<<<< HEAD
 
 		List<Contatto> list = new ArrayList<Contatto>();
 		Contatto c1 = new Contatto();
@@ -61,7 +56,7 @@ public class RubricaService {
 		list.add(c1);
 		list.add(c2);
 		list.add(c3);
-=======
+
 		return getList(null);
 	}
 	
@@ -86,7 +81,6 @@ public class RubricaService {
 //		list.add(c1);
 //		list.add(c2);
 //		list.add(c3);
->>>>>>> refs/remotes/origin/main
 		
 		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
 

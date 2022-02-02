@@ -9,10 +9,19 @@
 <title>Shop</title>
 </head>
 <body>
-<h1>Shop</h1>
+<c:choose>
+<c:when test="${not empty loggedUser}"> 
+Welcome: <c:out value="${loggedUser.getName() } "></c:out>
+</c:when>
+<c:otherwise>
 <form action="goto_login">login
-<input type ="submit">
+<input type ="submit" value="Login">
 </form>
+</c:otherwise>
+</c:choose>
+
+
+<h1>Shop</h1>
 
 <form action="ecomSearch" target="frame">
 <input name="name"> 
@@ -20,5 +29,23 @@
 </form>
 
 <iframe name="frame"></iframe>
+
+<c:choose>
+<c:when test="${not empty product}">
+	<form action="ecomAddToOrder">
+	<label>Price: </label> 
+	${product.price }
+	<br>
+	<fieldset>
+	<legend>Order</legend>
+	<label>Amount: </label>
+	<input type="number" name="amt" max="${product.getQuantity() }" >
+	<br>
+	</fieldset>
+	</form>
+</c:when>
+
+</c:choose>
+
 </body>
 </html>

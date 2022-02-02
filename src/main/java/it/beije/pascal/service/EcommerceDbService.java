@@ -1,6 +1,7 @@
 package it.beije.pascal.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,11 @@ public class EcommerceDbService {
 
 	public List<Product> searchProduct(String name) {
 		return productRepository.findByName(name);
+	}
+
+	public Optional<Product> fetchProduct(Integer productId) {
+//		return productRepository.getOne(productId);
+		return productRepository.findById(productId);
 	}
 	
 	

@@ -1,105 +1,107 @@
 package it.beije.pascal.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-/*
- * CREATE TABLE `user` (
-  `id` Integer(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `surname` varchar(45) DEFAULT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB;
+
+/**
+ * The persistent class for the user database table.
+ * 
  */
-
 @Entity
-@Table(name = "user")
-public class User {
-	
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name = "email")
+
 	private String email;
-	
-	@Column(name = "name")
+
 	private String name;
-	
-	@Column(name = "surname")
-	private String surname;
-	
-	@Column(name = "password")
+
 	private String password;
 
-//	Constructors
-	
+	private String surname;
+
+	//bi-directional many-to-one association to Order
+	@OneToMany(mappedBy="user")
+	private List<Order> orders;
+
 	public User() {
-		super();
 	}
 
-	public User(String name, String email, String surname, String password) {
+	public User(String name, String surname, String email, String password) {
 		super();
 		this.name = name;
-		this.email = email;
 		this.surname = surname;
+		this.email = email;
 		this.password = password;
 	}
 	
-//	Getters and Setters
-
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", surname=" + surname + ", password="
-				+ password + "]";
+	public String getSurname() {
+		return this.surname;
 	}
-	
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public List<Order> getOrders() {
+		return this.orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public Order addOrder(Order order) {
+		getOrders().add(order);
+		order.setUser(this);
+
+		return order;
+	}
+
+	public Order removeOrder(Order order) {
+		getOrders().remove(order);
+		order.setUser(null);
+
+		return order;
+	}
+
 }

@@ -9,9 +9,30 @@
 <title>Risultati</title>
 </head>
 <body>
-<c:forEach items= "${searchResults }" var="prod">
-	<c:out value="${prod.toString() }"/><br>
-</c:forEach>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Description</th>
+	</tr>
+	
+	<c:forEach items= "${searchResults }" var="prod">
+	<tr>
+		<td> <c:out value="${prod.getName() }"/></td>
+		<td> <c:out value="${prod.getPrice() }"/></td>
+		<td> <c:out value="${prod.getQuantity() }"/></td>
+		<td> <c:out value="${prod.getDescription() }"/></td>
+		<td>
+			<form action="ecomViewProduct" target="">
+			<input type="hidden" name="productId" value="${prod.getId() }"> 
+			<input type="submit" value="Ordina...">
+			</form>
+		</td>
+	</tr>
+	</c:forEach>
+</table>
+
 
 </body>
 </html>
