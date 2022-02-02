@@ -10,7 +10,7 @@
 
 <H1>BENVENUTO NEL NEGOZIO</H1>
 
-<form action="login" method="post">
+<form action="login" method="get">
   <label>Premere qui per effettuare il login:</label>
   <input type="submit" value="Login">
 </form>

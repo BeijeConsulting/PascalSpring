@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+
+// inserire apici "storti" fra il nome tabella order, perché Order è keywork riservata SQL, quindi da errore se si prova ad usarlo.
 @Table(name = "order")
 public class Order {
 	@Id
