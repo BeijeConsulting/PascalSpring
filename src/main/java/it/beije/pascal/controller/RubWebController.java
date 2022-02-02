@@ -68,8 +68,6 @@ public class RubWebController {
 	@RequestMapping(value = "/webUpdateContatto", method = RequestMethod.POST)
 	public String updatePost(@RequestParam Integer id, @RequestParam String nome, @RequestParam String cognome, @RequestParam String email, @RequestParam String telefono, @RequestParam String note) {
 		
-		
-		
 		return "redirect:/webRubrica";
 	}
 	
