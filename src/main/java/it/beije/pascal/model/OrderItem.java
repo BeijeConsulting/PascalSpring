@@ -29,6 +29,7 @@ public class OrderItem {
 	@Column(name="quantity")
 	private Integer quantity;
 	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -65,11 +66,21 @@ public class OrderItem {
 	}
 
 	
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	
 	public String toString() {
 		StringBuilder builder = new StringBuilder("{id: ").append(id)
 				.append(", orderId: ").append(orderId)
 				.append(", productId: ").append(productId)
 				.append(", sellPrice: ").append(sellPrice)
+				.append(", quantity: ").append(quantity)
 				.append("}");
 		
 		return builder.toString();

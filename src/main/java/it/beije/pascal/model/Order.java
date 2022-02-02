@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-
 @Entity
 @Table(name = "`order`")
 public class Order {
@@ -30,6 +29,12 @@ public class Order {
 	
 	@Column(name="creation_datetime")
 	private LocalDateTime dateTime;
+
+	
+	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
+	@JoinColumn(name="order_id")
+	private List<OrderItem> items;
 
 	
 	public Integer getId() {
@@ -75,12 +80,21 @@ public class Order {
 		this.dateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_DATE_TIME);
 	}
 	
-	
+	public List<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
+
+
 	public String toString() {
 		StringBuilder builder = new StringBuilder("{id: ").append(id)
 				.append(", userId: ").append(userId)
 				.append(", amount: ").append(amount)
 				.append(", dateTime: ").append(dateTime)
+				.append(", items: ").append(items.size())
 				.append("}");
 		
 		return builder.toString();
