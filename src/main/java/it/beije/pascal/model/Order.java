@@ -1,7 +1,6 @@
 package it.beije.pascal.model;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class Order {
 	private Integer id;
 	
 	@Column(name="creation_datetime")
-	private Date creationDateTime;
+	private LocalDateTime creationDateTime;
 	
 	@Column(name="amount")
 	private Double amount;
@@ -35,11 +34,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public Date getCreationDateTime() {
+	public LocalDateTime getCreationDateTime() {
 		return creationDateTime;
 	}
 
-	public void setCreationDateTime(Date creationDateTime) {
+	public void setCreationDateTime(LocalDateTime creationDateTime) {
 		this.creationDateTime = creationDateTime;
 	}
 
