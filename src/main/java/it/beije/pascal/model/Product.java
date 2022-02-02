@@ -13,7 +13,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "description")
@@ -21,38 +21,59 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 	@Column(name = "quantity")
-	private int quantity;
+	private Integer quantity;
 	
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 	public String getDescription() {
 		return description;
 	}
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
 	public double getPrice() {
 		return price;
 	}
+
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getQuantity() {
+
+
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+
+
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+
+
 	@Override
 	public String toString() {
 		return "Product [name=" + name + ", description=" + description + ", price=" + price + ", quantity=" + quantity

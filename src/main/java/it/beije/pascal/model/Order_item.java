@@ -14,46 +14,47 @@ public class Order_item {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	@Column(name = "order_id")
-	private int order_id;
-	@Column(name = "product_id")
-	private int product_id;
-	@Column(name = "sell_price")
-	private int sell_price;
-	@Column(name = "quantity")
-	private int quantity;
+	private Integer order_id;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getOrder_id() {
+	public Integer getOrder_id() {
 		return order_id;
 	}
-	public void setOrder_id(int order_id) {
+	public void setOrder_id(Integer order_id) {
 		this.order_id = order_id;
 	}
-	public int getProduct_id() {
+	public Integer getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(int product_id) {
+	public void setProduct_id(Integer product_id) {
 		this.product_id = product_id;
 	}
-	public int getSell_price() {
+	public Integer getSell_price() {
 		return sell_price;
 	}
-	public void setSell_price(int sell_price) {
+	public void setSell_price(Integer sell_price) {
 		this.sell_price = sell_price;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+	@Column(name = "product_id")
+	private Integer product_id;
+	@Column(name = "sell_price")
+	private Integer sell_price;
+	@Column(name = "quantity")
+	private Integer quantity;
+	
 	
 	
 }
