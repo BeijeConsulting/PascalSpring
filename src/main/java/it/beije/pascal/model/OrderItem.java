@@ -2,9 +2,11 @@ package it.beije.pascal.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +16,12 @@ public class OrderItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "order_id")
-	private Integer orderId;
-	@Column(name = "product_id")
-	private Integer productId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Order order;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Product product;
 
 	@Column(name = "sell_price")
 	private Double sellPrice;
@@ -33,20 +37,20 @@ public class OrderItem {
 		this.id = id;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public Integer getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Double getSellPrice() {
@@ -67,12 +71,10 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-
-		StringBuilder builder = new StringBuilder("{id: ").append(id).append(", orderId: ").append(orderId)
-				.append(", productId: ").append(productId).append(", sellPrice: ").append(sellPrice)
-				.append(", quantity: ").append(quantity).append("}");
-
-		return builder.toString();
+		return "OrderItem [id=" + id + ", order=" + order + ", product=" + product + ", sellPrice=" + sellPrice
+				+ ", quantity=" + quantity + "]";
 	}
+
+	
 
 }

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,8 +28,8 @@ public class Order {
 	@Column(name = "amount")
 	private double amount;
 
-	@Column(name = "user_id")
-	private Integer userId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	// SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // , fetch = FetchType.LAZY
@@ -58,12 +60,12 @@ public class Order {
 		this.amount = amount;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public List<OrderItem> getItems() {
@@ -74,12 +76,12 @@ public class Order {
 		this.items = items;
 	}
 
+	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder("{id: ").append(id).append(", userId: ").append(userId)
-				.append(", amount: ").append(amount).append(", dateTime: ").append(dateTime).append(", items: ")
-				.append(items.size()).append("}");
-
-		return builder.toString();
+		return "Order [id=" + id + ", dateTime=" + dateTime + ", amount=" + amount + ", user=" + user + ", items="
+				+ items + "]";
 	}
+
+	
 
 }
