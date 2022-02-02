@@ -11,9 +11,7 @@
 		<class>it.beije.pascal.model.Order</class>
 		<class>it.beije.pascal.model.OrderItem</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		
-
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
