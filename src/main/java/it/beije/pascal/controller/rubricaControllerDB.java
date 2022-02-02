@@ -24,11 +24,11 @@ public class rubricaControllerDB {
 	@Autowired
 	private RubricaRepository rubricaRepository;
 	
-	@GetMapping(value = "/")
-	public String index(Model model) {
-		
-		return "data"; // /WEB-INF/views/db.jsp
-	}
+//	@GetMapping(value = "/")
+//	public String index(Model model) {
+//		
+//		return "data"; // /WEB-INF/views/db.jsp
+//	}
 	
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public String data(Model model) throws Exception {

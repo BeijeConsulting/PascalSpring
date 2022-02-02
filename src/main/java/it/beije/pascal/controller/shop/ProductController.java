@@ -27,7 +27,7 @@ public class ProductController {
 				
 		model.addAttribute("list",product_list);
 		
-		return "nomeclassevisual";
+		return "list_product";
 	}
 	
 	
