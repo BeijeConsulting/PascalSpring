@@ -1,9 +1,5 @@
 package it.beije.pascal.controller;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +35,8 @@ public class RubricaController {
 		//RubricaService.getList()
 		//RubricaService rubricaService = new RubricaService();
 		
-		//List<Contatto> contatti = rubricaService.getList();
+		List<Contatto> contatti = rubricaService.getList(cognome);
 
-		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
 		System.out.println("contatti : " + contatti.size());
 		
 		model.addAttribute("contatti", contatti);

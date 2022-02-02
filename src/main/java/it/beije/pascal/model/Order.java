@@ -8,24 +8,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import java.time.format.DateTimeFormatter;
+
 @Entity
 @Table(name = "order")
 public class Order {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Integer id;
-	
-	@Column(name="creation_datetime")
-	private LocalDateTime creationDateTime;
+
+	@Column(name="user_id")
+	private Integer userId;
 	
 	@Column(name="amount")
 	private Double amount;
 	
-	@Column(name="user_id")
-	private Integer userId;
+	@Column(name="creation_datetime")
+	private LocalDateTime dateTime;
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -34,14 +37,16 @@ public class Order {
 		this.id = id;
 	}
 
-	public LocalDateTime getCreationDateTime() {
-		return creationDateTime;
+	
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setCreationDateTime(LocalDateTime creationDateTime) {
-		this.creationDateTime = creationDateTime;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
+	
 	public Double getAmount() {
 		return amount;
 	}
@@ -50,14 +55,32 @@ public class Order {
 		this.amount = amount;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	
+	public LocalDateTime getDateTime() {
+		return dateTime;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+	
+	public String getDateTimeAsString() {
+		return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_DATE_TIME);
 	}
 	
 	
+	public String toString() {
+		StringBuilder builder = new StringBuilder("{id: ").append(id)
+				.append(", userId: ").append(userId)
+				.append(", amount: ").append(amount)
+				.append(", dateTime: ").append(dateTime)
+				.append("}");
+		
+		return builder.toString();
+	}
 
 }
