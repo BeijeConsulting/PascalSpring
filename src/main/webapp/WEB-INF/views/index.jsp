@@ -18,10 +18,10 @@
 
 	<br />
 	
-	<form action="csv" method="post">
-		<input type="submit" value="file">
-	</form>
-	
+	<a href = "csv">File</a> <br/>
+	<a href = "rubrica">Rubrica</a>
+		
 	
 </body>
 </html>
+

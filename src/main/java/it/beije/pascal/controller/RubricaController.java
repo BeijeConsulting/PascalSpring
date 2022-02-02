@@ -31,23 +31,23 @@ public class RubricaController {
 	@Autowired
 	private RubricaRepository rubricaRepository;
 
-
-	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)
-	public String lista(Model model, @RequestParam(value = "surname", required = false) String cognome) {
-		System.out.println("GET rubrica");
-		
-		//carica rubrica da DB, CSV, XML...
-		//RubricaService.getList()
-		//RubricaService rubricaService = new RubricaService();
-		
-		//List<Contatto> contatti = rubricaService.getList();
-
-		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
-		System.out.println("contatti : " + contatti.size());
-		
-		model.addAttribute("contatti", contatti);
-		
-		return "lista"; // /WEB-INF/views/hello.jsp
-	}
+//
+//	@RequestMapping(value = "/rubrica", method = RequestMethod.GET)
+//	public String lista(Model model, @RequestParam(value = "surname", required = false) String cognome) {
+//		System.out.println("GET rubrica");
+//		
+//		//carica rubrica da DB, CSV, XML...
+//		//RubricaService.getList()
+//		//RubricaService rubricaService = new RubricaService();
+//		
+//		//List<Contatto> contatti = rubricaService.getList();
+//
+//		List<Contatto> contatti = cognome != null ? rubricaRepository.findByCognome(cognome) : rubricaRepository.findAll();
+//		System.out.println("contatti : " + contatti.size());
+//		
+//		model.addAttribute("contatti", contatti);
+//		
+//		return "lista"; // /WEB-INF/views/hello.jsp
+//	}
 
 }

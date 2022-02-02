@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,9 +17,15 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 
-	@RequestMapping(value = "/csv", method = RequestMethod.POST)
-	public String getContactList() {
-		List<Contatto> contatti = fileService.readCSV();		
+	@RequestMapping(value = "/csv", method = RequestMethod.GET)
+	public String getContactList(Model model) {
+		List<Contatto> contatti = fileService.readCSV();	
+		for(Contatto contatto:contatti) {
+			System.out.println(contatto);
+		}
+		model.addAttribute("contatti", contatti);
 		return "file";
 	}
+	
+	
 }
