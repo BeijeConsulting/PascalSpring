@@ -14,11 +14,6 @@ import it.beije.pascal.repository.shop.ProductRepository;
 @Service
 public class ProductService {
 	
-	@GetMapping(value = "/")
-	public String index(Model model) {
-		
-		return "shop_main"; // /WEB-INF/views/shop_main.jsp
-	}
 	
 	@Autowired
 	private ProductRepository productRepository;
