@@ -49,6 +49,18 @@
 	<form action="rubricaListAll" target="list_iframe">
 		<label>Visualizza tutti i contatti </label>
 		<input type="submit" value="Visualizza">
+		<br>
+		<label>Ordina per:</label><br>
+		<input type="radio" name="orderBy" value="nome">
+		<label>nome</label><br>
+		<input type="radio" name="orderBy" value="cognome">
+		<label>cognome</label><br>
+		<label>Ordina in ordine:</label>
+		<br>
+		<input type="radio" name="ascDesc" value="asc">
+		<label>ascendente</label><br>
+		<input type="radio" name="ascDesc" value="desc">
+		<label>discendente</label><br>
 	</form>
 	
 	

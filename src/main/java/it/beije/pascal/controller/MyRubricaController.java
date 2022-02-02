@@ -25,9 +25,27 @@ public class MyRubricaController {
 	}
 	
 	@RequestMapping(value = "/rubricaListAll", method = RequestMethod.GET)
-	public String listAll(Model model) {
+	public String listAll(Model model, @RequestParam String orderBy, @RequestParam String ascDesc) {
 		
-		List<Contatto> cList = rubricaRepository.findAll();
+		List<Contatto> cList;
+		
+		switch(orderBy){
+			case "nome": 
+				switch(ascDesc) {
+				default:
+				case "asc": cList = rubricaRepository.findAllByOrderByNomeAsc(); break;
+				case "desc": cList = rubricaRepository.findAllByOrderByNomeDesc(); break;
+				} break;
+			case "cognome":
+				switch(ascDesc) {
+				default:
+				case "asc": cList = rubricaRepository.findAllByOrderByCognomeAsc(); break;
+				case "desc": cList = rubricaRepository.findAllByOrderByCognomeDesc(); break;
+				} break;
+			default: cList = rubricaRepository.findAll(); break;
+		}
+		
+		
 		
 		model.addAttribute("listaContatti", cList);
 		return"tabellaContatti";
@@ -52,8 +70,9 @@ public class MyRubricaController {
 	@RequestMapping(value = "/rubricaCercaNomeCognome", method = RequestMethod.GET)
 	public String cercaNomeCognome(Model model, @RequestParam String nome, @RequestParam String cognome) {
 		List<Contatto> cList = rubricaRepository.findByNomeAndCognome(nome, cognome);
+
 		
-		model.addAttribute("listContatti", cList);
+		model.addAttribute("listaContatti", cList);
 		return"tabellaContatti";
 	}
 	
@@ -68,7 +87,9 @@ public class MyRubricaController {
 		c.setTelefono(telefono);
 		c.setNote(note);
 		
+		System.out.println("Contatto PRE: " + c);
 		rubricaRepository.save(c);
+		System.out.println("Contatto POST: " + c);
 		
 		return "my_rubrica";
 	}

@@ -20,7 +20,7 @@ PRIMARY KEY (`id`));
 
 
 @Entity
-@Table(name = "contatti")
+@Table(name="contatti")
 public class Contatto {
 	
 	@Id

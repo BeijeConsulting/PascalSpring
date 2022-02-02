@@ -19,5 +19,12 @@ public interface RubricaRepository extends JpaRepository<Contatto, Integer> {
 	
 	public List<Contatto> findByTelefonoNotNull();
 	
+	public List<Contatto> findAllByOrderByNomeAsc();
+
+	public List<Contatto> findAllByOrderByNomeDesc();
+	
+	public List<Contatto> findAllByOrderByCognomeAsc();
+	
+	public List<Contatto> findAllByOrderByCognomeDesc();
 
 }
