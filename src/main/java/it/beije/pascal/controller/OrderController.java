@@ -1,24 +1,33 @@
 package it.beije.pascal.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.beije.pascal.service.OrderService;
+import it.beije.pascal.model.Order;
+import it.beije.pascal.repository.OrderRepository;
+
 
 @Controller
 public class OrderController {
 	
 	@Autowired
-	private OrderService orderService;
-	
+	public OrderRepository orderRepository;
+
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
-	public String showProducts(Model model) {
+	public String orders() {
+		System.out.println("GET orders");
+		
+		List<Order> orders = orderRepository.findAll();
+		System.out.println("orders : " + orders.size());
+		System.out.println("order : " + orders.get(0));
+		System.out.println("order items : " + orders.get(0).getItems());
 
-		model.addAttribute("orders", orderService.getOrders());
-
-		return "listOrders";
+		return "hello";
 	}
+	
 }
+
