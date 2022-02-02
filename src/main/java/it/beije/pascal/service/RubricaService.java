@@ -7,7 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import it.beije.pascal.model.Contatto;
 
@@ -67,6 +76,32 @@ public class RubricaService {
 			contatti.add(c);
 		}
 		bufferedReader.close();
+		return contatti;
+	}
+	
+	public List<Contatto> readXML(String path) throws IOException, SAXException, ParserConfigurationException {
+		File file = new File(path);
+		
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document document = db.parse(file);
+		document.getDocumentElement().normalize();
+		NodeList nList = document.getElementsByTagName("contatto");
+		Contatto c = new Contatto();
+		List<Contatto> contatti = new ArrayList<Contatto>();
+		
+		for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+            	//ogni nodo va assegnato a un Element per usare i metodi per recuperare i dati
+                Element eElement = (Element) nNode;
+                c.setCognome(eElement.getElementsByTagName("cognome").item(0).getTextContent());
+    			c.setNome(eElement.getElementsByTagName("nome").item(0).getTextContent());
+    			c.setEmail(eElement.getElementsByTagName("email").item(0).getTextContent());
+    			c.setTelefono(eElement.getElementsByTagName("telefono").item(0).getTextContent());
+    			contatti.add(c);
+            }
+        }
 		return contatti;
 	}
 

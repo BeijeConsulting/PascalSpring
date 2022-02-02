@@ -34,7 +34,7 @@ public class HelloController {
 	}
 
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
-	@GetMapping(value = "/")
+	@GetMapping(value = "/xxxxx")
 	public String index(Model model) {
 		
 		model.addAttribute("name", "Pascal");
