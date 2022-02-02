@@ -7,9 +7,10 @@
 
 		<class>it.beije.pascal.model.Contatto</class>
 		<class>it.beije.pascal.model.User</class>
-		<class>it.beije.pascal.model.OrderItem</class>
 		<class>it.beije.pascal.model.Product</class>
 		<class>it.beije.pascal.model.Order</class>
+		<class>it.beije.pascal.model.OrderItem</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>

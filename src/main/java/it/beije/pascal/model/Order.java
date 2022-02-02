@@ -13,14 +13,14 @@ import javax.persistence.Table;
 @Table(name = "order")
 public class Order {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
 	@Column(name = "creation_datetime")
-	private LocalDateTime creationDatetime;
+	private LocalDateTime dateTime;
 	@Column(name = "amount")
 	private double amount;
-	
+
 	@Column(name = "user_id")
 	private Integer userId;
 
@@ -32,12 +32,12 @@ public class Order {
 		this.id = id;
 	}
 
-	public LocalDateTime getCreationDatetime() {
-		return creationDatetime;
+	public LocalDateTime getDateTime() {
+		return dateTime;
 	}
 
-	public void setCreationDatetime(LocalDateTime creationDatetime) {
-		this.creationDatetime = creationDatetime;
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public double getAmount() {
@@ -55,8 +55,12 @@ public class Order {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
 
-	
-	
+	public String toString() {
+		StringBuilder builder = new StringBuilder("{id: ").append(id).append(", userId: ").append(userId)
+				.append(", amount: ").append(amount).append(", dateTime: ").append(dateTime).append("}");
+
+		return builder.toString();
+	}
+
 }
