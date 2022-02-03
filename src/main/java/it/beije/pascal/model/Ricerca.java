@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -37,6 +38,9 @@ public class Ricerca  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@ManyToMany(mappedBy = "ricercheSalvate")
+	private List<Utente> salvatoDa;
 
 	@Column(name="anno_costruzione")
 	private short annoCostruzione;
@@ -518,6 +522,16 @@ public class Ricerca  {
 
 	public void setPuntos(List<Punto> puntos) {
 		this.puntos = puntos;
+	}
+
+
+	public List<Utente> getSalvatoDa() {
+		return salvatoDa;
+	}
+
+
+	public void setSalvatoDa(List<Utente> salvatoDa) {
+		this.salvatoDa = salvatoDa;
 	}
 
 }

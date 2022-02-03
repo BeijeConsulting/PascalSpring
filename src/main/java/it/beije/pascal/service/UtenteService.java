@@ -8,14 +8,12 @@ import it.beije.pascal.repository.UtenteRepository;
 
 @Service
 public class UtenteService {
-	
+
 	@Autowired
 	UtenteRepository utenteRepository;
-	
-	
+
 	public void save(Utente utente) {
 		utenteRepository.save(utente);
 		
 	}
-
 }
