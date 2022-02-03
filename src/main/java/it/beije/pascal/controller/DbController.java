@@ -30,7 +30,7 @@ public class DbController {
 		return "rubrica/lista_contatti";
 	}
 
-	@RequestMapping(value = "get_contatto", method = RequestMethod.GET)
+	@RequestMapping(value = "/get_contatto", method = RequestMethod.GET)
 	public String getContact(Model model) {
 		Optional<Contatto> contatto = rubricaRepository.findById(2);
 		model.addAttribute("contatto", contatto);

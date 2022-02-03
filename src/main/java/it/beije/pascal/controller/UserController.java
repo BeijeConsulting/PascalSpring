@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.beije.pascal.repository.UserRepository;
+import it.beije.pascal.model.User;
+import it.beije.pascal.service.UserService;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	UserService userService;	
 	
 	
 	@RequestMapping(value = "/ecommerce", method = RequestMethod.GET)
@@ -35,10 +36,8 @@ public class UserController {
 		
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String registration(@RequestParam String nome,  @RequestParam String cognome,  @RequestParam String email,  @RequestParam String password) {	
-		
-	
-		return"ecommerce/ecommerce";
-		
+		User user = new User(email,nome,cognome,password);
+		userService.save(user);	
+		return"ecommerce/ecommerce";		
 	}
-
 }
