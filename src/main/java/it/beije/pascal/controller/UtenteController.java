@@ -87,8 +87,9 @@ public class UtenteController {
 		utenteService.save(utente);
 		return "login";
 	}
-
-	@RequestMapping(name = "/registerAgenzia", method = RequestMethod.POST)
+	
+	// Errore
+	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
 	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
 			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
@@ -116,7 +117,7 @@ public class UtenteController {
 
 	}
 
-	@RequestMapping(name = "/registerCostruttore", method = RequestMethod.POST)
+	@RequestMapping(value = "/registerCostruttore", method = RequestMethod.POST)
 	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
 			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,
 			@RequestParam String comune, @RequestParam String indirizzo, @RequestParam Integer nCivico) {
