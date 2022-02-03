@@ -57,6 +57,14 @@ public class Utente  {
 	private List<RicercaSalvata> ricercheSalvate;
 
 	public Utente() {
+	}	
+
+	public Utente(String email, String password, byte spamCheck, String username) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.spamCheck = spamCheck;
+		this.username = username;
 	}
 
 	public int getId() {

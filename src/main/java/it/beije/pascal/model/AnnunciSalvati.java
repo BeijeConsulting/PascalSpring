@@ -29,7 +29,7 @@ public class AnnunciSalvati  {
 	@Lob
 	private String commento;
 
-	//bi-directional many-to-one association to Utente
+	//bi-directional many-to-one association to Utente 
 	@ManyToOne
 	private Utente utente;
 
