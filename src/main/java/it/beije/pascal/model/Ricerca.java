@@ -137,12 +137,7 @@ public class Ricerca  {
 	//uni-directional many-to-one association to Punto
 	@ManyToOne
 	@JoinColumn(name="centro_id")
-	private Punto punto1;
-
-	//uni-directional many-to-one association to Punto
-	@ManyToOne
-	@JoinColumn(name="centro_id")
-	private Punto punto2;
+	private Punto centro;
 
 	//uni-directional many-to-one association to Utente
 	@ManyToOne
@@ -166,21 +161,16 @@ public class Ricerca  {
 		return punto;
 	}
 
-	public Punto getPunto1() {
-		return this.punto1;
+
+	public Punto getCentro() {
+		return centro;
 	}
 
-	public void setPunto1(Punto punto1) {
-		this.punto1 = punto1;
+
+	public void setCentro(Punto centro) {
+		this.centro = centro;
 	}
 
-	public Punto getPunto2() {
-		return this.punto2;
-	}
-
-	public void setPunto2(Punto punto2) {
-		this.punto2 = punto2;
-	}
 
 	public Utente getUtente() {
 		return this.utente;
