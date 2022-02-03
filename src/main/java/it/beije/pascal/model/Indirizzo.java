@@ -7,18 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
-
 /**
  * The persistent class for the indirizzo database table.
  * 
  */
 @Entity
-@NamedQuery(name="Indirizzo.findAll", query="SELECT i FROM Indirizzo i")
-public class Indirizzo  {
+@NamedQuery(name = "Indirizzo.findAll", query = "SELECT i FROM Indirizzo i")
+public class Indirizzo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	private String cap;
 
@@ -26,8 +25,8 @@ public class Indirizzo  {
 
 	private String indirizzo;
 
-	@Column(name="n_civico")
-	private int nCivico;
+	@Column(name = "n_civico")
+	private Integer nCivico;
 
 	public Indirizzo() {
 	}
@@ -57,11 +56,23 @@ public class Indirizzo  {
 	}
 
 	public String getIndirizzo() {
-		return this.indirizzo;
+		return indirizzo;
 	}
 
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
+	}
+
+	public Integer getnCivico() {
+		return nCivico;
+	}
+
+	public void setnCivico(Integer nCivico) {
+		this.nCivico = nCivico;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public int getNCivico() {

@@ -8,15 +8,28 @@
 </head>
 <body>
 
-Ciao ${name}!
 
-<form action="hello" method="post">
-  <label>fname:</label><br>
-  <input type="text" name="fname"><br>
-  <label>lname:</label><br>
-  <input type="text" name="lname2"><br><br>
-  <input type="submit" value="Submit">
-</form> 
 
+<div style="text-align:center;">
+<h1>Gestore Immobiliare - Fondamenta -</h1>
+
+<form action="form_privato" method="get">
+  <input type="submit" value="Registra Utente Privato"></input>
+</form>
+<br>
+<form action="form_commerciale" method="get">
+  <input type="submit" value="Registra Utente Commerciale"></input>
+</form>
+<br>
+<form action="registerEstate" method="get">
+  <input type="submit" value="Registra Agenzia"></input>
+</form>
+<br>
+<form action="loginUser" method="get">
+  <input type="submit" value="Accesso Utenti"></input>
+</form>
+
+
+</div>
 </body>
 </html>
