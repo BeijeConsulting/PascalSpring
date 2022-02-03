@@ -3,18 +3,9 @@ package it.beije.pascal.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import it.beije.pascal.model.Utente;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,23 +16,20 @@ import it.beije.pascal.model.Indirizzo;
 import it.beije.pascal.model.Utente;
 import it.beije.pascal.repository.IndirizzoRepository;
 import it.beije.pascal.service.CommercialeService;
-
 import it.beije.pascal.service.UtenteService;
 
 @Controller
 public class UtenteController {
 	
-	@Autowired
-	public UtenteService utenteservice;
 	
 	@Autowired
 	UtenteService utenteService;
 
 	@Autowired
-	private CommercialeService commercialeService;
+	CommercialeService commercialeService;
 
 	@Autowired
-	private IndirizzoRepository indirizzoRepository;
+	IndirizzoRepository indirizzoRepository;
 	
 	
 
@@ -49,6 +37,7 @@ public class UtenteController {
 	public String homepage() {
 		return "index";
 	}
+	
 
 	@RequestMapping(value = "/form_privato", method = RequestMethod.GET)
 	public String formPrivate() {
@@ -56,10 +45,14 @@ public class UtenteController {
 
 	}
 
-	@RequestMapping(value = "/form_commerciale", method = RequestMethod.GET)
-	public String formCommercial() {
-		return "registrazione_commerciale";
-
+	@RequestMapping(value = "/form_agenzia", method = RequestMethod.GET)
+	public String formAgency() {
+		return "registrazione_agenzia";
+	}
+	
+	@RequestMapping(value = "/form_costruttore", method = RequestMethod.GET)
+	public String formCostruttore() {
+		return "registrazione_costruttore";
 	}
 	
 	@RequestMapping(value = "/form_login", method = RequestMethod.GET)
@@ -74,7 +67,7 @@ public class UtenteController {
 		Utente loggedUser = null;
 		
 		try {
-			loggedUser = utenteservice.login(email, password);
+			loggedUser = utenteService.login(email, password);
 			request.getSession().setAttribute("loggedUser", loggedUser);
 			
 		} catch (Exception e) {
@@ -96,7 +89,7 @@ public class UtenteController {
 			utente = new Utente(email, password, (byte) 1, username);
 		}
 		utenteService.save(utente);
-		return "index";
+		return "login";
 	}
 
 	@RequestMapping(name = "/registerCommerciale", method = RequestMethod.POST)

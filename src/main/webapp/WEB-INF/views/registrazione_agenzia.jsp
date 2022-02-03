@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Pagina di registrazione Agenzia</h1>
 <form action="registerCommerciale" method="post">
 
 	  <label for="username">Username:</label><br>
@@ -27,8 +28,14 @@
 	  <label for="agenzia">Ragione sociale agenzia:</label><br>
 	  <input type="text" name="agenzia"><br><br>
 	  
-<!-- 	   <label for="agenzia">Nome referente: </label><br>
-	  <input type="text" name="nomeRef"><br><br> -->
+	  <label for="comune">Comune:</label><br>
+	  <input type="text" name="comune"><br>
+	  
+	  <label for="cap">Cap:</label><br>
+	  <input type="text" name="cap"><br>
+	  
+	  <label for="indirizzo">Indirizzo:</label><br>
+	  <input type="text" name="indirizzo"><br>	
 	  
 	  <label for="spam">Desideri rimanere aggiornato sulle ultime novità di fondamenta.it?</label>
 	  <input type="checkbox" name="spam"><br><br>
@@ -38,3 +45,4 @@
 	</form>
 </body>
 </html>
+

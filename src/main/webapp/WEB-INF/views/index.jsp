@@ -11,17 +11,17 @@
 
 
 <div style="text-align:center;">
-<h1>Gestore Immobiliare - Fondamenta -</h1>
+<h1>Domus</h1>
 
 <form action="form_privato" method="get">
   <input type="submit" value="Registra Utente Privato"></input>
 </form>
 <br>
-<form action="form_commerciale" method="get">
-  <input type="submit" value="Registra Utente Commerciale"></input>
+<form action="form_costruttore" method="get">
+  <input type="submit" value="Registra Costruttore"></input>
 </form>
 <br>
-<form action="registerEstate" method="get">
+<form action="form_agenzia" method="get">
   <input type="submit" value="Registra Agenzia"></input>
 </form>
 <br>
