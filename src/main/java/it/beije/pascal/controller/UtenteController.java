@@ -2,20 +2,12 @@ package it.beije.pascal.controller;
 
 
 import javax.servlet.http.HttpServlet;
+
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import it.beije.pascal.model.Utente;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,24 +18,20 @@ import it.beije.pascal.model.Indirizzo;
 import it.beije.pascal.model.Utente;
 import it.beije.pascal.repository.IndirizzoRepository;
 import it.beije.pascal.service.CommercialeService;
-
 import it.beije.pascal.service.UtenteService;
 
 @Controller
 public class UtenteController {
-	
-	@Autowired
-	public UtenteService utenteservice;
-	
+
 	@Autowired
 	UtenteService utenteService;
 
 	@Autowired
-	private CommercialeService commercialeService;
+	CommercialeService commercialeService;
 
 	@Autowired
-	private IndirizzoRepository indirizzoRepository;
-	
+	IndirizzoRepository indirizzoRepository;
+
 	
 
 	@GetMapping(value = "/")
@@ -57,12 +45,16 @@ public class UtenteController {
 
 	}
 
-	@RequestMapping(value = "/form_commerciale", method = RequestMethod.GET)
-	public String formCommercial() {
-		return "registrazione_commerciale";
-
+	@RequestMapping(value = "/form_agenzia", method = RequestMethod.GET)
+	public String formAgency() {
+		return "registrazione_agenzia";
 	}
-	
+
+	@RequestMapping(value = "/form_costruttore", method = RequestMethod.GET)
+	public String formCostruttore() {
+		return "registrazione_costruttore";
+	}
+
 	@RequestMapping(value = "/form_login", method = RequestMethod.GET)
 	public String formLogin() {
 		return "login";
@@ -70,23 +62,23 @@ public class UtenteController {
 	}
 
 
-	@RequestMapping(value="login", method = RequestMethod.POST)
-	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email, @RequestParam String password) {
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,@RequestParam String password) {
+
 		Utente loggedUser = null;
-		
+
 		try {
-			loggedUser = utenteservice.login(email, password);
+			loggedUser = utenteService.login(email, password);
 			request.getSession().setAttribute("loggedUser", loggedUser);
-			
+
 		} catch (Exception e) {
 			System.out.println("Failed to login");
 			e.printStackTrace();
 			return "login";
 		}
-		
+
 		return "home";
 	}
-
 
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)
 	public String registerPrivate(@RequestParam(required = false) String username, String email, String password,String spam) {
@@ -97,14 +89,17 @@ public class UtenteController {
 			utente = new Utente(email, password, (byte) 1, username);
 		}
 		utenteService.save(utente);
-		return "index";
+		return "login";
 	}
 
-	@RequestMapping(value = "/registerCommerciale", method = RequestMethod.POST)
-	public String registerCommerciale(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
-			@RequestParam String pIva, @RequestParam String ragioneSociale, @RequestParam String telefono,
-			@RequestParam String cap, @RequestParam String comune, @RequestParam String indirizzo,
-			@RequestParam Integer nCivico) {
+
+	
+	// Errore
+	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
+	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
+			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
+			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
+
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
@@ -113,8 +108,7 @@ public class UtenteController {
 		ind.setIndirizzo(indirizzo);
 
 		Commerciale comm = new Commerciale();
-		comm.setNomeRef(nomeRef);
-		comm.setCognomeRef(cognomeRef);
+
 		comm.setPIva(pIva);
 		comm.setRagioneSociale(ragioneSociale);
 		comm.setTelefono(telefono);
@@ -125,8 +119,11 @@ public class UtenteController {
 
 		commercialeService.insertCommerciale(comm);
 
-		return "index";
+		// TODO cambia reindirizzamento
+		return "login";
+
 	}
+
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logOut(Model model, HttpServletRequest request) {
@@ -138,6 +135,35 @@ public class UtenteController {
 			e.printStackTrace();
 		}
 		return "index.jsp";
+
+	}
+	
+	@RequestMapping(value = "/registerCostruttore", method = RequestMethod.POST)
+	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
+			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,
+			@RequestParam String comune, @RequestParam String indirizzo, @RequestParam Integer nCivico) {
+
+		Indirizzo ind = new Indirizzo();
+		ind.setCap(cap);
+		ind.setComune(comune);
+		ind.setNCivico(nCivico);
+		ind.setIndirizzo(indirizzo);
+
+		Commerciale comm = new Commerciale();
+
+		comm.setNomeRef(nomeRef);
+		comm.setCognomeRef(cognomeRef);
+		comm.setRagioneSociale(ragioneSociale);
+		comm.setTelefono(telefono);
+
+		// TODO passa per un service
+		indirizzoRepository.save(ind);
+		comm.setIndirizzo(ind);
+
+		commercialeService.insertCommerciale(comm);
+
+		// TODO cambia reindirizzamento
+		return "login";
 	}
 
 }
