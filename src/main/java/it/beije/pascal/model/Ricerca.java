@@ -1,9 +1,29 @@
 package it.beije.pascal.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import it.beije.pascal.model.enums.AriaCondizionata;
+import it.beije.pascal.model.enums.ClasseEnergetica;
+import it.beije.pascal.model.enums.Condizione;
+import it.beije.pascal.model.enums.Riscaldamento;
+import it.beije.pascal.model.enums.StatoRogito;
+import it.beije.pascal.model.enums.TipoAnnuncio;
+import it.beije.pascal.model.enums.TipoImmobile;
+import it.beije.pascal.model.enums.TipoMappa;
+import it.beije.pascal.model.enums.TipoRicerca;
 
 
 /**
@@ -13,7 +33,6 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Ricerca.findAll", query="SELECT r FROM Ricerca r")
 public class Ricerca  {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,8 +41,9 @@ public class Ricerca  {
 	@Column(name="anno_costruzione")
 	private short annoCostruzione;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
-	private String ariaCondizionata;
+	private AriaCondizionata ariaCondizionata;
 
 	private String arredamento;
 
@@ -34,12 +54,14 @@ public class Ricerca  {
 
 	private byte balcone;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="classe_energetica")
-	private String classeEnergetica;
+	private ClasseEnergetica classeEnergetica;
 
 	private String comune;
 
-	private String condizione;
+	@Enumerated(EnumType.STRING)
+	private Condizione condizione;
 
 	private String frazione;
 
@@ -74,24 +96,30 @@ public class Ricerca  {
 
 	private double raggio;
 
-	private String riscaldamento;
+	@Enumerated(EnumType.STRING)
+	private Riscaldamento riscaldamento;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="stato_rogito")
-	private String statoRogito;
+	private StatoRogito statoRogito;
 
 	private byte terrazzo;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_annuncio")
-	private String tipoAnnuncio;
+	private TipoAnnuncio tipoAnnuncio;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_immobile")
-	private String tipoImmobile;
+	private TipoImmobile tipoImmobile;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_mappa")
-	private String tipoMappa;
+	private TipoMappa tipoMappa;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_ricerca")
-	private String tipoRicerca;
+	private TipoRicerca tipoRicerca;
 
 	@Column(name="ultimo_timestamp")
 	private Timestamp ultimoTimestamp;
@@ -123,277 +151,6 @@ public class Ricerca  {
 	public Ricerca() {
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public short getAnnoCostruzione() {
-		return this.annoCostruzione;
-	}
-
-	public void setAnnoCostruzione(short annoCostruzione) {
-		this.annoCostruzione = annoCostruzione;
-	}
-
-	public String getAriaCondizionata() {
-		return this.ariaCondizionata;
-	}
-
-	public void setAriaCondizionata(String ariaCondizionata) {
-		this.ariaCondizionata = ariaCondizionata;
-	}
-
-	public String getArredamento() {
-		return this.arredamento;
-	}
-
-	public void setArredamento(String arredamento) {
-		this.arredamento = arredamento;
-	}
-
-	public byte getAscensore() {
-		return this.ascensore;
-	}
-
-	public void setAscensore(byte ascensore) {
-		this.ascensore = ascensore;
-	}
-
-	public String getBagniMin() {
-		return this.bagniMin;
-	}
-
-	public void setBagniMin(String bagniMin) {
-		this.bagniMin = bagniMin;
-	}
-
-	public byte getBalcone() {
-		return this.balcone;
-	}
-
-	public void setBalcone(byte balcone) {
-		this.balcone = balcone;
-	}
-
-	public String getClasseEnergetica() {
-		return this.classeEnergetica;
-	}
-
-	public void setClasseEnergetica(String classeEnergetica) {
-		this.classeEnergetica = classeEnergetica;
-	}
-
-	public String getComune() {
-		return this.comune;
-	}
-
-	public void setComune(String comune) {
-		this.comune = comune;
-	}
-
-	public String getCondizione() {
-		return this.condizione;
-	}
-
-	public void setCondizione(String condizione) {
-		this.condizione = condizione;
-	}
-
-	public String getFrazione() {
-		return this.frazione;
-	}
-
-	public void setFrazione(String frazione) {
-		this.frazione = frazione;
-	}
-
-	public String getGiardino() {
-		return this.giardino;
-	}
-
-	public void setGiardino(String giardino) {
-		this.giardino = giardino;
-	}
-
-	public int getLocaliMax() {
-		return this.localiMax;
-	}
-
-	public void setLocaliMax(int localiMax) {
-		this.localiMax = localiMax;
-	}
-
-	public int getLocaliMin() {
-		return this.localiMin;
-	}
-
-	public void setLocaliMin(int localiMin) {
-		this.localiMin = localiMin;
-	}
-
-	public int getMqMax() {
-		return this.mqMax;
-	}
-
-	public void setMqMax(int mqMax) {
-		this.mqMax = mqMax;
-	}
-
-	public int getMqMin() {
-		return this.mqMin;
-	}
-
-	public void setMqMin(int mqMin) {
-		this.mqMin = mqMin;
-	}
-
-	public String getPiano() {
-		return this.piano;
-	}
-
-	public void setPiano(String piano) {
-		this.piano = piano;
-	}
-
-	public byte getPiscina() {
-		return this.piscina;
-	}
-
-	public void setPiscina(byte piscina) {
-		this.piscina = piscina;
-	}
-
-	public byte getPortineria() {
-		return this.portineria;
-	}
-
-	public void setPortineria(byte portineria) {
-		this.portineria = portineria;
-	}
-
-	public String getPostiAuto() {
-		return this.postiAuto;
-	}
-
-	public void setPostiAuto(String postiAuto) {
-		this.postiAuto = postiAuto;
-	}
-
-	public int getPrezzoMax() {
-		return this.prezzoMax;
-	}
-
-	public void setPrezzoMax(int prezzoMax) {
-		this.prezzoMax = prezzoMax;
-	}
-
-	public int getPrezzoMin() {
-		return this.prezzoMin;
-	}
-
-	public void setPrezzoMin(int prezzoMin) {
-		this.prezzoMin = prezzoMin;
-	}
-
-	public double getRaggio() {
-		return this.raggio;
-	}
-
-	public void setRaggio(double raggio) {
-		this.raggio = raggio;
-	}
-
-	public String getRiscaldamento() {
-		return this.riscaldamento;
-	}
-
-	public void setRiscaldamento(String riscaldamento) {
-		this.riscaldamento = riscaldamento;
-	}
-
-	public String getStatoRogito() {
-		return this.statoRogito;
-	}
-
-	public void setStatoRogito(String statoRogito) {
-		this.statoRogito = statoRogito;
-	}
-
-	public byte getTerrazzo() {
-		return this.terrazzo;
-	}
-
-	public void setTerrazzo(byte terrazzo) {
-		this.terrazzo = terrazzo;
-	}
-
-	public String getTipoAnnuncio() {
-		return this.tipoAnnuncio;
-	}
-
-	public void setTipoAnnuncio(String tipoAnnuncio) {
-		this.tipoAnnuncio = tipoAnnuncio;
-	}
-
-	public String getTipoImmobile() {
-		return this.tipoImmobile;
-	}
-
-	public void setTipoImmobile(String tipoImmobile) {
-		this.tipoImmobile = tipoImmobile;
-	}
-
-	public String getTipoMappa() {
-		return this.tipoMappa;
-	}
-
-	public void setTipoMappa(String tipoMappa) {
-		this.tipoMappa = tipoMappa;
-	}
-
-	public String getTipoRicerca() {
-		return this.tipoRicerca;
-	}
-
-	public void setTipoRicerca(String tipoRicerca) {
-		this.tipoRicerca = tipoRicerca;
-	}
-
-	public Timestamp getUltimoTimestamp() {
-		return this.ultimoTimestamp;
-	}
-
-	public void setUltimoTimestamp(Timestamp ultimoTimestamp) {
-		this.ultimoTimestamp = ultimoTimestamp;
-	}
-
-	public byte getVirtualTour() {
-		return this.virtualTour;
-	}
-
-	public void setVirtualTour(byte virtualTour) {
-		this.virtualTour = virtualTour;
-	}
-
-	public byte getVisitaGuidata() {
-		return this.visitaGuidata;
-	}
-
-	public void setVisitaGuidata(byte visitaGuidata) {
-		this.visitaGuidata = visitaGuidata;
-	}
-
-	public List<Punto> getPuntos() {
-		return this.puntos;
-	}
-
-	public void setPuntos(List<Punto> puntos) {
-		this.puntos = puntos;
-	}
 
 	public Punto addPunto(Punto punto) {
 		getPuntos().add(punto);
@@ -431,6 +188,346 @@ public class Ricerca  {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public short getAnnoCostruzione() {
+		return annoCostruzione;
+	}
+
+
+	public void setAnnoCostruzione(short annoCostruzione) {
+		this.annoCostruzione = annoCostruzione;
+	}
+
+
+	public AriaCondizionata getAriaCondizionata() {
+		return ariaCondizionata;
+	}
+
+
+	public void setAriaCondizionata(AriaCondizionata ariaCondizionata) {
+		this.ariaCondizionata = ariaCondizionata;
+	}
+
+
+	public String getArredamento() {
+		return arredamento;
+	}
+
+
+	public void setArredamento(String arredamento) {
+		this.arredamento = arredamento;
+	}
+
+
+	public byte getAscensore() {
+		return ascensore;
+	}
+
+
+	public void setAscensore(byte ascensore) {
+		this.ascensore = ascensore;
+	}
+
+
+	public String getBagniMin() {
+		return bagniMin;
+	}
+
+
+	public void setBagniMin(String bagniMin) {
+		this.bagniMin = bagniMin;
+	}
+
+
+	public byte getBalcone() {
+		return balcone;
+	}
+
+
+	public void setBalcone(byte balcone) {
+		this.balcone = balcone;
+	}
+
+
+	public ClasseEnergetica getClasseEnergetica() {
+		return classeEnergetica;
+	}
+
+
+	public void setClasseEnergetica(ClasseEnergetica classeEnergetica) {
+		this.classeEnergetica = classeEnergetica;
+	}
+
+
+	public String getComune() {
+		return comune;
+	}
+
+
+	public void setComune(String comune) {
+		this.comune = comune;
+	}
+
+
+	public Condizione getCondizione() {
+		return condizione;
+	}
+
+
+	public void setCondizione(Condizione condizione) {
+		this.condizione = condizione;
+	}
+
+
+	public String getFrazione() {
+		return frazione;
+	}
+
+
+	public void setFrazione(String frazione) {
+		this.frazione = frazione;
+	}
+
+
+	public String getGiardino() {
+		return giardino;
+	}
+
+
+	public void setGiardino(String giardino) {
+		this.giardino = giardino;
+	}
+
+
+	public int getLocaliMax() {
+		return localiMax;
+	}
+
+
+	public void setLocaliMax(int localiMax) {
+		this.localiMax = localiMax;
+	}
+
+
+	public int getLocaliMin() {
+		return localiMin;
+	}
+
+
+	public void setLocaliMin(int localiMin) {
+		this.localiMin = localiMin;
+	}
+
+
+	public int getMqMax() {
+		return mqMax;
+	}
+
+
+	public void setMqMax(int mqMax) {
+		this.mqMax = mqMax;
+	}
+
+
+	public int getMqMin() {
+		return mqMin;
+	}
+
+
+	public void setMqMin(int mqMin) {
+		this.mqMin = mqMin;
+	}
+
+
+	public String getPiano() {
+		return piano;
+	}
+
+
+	public void setPiano(String piano) {
+		this.piano = piano;
+	}
+
+
+	public byte getPiscina() {
+		return piscina;
+	}
+
+
+	public void setPiscina(byte piscina) {
+		this.piscina = piscina;
+	}
+
+
+	public byte getPortineria() {
+		return portineria;
+	}
+
+
+	public void setPortineria(byte portineria) {
+		this.portineria = portineria;
+	}
+
+
+	public String getPostiAuto() {
+		return postiAuto;
+	}
+
+
+	public void setPostiAuto(String postiAuto) {
+		this.postiAuto = postiAuto;
+	}
+
+
+	public int getPrezzoMax() {
+		return prezzoMax;
+	}
+
+
+	public void setPrezzoMax(int prezzoMax) {
+		this.prezzoMax = prezzoMax;
+	}
+
+
+	public int getPrezzoMin() {
+		return prezzoMin;
+	}
+
+
+	public void setPrezzoMin(int prezzoMin) {
+		this.prezzoMin = prezzoMin;
+	}
+
+
+	public double getRaggio() {
+		return raggio;
+	}
+
+
+	public void setRaggio(double raggio) {
+		this.raggio = raggio;
+	}
+
+
+	public Riscaldamento getRiscaldamento() {
+		return riscaldamento;
+	}
+
+
+	public void setRiscaldamento(Riscaldamento riscaldamento) {
+		this.riscaldamento = riscaldamento;
+	}
+
+
+	public StatoRogito getStatoRogito() {
+		return statoRogito;
+	}
+
+
+	public void setStatoRogito(StatoRogito statoRogito) {
+		this.statoRogito = statoRogito;
+	}
+
+
+	public byte getTerrazzo() {
+		return terrazzo;
+	}
+
+
+	public void setTerrazzo(byte terrazzo) {
+		this.terrazzo = terrazzo;
+	}
+
+
+	public TipoAnnuncio getTipoAnnuncio() {
+		return tipoAnnuncio;
+	}
+
+
+	public void setTipoAnnuncio(TipoAnnuncio tipoAnnuncio) {
+		this.tipoAnnuncio = tipoAnnuncio;
+	}
+
+
+	public TipoImmobile getTipoImmobile() {
+		return tipoImmobile;
+	}
+
+
+	public void setTipoImmobile(TipoImmobile tipoImmobile) {
+		this.tipoImmobile = tipoImmobile;
+	}
+
+
+	public TipoMappa getTipoMappa() {
+		return tipoMappa;
+	}
+
+
+	public void setTipoMappa(TipoMappa tipoMappa) {
+		this.tipoMappa = tipoMappa;
+	}
+
+
+	public TipoRicerca getTipoRicerca() {
+		return tipoRicerca;
+	}
+
+
+	public void setTipoRicerca(TipoRicerca tipoRicerca) {
+		this.tipoRicerca = tipoRicerca;
+	}
+
+
+	public Timestamp getUltimoTimestamp() {
+		return ultimoTimestamp;
+	}
+
+
+	public void setUltimoTimestamp(Timestamp ultimoTimestamp) {
+		this.ultimoTimestamp = ultimoTimestamp;
+	}
+
+
+	public byte getVirtualTour() {
+		return virtualTour;
+	}
+
+
+	public void setVirtualTour(byte virtualTour) {
+		this.virtualTour = virtualTour;
+	}
+
+
+	public byte getVisitaGuidata() {
+		return visitaGuidata;
+	}
+
+
+	public void setVisitaGuidata(byte visitaGuidata) {
+		this.visitaGuidata = visitaGuidata;
+	}
+
+
+	public List<Punto> getPuntos() {
+		return puntos;
+	}
+
+
+	public void setPuntos(List<Punto> puntos) {
+		this.puntos = puntos;
 	}
 
 }
