@@ -1,9 +1,28 @@
 package it.beije.pascal.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import it.beije.pascal.model.enums.AriaCondizionata;
+import it.beije.pascal.model.enums.ClasseEnergetica;
+import it.beije.pascal.model.enums.Condizione;
+import it.beije.pascal.model.enums.Giardino;
+import it.beije.pascal.model.enums.Riscaldamento;
+import it.beije.pascal.model.enums.TipoAnnuncio;
+import it.beije.pascal.model.enums.TipoImmobile;
 
 
 /**
@@ -13,7 +32,6 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Annuncio.findAll", query="SELECT a FROM Annuncio a")
 public class Annuncio  {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,8 +40,9 @@ public class Annuncio  {
 	@Column(name="anno_costruzione")
 	private short annoCostruzione;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
-	private String ariaCondizionata;
+	private AriaCondizionata ariaCondizionata;
 
 	private String arredamento;
 
@@ -33,10 +52,12 @@ public class Annuncio  {
 
 	private byte balcone;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="classe_energetica")
-	private String classeEnergetica;
+	private ClasseEnergetica classeEnergetica;
 
-	private String condizione;
+	@Enumerated(EnumType.STRING)
+	private Condizione condizione;
 
 	@Column(name="create_timestamp")
 	private Timestamp createTimestamp;
@@ -45,7 +66,8 @@ public class Annuncio  {
 	@Column(name="descrizione_lunga")
 	private String descrizioneLunga;
 
-	private String giardino;
+	@Enumerated(EnumType.STRING)
+	private Giardino giardino;
 
 	private int locali;
 
@@ -62,18 +84,21 @@ public class Annuncio  {
 
 	private int prezzo;
 
-	private String riscaldamento;
+	@Enumerated(EnumType.STRING)
+	private Riscaldamento riscaldamento;
 
 	@Column(name="stato_rogito")
 	private String statoRogito;
 
 	private byte terrazzo;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_annuncio")
-	private String tipoAnnuncio;
+	private TipoAnnuncio tipoAnnuncio;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_immobile")
-	private String tipoImmobile;
+	private TipoImmobile tipoImmobile;
 
 	@Column(name="tot_piani")
 	private int totPiani;
@@ -130,11 +155,11 @@ public class Annuncio  {
 		this.annoCostruzione = annoCostruzione;
 	}
 
-	public String getAriaCondizionata() {
+	public AriaCondizionata getAriaCondizionata() {
 		return this.ariaCondizionata;
 	}
 
-	public void setAriaCondizionata(String ariaCondizionata) {
+	public void setAriaCondizionata(AriaCondizionata ariaCondizionata) {
 		this.ariaCondizionata = ariaCondizionata;
 	}
 
@@ -170,19 +195,19 @@ public class Annuncio  {
 		this.balcone = balcone;
 	}
 
-	public String getClasseEnergetica() {
+	public ClasseEnergetica getClasseEnergetica() {
 		return this.classeEnergetica;
 	}
 
-	public void setClasseEnergetica(String classeEnergetica) {
+	public void setClasseEnergetica(ClasseEnergetica classeEnergetica) {
 		this.classeEnergetica = classeEnergetica;
 	}
 
-	public String getCondizione() {
+	public Condizione getCondizione() {
 		return this.condizione;
 	}
 
-	public void setCondizione(String condizione) {
+	public void setCondizione(Condizione condizione) {
 		this.condizione = condizione;
 	}
 
@@ -202,11 +227,11 @@ public class Annuncio  {
 		this.descrizioneLunga = descrizioneLunga;
 	}
 
-	public String getGiardino() {
+	public Giardino getGiardino() {
 		return this.giardino;
 	}
 
-	public void setGiardino(String giardino) {
+	public void setGiardino(Giardino giardino) {
 		this.giardino = giardino;
 	}
 
@@ -266,11 +291,11 @@ public class Annuncio  {
 		this.prezzo = prezzo;
 	}
 
-	public String getRiscaldamento() {
+	public Riscaldamento getRiscaldamento() {
 		return this.riscaldamento;
 	}
 
-	public void setRiscaldamento(String riscaldamento) {
+	public void setRiscaldamento(Riscaldamento riscaldamento) {
 		this.riscaldamento = riscaldamento;
 	}
 
@@ -290,19 +315,19 @@ public class Annuncio  {
 		this.terrazzo = terrazzo;
 	}
 
-	public String getTipoAnnuncio() {
+	public TipoAnnuncio getTipoAnnuncio() {
 		return this.tipoAnnuncio;
 	}
 
-	public void setTipoAnnuncio(String tipoAnnuncio) {
+	public void setTipoAnnuncio(TipoAnnuncio tipoAnnuncio) {
 		this.tipoAnnuncio = tipoAnnuncio;
 	}
 
-	public String getTipoImmobile() {
+	public TipoImmobile getTipoImmobile() {
 		return this.tipoImmobile;
 	}
 
-	public void setTipoImmobile(String tipoImmobile) {
+	public void setTipoImmobile(TipoImmobile tipoImmobile) {
 		this.tipoImmobile = tipoImmobile;
 	}
 
