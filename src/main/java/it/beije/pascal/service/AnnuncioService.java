@@ -17,5 +17,4 @@ public class AnnuncioService {
 	public List<Annuncio> findAllAnnunci() {
 		return annuncioRepository.findAll();
 	}
-	
 }
