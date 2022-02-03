@@ -1,6 +1,7 @@
 package it.beije.pascal.controller;
 
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -69,7 +70,7 @@ public class UtenteController {
 	}
 
 
-	@RequestMapping(value="login", method = RequestMethod.GET)
+	@RequestMapping(value="login", method = RequestMethod.POST)
 	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email, @RequestParam String password) {
 		Utente loggedUser = null;
 		
@@ -99,7 +100,7 @@ public class UtenteController {
 		return "index";
 	}
 
-	@RequestMapping(name = "/registerCommerciale", method = RequestMethod.POST)
+	@RequestMapping(value = "/registerCommerciale", method = RequestMethod.POST)
 	public String registerCommerciale(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
 			@RequestParam String pIva, @RequestParam String ragioneSociale, @RequestParam String telefono,
 			@RequestParam String cap, @RequestParam String comune, @RequestParam String indirizzo,
@@ -126,6 +127,17 @@ public class UtenteController {
 
 		return "index";
 	}
-
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logOut(Model model, HttpServletRequest request) {
+		try {
+			request.getSession().removeAttribute("loggedUser");
+			
+		} catch (Exception e) {
+			System.out.println("Failed to login");
+			e.printStackTrace();
+		}
+		return "index.jsp";
+	}
 
 }

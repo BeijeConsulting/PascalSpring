@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="login" method="get">
+<form action="login" method="post">
 <fieldset >
 <legend>login</legend>
 	  <label for="email">Username:</label><br>
