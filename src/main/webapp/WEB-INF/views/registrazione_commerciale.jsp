@@ -7,21 +7,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Pagina di Registrazione Utente</h1>
-<form action="registrazione_privato" method="post">
-	  <label for="username">username:</label><br>
+<form action="..\registerCommercialUser" method="post">
+
+	  <label for="username">Username:</label><br>
 	  <input type="text" name="username"><br>
 	  
-	  <label for="email">email:</label><br>
+	  <label for="email">Email:</label><br>
 	  <input type="text" name="email"><br>
 	  
-	  <label for="password">password:</label><br>
+	  <label for="password">Password:</label><br>
 	  <input type="password" name="password"><br><br>
+	  
+	  <label for="telefono">Telefono:</label><br>
+	  <input type="text" name="telefono"><br><br>
+	  
+	  <label for="pIva">Partita Iva:</label><br>
+	  <input type="text" name="pIva"><br><br>
+	  
+	  <label for="agenzia">Ragione sociale agenzia:</label><br>
+	  <input type="text" name="agenzia"><br><br>
 	  
 	  <label for="spam">Desideri rimanere aggiornato sulle ultime novità di fondamenta.it?</label>
 	  <input type="checkbox" name="spam"><br><br>
 	  
 	  <input type="submit" value="Registra">
+	  
 	</form>
 </body>
 </html>

@@ -14,60 +14,53 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-
 /**
  * The persistent class for the utente database table.
  * 
  */
 @Entity
-@NamedQuery(name="Utente.findAll", query="SELECT u FROM Utente u")
-public class Utente  {
+@NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u")
+public class Utente {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	private byte amministratore;
 
-	@Column(name="avatar_url")
+	@Column(name = "avatar_url")
 	private String avatarUrl;
 
-	@Column(name="commerciale_id")
-	private int commercialeId;
+	@Column(name = "commerciale_id")
+	private Integer commercialeId;
 
-	@Column(name="create_timestamp")
+	@Column(name = "create_timestamp")
 	private Timestamp createTimestamp;
 
 	private String email;
 
 	private String password;
 
-	@Column(name="spam_check")
+	@Column(name = "spam_check")
 	private byte spamCheck;
 
 	private String username;
 
 	@ManyToMany
-	@JoinTable(
-			  name = "annunci_salvati", 
-			  joinColumns = @JoinColumn(name = "utente_id"), 
-			  inverseJoinColumns = @JoinColumn(name = "annuncio_id"))
+	@JoinTable(name = "annunci_salvati", joinColumns = @JoinColumn(name = "utente_id"), inverseJoinColumns = @JoinColumn(name = "annuncio_id"))
 	private List<Annuncio> annunciSalvati;
 
-	//bi-directional many-to-one association to Annuncio
-	@OneToMany(mappedBy="utente")
+	// bi-directional many-to-one association to Annuncio
+	@OneToMany(mappedBy = "utente")
 	private List<Annuncio> annunciPubblicati;
 
-	//bi-directional many-to-one association to RicercaSalvata
+	// bi-directional many-to-one association to RicercaSalvata
 	@ManyToMany
-	@JoinTable(
-			  name = "ricerca_salvata", 
-			  joinColumns = @JoinColumn(name = "utente_id"), 
-			  inverseJoinColumns = @JoinColumn(name = "ricerca_id"))
+	@JoinTable(name = "ricerca_salvata", joinColumns = @JoinColumn(name = "utente_id"), inverseJoinColumns = @JoinColumn(name = "ricerca_id"))
 	private List<Ricerca> ricercheSalvate;
 
 	public Utente() {
-	}	
+	}
 
 	public Utente(String email, String password, byte spamCheck, String username) {
 		super();
@@ -77,11 +70,11 @@ public class Utente  {
 		this.username = username;
 	}
 
-	public int getId() {
-		return this.id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -101,11 +94,11 @@ public class Utente  {
 		this.avatarUrl = avatarUrl;
 	}
 
-	public int getCommercialeId() {
-		return this.commercialeId;
+	public Integer getCommercialeId() {
+		return commercialeId;
 	}
 
-	public void setCommercialeId(int commercialeId) {
+	public void setCommercialeId(Integer commercialeId) {
 		this.commercialeId = commercialeId;
 	}
 

@@ -13,11 +13,11 @@
 <div style="text-align:center;">
 <h1>Gestore Immobiliare - Fondamenta -</h1>
 
-<form action="register" method="get">
+<form action="form_privato" method="get">
   <input type="submit" value="Registra Utente Privato"></input>
 </form>
 <br>
-<form action="registerCommercialUser" method="get">
+<form action="form_commerciale" method="get">
   <input type="submit" value="Registra Utente Commerciale"></input>
 </form>
 <br>
