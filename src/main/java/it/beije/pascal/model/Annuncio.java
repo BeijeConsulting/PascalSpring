@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,10 +36,13 @@ public class Annuncio  {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
+	
+	@ManyToMany(mappedBy = "annunciSalvati")
+	private List<Utente> salvatoDa;
 
 	@Column(name="anno_costruzione")
-	private short annoCostruzione;
+	private Integer annoCostruzione;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
@@ -46,11 +50,11 @@ public class Annuncio  {
 
 	private String arredamento;
 
-	private byte ascensore;
+	private Boolean ascensore;
 
-	private int bagni;
+	private Integer bagni;
 
-	private byte balcone;
+	private Boolean balcone;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="classe_energetica")
@@ -69,20 +73,20 @@ public class Annuncio  {
 	@Enumerated(EnumType.STRING)
 	private Giardino giardino;
 
-	private int locali;
+	private Integer locali;
 
-	private int mq;
+	private Integer mq;
 
-	private int piano;
+	private Integer piano;
 
-	private byte piscina;
+	private Boolean piscina;
 
-	private byte portineria;
+	private Boolean portineria;
 
 	@Column(name="posti_auto")
-	private int postiAuto;
+	private Integer postiAuto;
 
-	private int prezzo;
+	private Integer prezzo;
 
 	@Enumerated(EnumType.STRING)
 	private Riscaldamento riscaldamento;
@@ -90,7 +94,7 @@ public class Annuncio  {
 	@Column(name="stato_rogito")
 	private String statoRogito;
 
-	private byte terrazzo;
+	private Boolean terrazzo;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_annuncio")
@@ -101,13 +105,13 @@ public class Annuncio  {
 	private TipoImmobile tipoImmobile;
 
 	@Column(name="tot_piani")
-	private int totPiani;
+	private Integer totPiani;
 
 	@Column(name="virtual_tour")
-	private byte virtualTour;
+	private Boolean virtualTour;
 
 	@Column(name="visita_guidata")
-	private byte visitaGuidata;
+	private Boolean visitaGuidata;
 
 	//bi-directional many-to-one association to Annuncio
 	@ManyToOne
@@ -136,27 +140,32 @@ public class Annuncio  {
 	@OneToMany(mappedBy="annuncio")
 	private List<Foto> fotos;
 
-	public Annuncio() {
+	public Integer getId() {
+		return id;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public short getAnnoCostruzione() {
-		return this.annoCostruzione;
+	public List<Utente> getSalvatoDa() {
+		return salvatoDa;
 	}
 
-	public void setAnnoCostruzione(short annoCostruzione) {
+	public void setSalvatoDa(List<Utente> salvatoDa) {
+		this.salvatoDa = salvatoDa;
+	}
+
+	public Integer getAnnoCostruzione() {
+		return annoCostruzione;
+	}
+
+	public void setAnnoCostruzione(Integer annoCostruzione) {
 		this.annoCostruzione = annoCostruzione;
 	}
 
 	public AriaCondizionata getAriaCondizionata() {
-		return this.ariaCondizionata;
+		return ariaCondizionata;
 	}
 
 	public void setAriaCondizionata(AriaCondizionata ariaCondizionata) {
@@ -164,39 +173,39 @@ public class Annuncio  {
 	}
 
 	public String getArredamento() {
-		return this.arredamento;
+		return arredamento;
 	}
 
 	public void setArredamento(String arredamento) {
 		this.arredamento = arredamento;
 	}
 
-	public byte getAscensore() {
-		return this.ascensore;
+	public Boolean getAscensore() {
+		return ascensore;
 	}
 
-	public void setAscensore(byte ascensore) {
+	public void setAscensore(Boolean ascensore) {
 		this.ascensore = ascensore;
 	}
 
-	public int getBagni() {
-		return this.bagni;
+	public Integer getBagni() {
+		return bagni;
 	}
 
-	public void setBagni(int bagni) {
+	public void setBagni(Integer bagni) {
 		this.bagni = bagni;
 	}
 
-	public byte getBalcone() {
-		return this.balcone;
+	public Boolean getBalcone() {
+		return balcone;
 	}
 
-	public void setBalcone(byte balcone) {
+	public void setBalcone(Boolean balcone) {
 		this.balcone = balcone;
 	}
 
 	public ClasseEnergetica getClasseEnergetica() {
-		return this.classeEnergetica;
+		return classeEnergetica;
 	}
 
 	public void setClasseEnergetica(ClasseEnergetica classeEnergetica) {
@@ -204,7 +213,7 @@ public class Annuncio  {
 	}
 
 	public Condizione getCondizione() {
-		return this.condizione;
+		return condizione;
 	}
 
 	public void setCondizione(Condizione condizione) {
@@ -212,7 +221,7 @@ public class Annuncio  {
 	}
 
 	public Timestamp getCreateTimestamp() {
-		return this.createTimestamp;
+		return createTimestamp;
 	}
 
 	public void setCreateTimestamp(Timestamp createTimestamp) {
@@ -220,7 +229,7 @@ public class Annuncio  {
 	}
 
 	public String getDescrizioneLunga() {
-		return this.descrizioneLunga;
+		return descrizioneLunga;
 	}
 
 	public void setDescrizioneLunga(String descrizioneLunga) {
@@ -228,71 +237,71 @@ public class Annuncio  {
 	}
 
 	public Giardino getGiardino() {
-		return this.giardino;
+		return giardino;
 	}
 
 	public void setGiardino(Giardino giardino) {
 		this.giardino = giardino;
 	}
 
-	public int getLocali() {
-		return this.locali;
+	public Integer getLocali() {
+		return locali;
 	}
 
-	public void setLocali(int locali) {
+	public void setLocali(Integer locali) {
 		this.locali = locali;
 	}
 
-	public int getMq() {
-		return this.mq;
+	public Integer getMq() {
+		return mq;
 	}
 
-	public void setMq(int mq) {
+	public void setMq(Integer mq) {
 		this.mq = mq;
 	}
 
-	public int getPiano() {
-		return this.piano;
+	public Integer getPiano() {
+		return piano;
 	}
 
-	public void setPiano(int piano) {
+	public void setPiano(Integer piano) {
 		this.piano = piano;
 	}
 
-	public byte getPiscina() {
-		return this.piscina;
+	public Boolean getPiscina() {
+		return piscina;
 	}
 
-	public void setPiscina(byte piscina) {
+	public void setPiscina(Boolean piscina) {
 		this.piscina = piscina;
 	}
 
-	public byte getPortineria() {
-		return this.portineria;
+	public Boolean getPortineria() {
+		return portineria;
 	}
 
-	public void setPortineria(byte portineria) {
+	public void setPortineria(Boolean portineria) {
 		this.portineria = portineria;
 	}
 
-	public int getPostiAuto() {
-		return this.postiAuto;
+	public Integer getPostiAuto() {
+		return postiAuto;
 	}
 
-	public void setPostiAuto(int postiAuto) {
+	public void setPostiAuto(Integer postiAuto) {
 		this.postiAuto = postiAuto;
 	}
 
-	public int getPrezzo() {
-		return this.prezzo;
+	public Integer getPrezzo() {
+		return prezzo;
 	}
 
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(Integer prezzo) {
 		this.prezzo = prezzo;
 	}
 
 	public Riscaldamento getRiscaldamento() {
-		return this.riscaldamento;
+		return riscaldamento;
 	}
 
 	public void setRiscaldamento(Riscaldamento riscaldamento) {
@@ -300,23 +309,23 @@ public class Annuncio  {
 	}
 
 	public String getStatoRogito() {
-		return this.statoRogito;
+		return statoRogito;
 	}
 
 	public void setStatoRogito(String statoRogito) {
 		this.statoRogito = statoRogito;
 	}
 
-	public byte getTerrazzo() {
-		return this.terrazzo;
+	public Boolean getTerrazzo() {
+		return terrazzo;
 	}
 
-	public void setTerrazzo(byte terrazzo) {
+	public void setTerrazzo(Boolean terrazzo) {
 		this.terrazzo = terrazzo;
 	}
 
 	public TipoAnnuncio getTipoAnnuncio() {
-		return this.tipoAnnuncio;
+		return tipoAnnuncio;
 	}
 
 	public void setTipoAnnuncio(TipoAnnuncio tipoAnnuncio) {
@@ -324,39 +333,39 @@ public class Annuncio  {
 	}
 
 	public TipoImmobile getTipoImmobile() {
-		return this.tipoImmobile;
+		return tipoImmobile;
 	}
 
 	public void setTipoImmobile(TipoImmobile tipoImmobile) {
 		this.tipoImmobile = tipoImmobile;
 	}
 
-	public int getTotPiani() {
-		return this.totPiani;
+	public Integer getTotPiani() {
+		return totPiani;
 	}
 
-	public void setTotPiani(int totPiani) {
+	public void setTotPiani(Integer totPiani) {
 		this.totPiani = totPiani;
 	}
 
-	public byte getVirtualTour() {
-		return this.virtualTour;
+	public Boolean getVirtualTour() {
+		return virtualTour;
 	}
 
-	public void setVirtualTour(byte virtualTour) {
+	public void setVirtualTour(Boolean virtualTour) {
 		this.virtualTour = virtualTour;
 	}
 
-	public byte getVisitaGuidata() {
-		return this.visitaGuidata;
+	public Boolean getVisitaGuidata() {
+		return visitaGuidata;
 	}
 
-	public void setVisitaGuidata(byte visitaGuidata) {
+	public void setVisitaGuidata(Boolean visitaGuidata) {
 		this.visitaGuidata = visitaGuidata;
 	}
 
 	public Annuncio getAnnuncio() {
-		return this.annuncio;
+		return annuncio;
 	}
 
 	public void setAnnuncio(Annuncio annuncio) {
@@ -364,29 +373,15 @@ public class Annuncio  {
 	}
 
 	public List<Annuncio> getAnnunciInEdificio() {
-		return this.annunciInEdificio;
+		return annunciInEdificio;
 	}
 
 	public void setAnnunciInEdificio(List<Annuncio> annunciInEdificio) {
 		this.annunciInEdificio = annunciInEdificio;
 	}
 
-	public Annuncio addAnnunciInEdificio(Annuncio annunciInEdificio) {
-		getAnnunciInEdificio().add(annunciInEdificio);
-		annunciInEdificio.setAnnuncio(this);
-
-		return annunciInEdificio;
-	}
-
-	public Annuncio removeAnnunciInEdificio(Annuncio annunciInEdificio) {
-		getAnnunciInEdificio().remove(annunciInEdificio);
-		annunciInEdificio.setAnnuncio(null);
-
-		return annunciInEdificio;
-	}
-
 	public Utente getUtente() {
-		return this.utente;
+		return utente;
 	}
 
 	public void setUtente(Utente utente) {
@@ -394,7 +389,7 @@ public class Annuncio  {
 	}
 
 	public Indirizzo getIndirizzo() {
-		return this.indirizzo;
+		return indirizzo;
 	}
 
 	public void setIndirizzo(Indirizzo indirizzo) {
@@ -402,7 +397,7 @@ public class Annuncio  {
 	}
 
 	public Foto getFoto() {
-		return this.foto;
+		return foto;
 	}
 
 	public void setFoto(Foto foto) {
@@ -410,25 +405,10 @@ public class Annuncio  {
 	}
 
 	public List<Foto> getFotos() {
-		return this.fotos;
+		return fotos;
 	}
 
 	public void setFotos(List<Foto> fotos) {
 		this.fotos = fotos;
 	}
-
-	public Foto addFoto(Foto foto) {
-		getFotos().add(foto);
-		foto.setAnnuncio(this);
-
-		return foto;
-	}
-
-	public Foto removeFoto(Foto foto) {
-		getFotos().remove(foto);
-		foto.setAnnuncio(null);
-
-		return foto;
-	}
-
 }

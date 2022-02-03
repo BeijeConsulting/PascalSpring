@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -24,13 +27,13 @@ public class Utente  {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private byte amministratore;
+	private Boolean amministratore;
 
 	@Column(name="avatar_url")
 	private String avatarUrl;
 
 	@Column(name="commerciale_id")
-	private int commercialeId;
+	private Integer commercialeId;
 
 	@Column(name="create_timestamp")
 	private Timestamp createTimestamp;
@@ -44,17 +47,24 @@ public class Utente  {
 
 	private String username;
 
-	//bi-directional many-to-one association to AnnunciSalvati
-	@OneToMany(mappedBy="utente")
-	private List<AnnunciSalvati> annunciSalvati;
+	@ManyToMany
+	@JoinTable(
+			  name = "annunci_salvati", 
+			  joinColumns = @JoinColumn(name = "utente_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "annuncio_id"))
+	private List<Annuncio> annunciSalvati;
 
 	//bi-directional many-to-one association to Annuncio
 	@OneToMany(mappedBy="utente")
 	private List<Annuncio> annunciPubblicati;
 
 	//bi-directional many-to-one association to RicercaSalvata
-	@OneToMany(mappedBy="utente")
-	private List<RicercaSalvata> ricercheSalvate;
+	@ManyToMany
+	@JoinTable(
+			  name = "ricerca_salvata", 
+			  joinColumns = @JoinColumn(name = "utente_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "ricerca_id"))
+	private List<Ricerca> ricercheSalvate;
 
 	public Utente() {
 	}
@@ -67,12 +77,16 @@ public class Utente  {
 		this.id = id;
 	}
 
-	public byte getAmministratore() {
-		return this.amministratore;
+	public Boolean getAmministratore() {
+		return amministratore;
 	}
 
-	public void setAmministratore(byte amministratore) {
+	public void setAmministratore(Boolean amministratore) {
 		this.amministratore = amministratore;
+	}
+
+	public void setCommercialeId(Integer commercialeId) {
+		this.commercialeId = commercialeId;
 	}
 
 	public String getAvatarUrl() {
@@ -131,28 +145,6 @@ public class Utente  {
 		this.username = username;
 	}
 
-	public List<AnnunciSalvati> getAnnunciSalvati() {
-		return this.annunciSalvati;
-	}
-
-	public void setAnnunciSalvati(List<AnnunciSalvati> annunciSalvati) {
-		this.annunciSalvati = annunciSalvati;
-	}
-
-	public AnnunciSalvati addAnnunciSalvati(AnnunciSalvati annunciSalvati) {
-		getAnnunciSalvati().add(annunciSalvati);
-		annunciSalvati.setUtente(this);
-
-		return annunciSalvati;
-	}
-
-	public AnnunciSalvati removeAnnunciSalvati(AnnunciSalvati annunciSalvati) {
-		getAnnunciSalvati().remove(annunciSalvati);
-		annunciSalvati.setUtente(null);
-
-		return annunciSalvati;
-	}
-
 	public List<Annuncio> getAnnunciPubblicati() {
 		return this.annunciPubblicati;
 	}
@@ -175,26 +167,20 @@ public class Utente  {
 		return annunciPubblicati;
 	}
 
-	public List<RicercaSalvata> getRicercheSalvate() {
-		return this.ricercheSalvate;
+	public List<Annuncio> getAnnunciSalvati() {
+		return annunciSalvati;
 	}
 
-	public void setRicercheSalvate(List<RicercaSalvata> ricercheSalvate) {
+	public void setAnnunciSalvati(List<Annuncio> annunciSalvati) {
+		this.annunciSalvati = annunciSalvati;
+	}
+
+	public List<Ricerca> getRicercheSalvate() {
+		return ricercheSalvate;
+	}
+
+	public void setRicercheSalvate(List<Ricerca> ricercheSalvate) {
 		this.ricercheSalvate = ricercheSalvate;
-	}
-
-	public RicercaSalvata addRicercheSalvate(RicercaSalvata ricercheSalvate) {
-		getRicercheSalvate().add(ricercheSalvate);
-		ricercheSalvate.setUtente(this);
-
-		return ricercheSalvate;
-	}
-
-	public RicercaSalvata removeRicercheSalvate(RicercaSalvata ricercheSalvate) {
-		getRicercheSalvate().remove(ricercheSalvate);
-		ricercheSalvate.setUtente(null);
-
-		return ricercheSalvate;
 	}
 
 }

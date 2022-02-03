@@ -6,71 +6,54 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+	body {
+		text-align: center;
+	}
+	div {
+		text-align:left;
+		border: 1px solid gray;
+		padding: 1%;
+		margin: 1%;
+	}
+</style>
+
 </head>
 <body>
+
+<div>
+	<form action="" method="POST">
+	</form>
+</div>
+
 <h1>lista prodotti</h1>
-<!--  <table>
-    <tr>
-        <th>TIPO IMMOBILE</th>
-        <th>TIPO ANNUNCIO</th>
-        <th>PREZZO</th>
-        <th>METRI QUADRI</th>
-        <th>LOCALI</th>
-        
-        <th>BAGNI</th>
-        <th>TOT. PIANI</th>
-        <th>PIANO</th>
-        <th>ASCENSORE</th>
-        <th>POSTI AUTO</th>
-        
-        <th>BALCONE</th>
-        <th>TERRAZZO</th>
-        <th>GIARDINO</th>
-        <th>CONDIZIONE</th>
-        <th>CLASSE ENERGETICA</th>
-        
-        <th>RISCALDAMENTO</th>
-        <th>ARIA CONDIZIONATA</th>
-        <th>ARREDAMENTO</th>
-        <th>PISCINA</th>
-        <th>PORTINERIA</th>
-        
-        <th>ANNO COSTRUZIONE</th>
-        <th>STATO AL ROGITO</th>
-        <th>VISITA GUIDATA</th>
-        <th>DESCRIZIONE LUNGA</th>
-        <th>VISITA GUIDATA</th>
-        <th>VISITA GUIDATA</th>
-    </tr>
-    <c:forEach items="${products}" var="prod">
-    <tr>
-        <td>
-            <c:out value="${prod.name}" />
-        </td>
-        <td>
-            <c:out value="${prod.description}" />
-        </td>
-        <td>
-            <c:out value="${prod.price}" />
-        </td>
-        <td>
-            <c:out value="${prod.quantity}" />
-        </td>
-        <td>
-            <form action="" method="post">
-            	<input type="hidden" value="${prod.id}" name="id">
-            	<input type="submit" value="Elimina">
-            </form>
-        </td>
-        <td>
-            <form action="" method="GET">
-            	<input type="hidden" value="${prod.id}" name="id">
-            	<input type="submit" value="Update">
-            </form>
-        </td>
-    </tr>
-    </c:forEach>
-</table>
- -->
+	
+		<c:forEach items="${annunci}" var="annuncio">
+		<div>
+			<c:out value="${annuncio.tipoAnnuncio}" /> <c:out value="${annuncio.tipoImmobile}" />
+			
+			<hr />
+			<p>INDIRIZZO: <c:out value="${annuncio.indirizzo.indirizzo}" /> </p>
+			<p>CAP: <c:out value="${annuncio.indirizzo.cap}" /> </p>
+			<p>NUMERO CIVICO: <c:out value="${annuncio.indirizzo.NCivico}" /> </p>
+			
+			<hr />
+			
+			<p>PREZZO: <c:out value="${annuncio.prezzo}" /> euro </p>
+			<p>METRI QUADRI: <c:out value="${annuncio.mq}" /> </p>
+			<p>CLASSE ENERGETICA: <c:out value="${annuncio.classeEnergetica}" />  </p>
+			<p>LOCALI: <c:out value="${annuncio.locali}" /> </p>
+			<p>BAGNI: <c:out value="${annuncio.bagni}" /> </p>
+			
+			
+			<form action="visualizzaDettagli" action="GET">
+				<input type="hidden" value="${annuncio.id}" name="id" />
+				<input type="submit" value="Dettagli" />
+			</form>
+			
+			<c:out value="${annuncio.descrizioneLunga}" />
+				</div>
+		</c:forEach>
+
 </body>
 </html>

@@ -27,16 +27,16 @@ public class Indirizzo  {
 	private String indirizzo;
 
 	@Column(name="n_civico")
-	private int nCivico;
+	private Integer nCivico;
 
 	public Indirizzo() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

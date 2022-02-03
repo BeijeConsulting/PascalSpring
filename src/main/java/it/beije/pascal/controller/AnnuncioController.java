@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import it.beije.pascal.model.Annuncio;
 import it.beije.pascal.service.AnnuncioService;
 
 @Controller
@@ -14,12 +16,29 @@ public class AnnuncioController {
 	@Autowired
 	private AnnuncioService annuncioService;
 	
-	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		
 		model.addAttribute("annunci", annuncioService.findAllAnnunci());
 		
 		return "homepage";
 	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/visualizzaDettagli", method = RequestMethod.GET)
+	public String showAnnuncio(Model model, @RequestParam Integer id) {
+		
+		Annuncio annuncio = annuncioService.getOneAnnuncio(id).get();
+		
+		model.addAttribute("annuncio", annuncio);
+		
+		return "visualAnnuncio";
+	}
+	
+	
 }
 
