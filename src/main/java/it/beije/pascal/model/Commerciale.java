@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 
 /**
  * The persistent class for the commerciale database table.
- * 
+ * Il campo manager_id riferisce ad Utente, e un utente può registrare un commerciale
  */
 @Entity
 @NamedQuery(name="Commerciale.findAll", query="SELECT c FROM Commerciale c")

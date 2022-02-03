@@ -1,6 +1,5 @@
 package it.beije.pascal.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,7 @@ import it.beije.pascal.service.UtenteService;
 
 @Controller
 public class UtenteController {
-	
-	
+
 	@Autowired
 	UtenteService utenteService;
 
@@ -30,14 +28,13 @@ public class UtenteController {
 
 	@Autowired
 	IndirizzoRepository indirizzoRepository;
-	
+
 	
 
 	@GetMapping(value = "/")
 	public String homepage() {
 		return "index";
 	}
-	
 
 	@RequestMapping(value = "/form_privato", method = RequestMethod.GET)
 	public String formPrivate() {
@@ -49,36 +46,35 @@ public class UtenteController {
 	public String formAgency() {
 		return "registrazione_agenzia";
 	}
-	
+
 	@RequestMapping(value = "/form_costruttore", method = RequestMethod.GET)
 	public String formCostruttore() {
 		return "registrazione_costruttore";
 	}
-	
+
 	@RequestMapping(value = "/form_login", method = RequestMethod.GET)
 	public String formLogin() {
 		return "login";
 
 	}
 
-
-	@RequestMapping(value="login", method = RequestMethod.GET)
-	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email, @RequestParam String password) {
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
+			@RequestParam String password) {
 		Utente loggedUser = null;
-		
+
 		try {
 			loggedUser = utenteService.login(email, password);
 			request.getSession().setAttribute("loggedUser", loggedUser);
-			
+
 		} catch (Exception e) {
 			System.out.println("Failed to login");
 			e.printStackTrace();
 			return "login";
 		}
-		
+
 		return "home";
 	}
-
 
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)
 	public String registerPrivate(@RequestParam(required = false) String username, String email, String password,String spam) {
@@ -92,11 +88,10 @@ public class UtenteController {
 		return "login";
 	}
 
-	@RequestMapping(name = "/registerCommerciale", method = RequestMethod.POST)
-	public String registerCommerciale(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
-			@RequestParam String pIva, @RequestParam String ragioneSociale, @RequestParam String telefono,
-			@RequestParam String cap, @RequestParam String comune, @RequestParam String indirizzo,
-			@RequestParam Integer nCivico) {
+	@RequestMapping(name = "/registerAgenzia", method = RequestMethod.POST)
+	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
+			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
+			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
@@ -105,8 +100,7 @@ public class UtenteController {
 		ind.setIndirizzo(indirizzo);
 
 		Commerciale comm = new Commerciale();
-		comm.setNomeRef(nomeRef);
-		comm.setCognomeRef(cognomeRef);
+
 		comm.setPIva(pIva);
 		comm.setRagioneSociale(ragioneSociale);
 		comm.setTelefono(telefono);
@@ -117,8 +111,37 @@ public class UtenteController {
 
 		commercialeService.insertCommerciale(comm);
 
-		return "index";
+		// TODO cambia reindirizzamento
+		return "login";
+
 	}
 
+	@RequestMapping(name = "/registerCostruttore", method = RequestMethod.POST)
+	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
+			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,
+			@RequestParam String comune, @RequestParam String indirizzo, @RequestParam Integer nCivico) {
+
+		Indirizzo ind = new Indirizzo();
+		ind.setCap(cap);
+		ind.setComune(comune);
+		ind.setNCivico(nCivico);
+		ind.setIndirizzo(indirizzo);
+
+		Commerciale comm = new Commerciale();
+
+		comm.setNomeRef(nomeRef);
+		comm.setCognomeRef(cognomeRef);
+		comm.setRagioneSociale(ragioneSociale);
+		comm.setTelefono(telefono);
+
+		// TODO passa per un service
+		indirizzoRepository.save(ind);
+		comm.setIndirizzo(ind);
+
+		commercialeService.insertCommerciale(comm);
+
+		// TODO cambia reindirizzamento
+		return "login";
+	}
 
 }
