@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,6 +37,9 @@ public class Annuncio  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@ManyToMany(mappedBy = "annunciSalvati")
+	private List<Utente> salvatoDa;
 
 	@Column(name="anno_costruzione")
 	private short annoCostruzione;
@@ -429,6 +433,14 @@ public class Annuncio  {
 		foto.setAnnuncio(null);
 
 		return foto;
+	}
+
+	public List<Utente> getSalvatoDa() {
+		return salvatoDa;
+	}
+
+	public void setSalvatoDa(List<Utente> salvatoDa) {
+		this.salvatoDa = salvatoDa;
 	}
 
 }
