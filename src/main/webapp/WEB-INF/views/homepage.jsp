@@ -16,17 +16,52 @@
 		padding: 1%;
 		margin: 1%;
 	}
+	label {
+		margin-left: 20px;
+	}
+	label:first-child {
+		margin-left: 0px;
+	}
+	.cerca {
+		margin-left: 50px;
+	}
 </style>
 
 </head>
 <body>
 
 <div>
-	<form action="" method="POST">
+	<form class="form_ricerca" action="ricerca" method="GET">
+	
+	<label for="tipoImmobile">Tipo Immobile</label>
+	<select name="tipoImmobile">
+		<option value="CASA">Casa</option>
+		<option value="NUOVA_COSTRUZIONE">Nuova costruzione</option>
+		<option value="COMMERCIALE">Commerciale</option>
+		<option value="TERRENO">Terreno</option>
+		<option value="GARAGE">Garage</option>
+		<option value="STANZA">Stanza</option>
+		<option value="POSTO_LETTO">Posto letto</option>
+		<option value="CANTINA_SOLAIO">Cantina/solaio</option>
+		<option value="POSTO_BARCA">Posto barca</option>
+	</select>
+	
+	<label for="comune">Comune</label>
+	<input type="text" name="comune" />
+	
+	<label for="tipoAnnuncio">Tipo Annuncio</label>
+	<select name="tipoAnnuncio">
+		<option value="VENDITA">Vendita</option>
+		<option value="AFFITTO">Affitto</option>
+		<option value="AFFITTO_BREVE">Affitto breve</option>
+	</select>
+	
+	<input class="cerca" type="submit" value="Cerca" />
+	
 	</form>
 </div>
 
-<h1>lista prodotti</h1>
+<h1>ANNUNCI IN PRIMO PIANO</h1>
 	
 		<c:forEach items="${annunci}" var="annuncio">
 		<div>

@@ -18,7 +18,6 @@ public class AnnuncioController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		
 		model.addAttribute("annunci", annuncioService.findAllAnnunci());
 		
 		return "homepage";
@@ -30,8 +29,7 @@ public class AnnuncioController {
 	}
 	
 	@RequestMapping(value = "/visualizzaDettagli", method = RequestMethod.GET)
-	public String showAnnuncio(Model model, @RequestParam Integer id) {
-		
+	public String showAnnuncio(Model model, @RequestParam Integer id) {	
 		Annuncio annuncio = annuncioService.getOneAnnuncio(id).get();
 		
 		model.addAttribute("annuncio", annuncio);
