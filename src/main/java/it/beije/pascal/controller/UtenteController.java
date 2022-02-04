@@ -33,6 +33,7 @@ public class UtenteController {
 
 	@GetMapping(value = "/")
 	public String homepage() {
+		// TODO cambia in homepage
 		return "index";
 	}
 
@@ -88,7 +89,7 @@ public class UtenteController {
 		return "login";
 	}
 	
-	// Errore
+	
 	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
 	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
