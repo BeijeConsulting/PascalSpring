@@ -92,30 +92,30 @@ public class UtenteController {
 	}
 
 	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
-	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
+	public String registerAgenzia(Model model, @RequestParam String p_iva, @RequestParam String ragione_sociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
-			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
+			@RequestParam String indirizzo, @RequestParam Integer num_civico, @RequestParam String email, @RequestParam String password) {
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
 		ind.setComune(comune);
-		ind.setNCivico(nCivico);
+		ind.setNCivico(num_civico);
 		ind.setIndirizzo(indirizzo);
 
 		Commerciale comm = new Commerciale();
 
-		comm.setPIva(pIva);
-		comm.setRagioneSociale(ragioneSociale);
+		comm.setPIva(p_iva);
+		comm.setRagioneSociale(ragione_sociale);
 		comm.setTelefono(telefono);
+		comm.setEmail(email);
+		comm.setPassword(password);
 
 		indirizzoService.save(ind);
 		comm.setIndirizzo(ind);
 
 		commercialeService.insertCommerciale(comm);
 
-		// TODO cambia reindirizzamento
-		return "login";
-
+		return "login_commerciale";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
@@ -132,30 +132,32 @@ public class UtenteController {
 	}
 
 	@RequestMapping(value = "/registerCostruttore", method = RequestMethod.POST)
-	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
-			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,
-			@RequestParam String comune, @RequestParam String indirizzo, @RequestParam Integer nCivico) {
+	public String registerCostruttore(Model model, @RequestParam String nome_ref, @RequestParam String cognome_ref,
+			@RequestParam String ragione_sociale, @RequestParam String telefono, @RequestParam String cap,
+			@RequestParam String comune, @RequestParam String indirizzo, @RequestParam Integer num_civico,
+			@RequestParam String email, @RequestParam String password) {
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
 		ind.setComune(comune);
-		ind.setNCivico(nCivico);
+		ind.setNCivico(num_civico);
 		ind.setIndirizzo(indirizzo);
 
 		Commerciale comm = new Commerciale();
 
-		comm.setNomeRef(nomeRef);
-		comm.setCognomeRef(cognomeRef);
-		comm.setRagioneSociale(ragioneSociale);
+		comm.setNomeRef(nome_ref);
+		comm.setCognomeRef(cognome_ref);
+		comm.setRagioneSociale(ragione_sociale);
 		comm.setTelefono(telefono);
+		comm.setEmail(email);
+		comm.setPassword(password);
 
 		indirizzoService.save(ind);
 		comm.setIndirizzo(ind);
 
 		commercialeService.insertCommerciale(comm);
 
-		// TODO cambia reindirizzamento
-		return "login";
+		return "login_commerciale";
 	}
 
 }

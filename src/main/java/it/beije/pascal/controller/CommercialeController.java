@@ -28,23 +28,14 @@ public class CommercialeController {
 		try {
 			loggedCommercial = commercialeService.commercialLogin(email, password);
 			session.setAttribute("loggedUser", loggedCommercial);
-			//System.out.println(loggedCommercial.getEmail() + " " + loggedCommercial.getPassword());
 		} catch (Exception e) {
-			//System.out.println("credenziali sbagliate");
-			return "index";
-		}
-		
-
-		// TODO cambaiare in homepage
-		return "index";
+			return "homepage";
+		}		
+		return "homepage";
 	}
 
 	public String commercialLogut(HttpSession session) {
 		session.removeAttribute("loggedCommercial");
-
-		// TODO cambaiare in homepage
-		return "index";
-
+		return "homepage";
 	}
-
 }

@@ -8,11 +8,8 @@
 </head>
 <body>
 <h1>Pagina di registrazione Costruttore</h1>
-<form action="registerCommerciale" method="post">
+<form action="registerCostruttore" method="post">
 		
-	  <label for="username">Username:</label><br>
-	  <input type="text" name="username"><br>
-	  
 	  <label for="email">Email:</label><br>
 	  <input type="text" name="email"><br>
 	  
@@ -23,7 +20,7 @@
 	  <input type="text" name="telefono"><br><br>	 
 	  
 	  <label for="agenzia">Ragione sociale agenzia:</label><br>
-	  <input type="text" name="agenzia"><br><br>
+	  <input type="text" name="ragione_sociale"><br><br>
 	  
 	  <fieldset>
 	  <legend>Indirizzo agenzia</legend>
@@ -35,14 +32,18 @@
 	  <input type="text" name="cap"><br>
 	  
 	  <label for="indirizzo">Indirizzo:</label><br>
-	  <input type="text" name="indirizzo"><br>	 
+	  <input type="text" name="indirizzo"><br>	
+	   
+	  <label for="num_civico">Numero civico:</label><br>
+	  <input type="text" name="num_civico"><br>
+	  
 	  </fieldset> 
 	  	  
 	  <label for="agenzia">Nome referente: </label><br>
-	  <input type="text" name="nomeRef"><br><br> 
+	  <input type="text" name="nome_ref"><br><br> 
 	  
 	  <label for="agenzia">Cognome referente: </label><br>
-	  <input type="text" name="cognomeRef"><br><br> 
+	  <input type="text" name="cognome_ref"><br><br> 
 	  
 	  <label for="spam">Desideri rimanere aggiornato sulle ultime novità di fondamenta.it?</label>
 	  <input type="checkbox" name="spam"><br><br>	  	  

@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Annuncio;
+import it.beije.pascal.model.enums.TipoAnnuncio;
+import it.beije.pascal.model.enums.TipoImmobile;
 import it.beije.pascal.service.AnnuncioService;
+
+import it.beije.pascal.model.enums.*;
 
 @Controller
 public class AnnuncioController {
@@ -37,6 +41,17 @@ public class AnnuncioController {
 		return "visualAnnuncio";
 	}
 	
+	@RequestMapping(value = "/inserisciAnnuncio", method = RequestMethod.GET)
+	public String formInsertAnnuncio(Model model) {	
+		
+		return "form_inserisci_annuncio";
+	}
+	
+	@RequestMapping(value = "/inserisciAnnuncio", method = RequestMethod.POST)
+	public String insertAnnuncio(Model model) {	
+	
+		return "visualAnnuncio";
+	}
 	
 }
 

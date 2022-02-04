@@ -25,17 +25,24 @@
 	.cerca {
 		margin-left: 50px;
 	}
+	.form-container {
+		display: inline-block;
+	}
 </style>
 
 </head>
 <body>
 
 <form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+
+<div class="form-container">
 <form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
 <form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
 <form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
-
-
+<form action="formLoginCommerciale" method="get">
+  <input type="submit" value="Accesso Commerciali"></input>
+</form>
+</div>
 
 <div>
 	<form class="form_ricerca" action="ricerca" method="GET">
@@ -65,6 +72,12 @@
 	
 	<input class="cerca" type="submit" value="Cerca" />
 	
+	</form>
+</div>
+
+<div>
+	<form action="inserisciAnnuncio" method="GET">
+	<input type="submit" value="Aggiungi un annuncio" />
 	</form>
 </div>
 

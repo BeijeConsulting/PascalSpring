@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Pagina di registrazione Agenzia</h1>
-<form action="registerCommerciale" method="post">
+<form action="registerAgenzia" method="post">
 
 	  <label for="username">Username:</label><br>
 	  <input type="text" name="username"><br>
@@ -23,10 +23,10 @@
 	  <input type="text" name="telefono"><br><br>
 	  
 	  <label for="pIva">Partita Iva:</label><br>
-	  <input type="text" name="pIva"><br><br>
+	  <input type="text" name="p_iva"><br><br>
 	  
 	  <label for="agenzia">Ragione sociale agenzia:</label><br>
-	  <input type="text" name="agenzia"><br><br>
+	  <input type="text" name="ragione_sociale"><br><br>
 	  
 	  <label for="comune">Comune:</label><br>
 	  <input type="text" name="comune"><br>
@@ -35,7 +35,10 @@
 	  <input type="text" name="cap"><br>
 	  
 	  <label for="indirizzo">Indirizzo:</label><br>
-	  <input type="text" name="indirizzo"><br>	
+	  <input type="text" name="indirizzo"><br>
+	  	
+	  <label for="num_civico">Numero civico:</label><br>
+	  <input type="text" name="num_civico"><br>
 	  
 	  <label for="spam">Desideri rimanere aggiornato sulle ultime novità di fondamenta.it?</label>
 	  <input type="checkbox" name="spam"><br><br>
