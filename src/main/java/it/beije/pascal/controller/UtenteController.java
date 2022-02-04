@@ -93,8 +93,6 @@ public class UtenteController {
 	}
 
 
-	
-	// Errore
 	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
 	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
