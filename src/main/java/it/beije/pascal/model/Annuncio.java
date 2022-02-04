@@ -36,13 +36,13 @@ public class Annuncio  {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@ManyToMany(mappedBy = "annunciSalvati")
 	private List<Utente> salvatoDa;
 
 	@Column(name="anno_costruzione")
-	private short annoCostruzione;
+	private Integer annoCostruzione;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
@@ -50,11 +50,11 @@ public class Annuncio  {
 
 	private String arredamento;
 
-	private byte ascensore;
+	private Boolean ascensore;
 
-	private int bagni;
+	private Integer bagni;
 
-	private byte balcone;
+	private Boolean balcone;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="classe_energetica")
@@ -73,20 +73,20 @@ public class Annuncio  {
 	@Enumerated(EnumType.STRING)
 	private Giardino giardino;
 
-	private int locali;
+	private Integer locali;
 
-	private int mq;
+	private Integer mq;
 
-	private int piano;
+	private Integer piano;
 
-	private byte piscina;
+	private Boolean piscina;
 
-	private byte portineria;
+	private Boolean portineria;
 
 	@Column(name="posti_auto")
-	private int postiAuto;
+	private Integer postiAuto;
 
-	private int prezzo;
+	private Integer prezzo;
 
 	@Enumerated(EnumType.STRING)
 	private Riscaldamento riscaldamento;
@@ -94,7 +94,7 @@ public class Annuncio  {
 	@Column(name="stato_rogito")
 	private String statoRogito;
 
-	private byte terrazzo;
+	private Boolean terrazzo;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="tipo_annuncio")
@@ -105,13 +105,13 @@ public class Annuncio  {
 	private TipoImmobile tipoImmobile;
 
 	@Column(name="tot_piani")
-	private int totPiani;
+	private Integer totPiani;
 
 	@Column(name="virtual_tour")
-	private byte virtualTour;
+	private Boolean virtualTour;
 
 	@Column(name="visita_guidata")
-	private byte visitaGuidata;
+	private Boolean visitaGuidata;
 
 	//bi-directional many-to-one association to Annuncio
 	@ManyToOne
@@ -140,299 +140,12 @@ public class Annuncio  {
 	@OneToMany(mappedBy="annuncio")
 	private List<Foto> fotos;
 
-	public Annuncio() {
+	public Integer getId() {
+		return id;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public short getAnnoCostruzione() {
-		return this.annoCostruzione;
-	}
-
-	public void setAnnoCostruzione(short annoCostruzione) {
-		this.annoCostruzione = annoCostruzione;
-	}
-
-	public AriaCondizionata getAriaCondizionata() {
-		return this.ariaCondizionata;
-	}
-
-	public void setAriaCondizionata(AriaCondizionata ariaCondizionata) {
-		this.ariaCondizionata = ariaCondizionata;
-	}
-
-	public String getArredamento() {
-		return this.arredamento;
-	}
-
-	public void setArredamento(String arredamento) {
-		this.arredamento = arredamento;
-	}
-
-	public byte getAscensore() {
-		return this.ascensore;
-	}
-
-	public void setAscensore(byte ascensore) {
-		this.ascensore = ascensore;
-	}
-
-	public int getBagni() {
-		return this.bagni;
-	}
-
-	public void setBagni(int bagni) {
-		this.bagni = bagni;
-	}
-
-	public byte getBalcone() {
-		return this.balcone;
-	}
-
-	public void setBalcone(byte balcone) {
-		this.balcone = balcone;
-	}
-
-	public ClasseEnergetica getClasseEnergetica() {
-		return this.classeEnergetica;
-	}
-
-	public void setClasseEnergetica(ClasseEnergetica classeEnergetica) {
-		this.classeEnergetica = classeEnergetica;
-	}
-
-	public Condizione getCondizione() {
-		return this.condizione;
-	}
-
-	public void setCondizione(Condizione condizione) {
-		this.condizione = condizione;
-	}
-
-	public Timestamp getCreateTimestamp() {
-		return this.createTimestamp;
-	}
-
-	public void setCreateTimestamp(Timestamp createTimestamp) {
-		this.createTimestamp = createTimestamp;
-	}
-
-	public String getDescrizioneLunga() {
-		return this.descrizioneLunga;
-	}
-
-	public void setDescrizioneLunga(String descrizioneLunga) {
-		this.descrizioneLunga = descrizioneLunga;
-	}
-
-	public Giardino getGiardino() {
-		return this.giardino;
-	}
-
-	public void setGiardino(Giardino giardino) {
-		this.giardino = giardino;
-	}
-
-	public int getLocali() {
-		return this.locali;
-	}
-
-	public void setLocali(int locali) {
-		this.locali = locali;
-	}
-
-	public int getMq() {
-		return this.mq;
-	}
-
-	public void setMq(int mq) {
-		this.mq = mq;
-	}
-
-	public int getPiano() {
-		return this.piano;
-	}
-
-	public void setPiano(int piano) {
-		this.piano = piano;
-	}
-
-	public byte getPiscina() {
-		return this.piscina;
-	}
-
-	public void setPiscina(byte piscina) {
-		this.piscina = piscina;
-	}
-
-	public byte getPortineria() {
-		return this.portineria;
-	}
-
-	public void setPortineria(byte portineria) {
-		this.portineria = portineria;
-	}
-
-	public int getPostiAuto() {
-		return this.postiAuto;
-	}
-
-	public void setPostiAuto(int postiAuto) {
-		this.postiAuto = postiAuto;
-	}
-
-	public int getPrezzo() {
-		return this.prezzo;
-	}
-
-	public void setPrezzo(int prezzo) {
-		this.prezzo = prezzo;
-	}
-
-	public Riscaldamento getRiscaldamento() {
-		return this.riscaldamento;
-	}
-
-	public void setRiscaldamento(Riscaldamento riscaldamento) {
-		this.riscaldamento = riscaldamento;
-	}
-
-	public String getStatoRogito() {
-		return this.statoRogito;
-	}
-
-	public void setStatoRogito(String statoRogito) {
-		this.statoRogito = statoRogito;
-	}
-
-	public byte getTerrazzo() {
-		return this.terrazzo;
-	}
-
-	public void setTerrazzo(byte terrazzo) {
-		this.terrazzo = terrazzo;
-	}
-
-	public TipoAnnuncio getTipoAnnuncio() {
-		return this.tipoAnnuncio;
-	}
-
-	public void setTipoAnnuncio(TipoAnnuncio tipoAnnuncio) {
-		this.tipoAnnuncio = tipoAnnuncio;
-	}
-
-	public TipoImmobile getTipoImmobile() {
-		return this.tipoImmobile;
-	}
-
-	public void setTipoImmobile(TipoImmobile tipoImmobile) {
-		this.tipoImmobile = tipoImmobile;
-	}
-
-	public int getTotPiani() {
-		return this.totPiani;
-	}
-
-	public void setTotPiani(int totPiani) {
-		this.totPiani = totPiani;
-	}
-
-	public byte getVirtualTour() {
-		return this.virtualTour;
-	}
-
-	public void setVirtualTour(byte virtualTour) {
-		this.virtualTour = virtualTour;
-	}
-
-	public byte getVisitaGuidata() {
-		return this.visitaGuidata;
-	}
-
-	public void setVisitaGuidata(byte visitaGuidata) {
-		this.visitaGuidata = visitaGuidata;
-	}
-
-	public Annuncio getAnnuncio() {
-		return this.annuncio;
-	}
-
-	public void setAnnuncio(Annuncio annuncio) {
-		this.annuncio = annuncio;
-	}
-
-	public List<Annuncio> getAnnunciInEdificio() {
-		return this.annunciInEdificio;
-	}
-
-	public void setAnnunciInEdificio(List<Annuncio> annunciInEdificio) {
-		this.annunciInEdificio = annunciInEdificio;
-	}
-
-	public Annuncio addAnnunciInEdificio(Annuncio annunciInEdificio) {
-		getAnnunciInEdificio().add(annunciInEdificio);
-		annunciInEdificio.setAnnuncio(this);
-
-		return annunciInEdificio;
-	}
-
-	public Annuncio removeAnnunciInEdificio(Annuncio annunciInEdificio) {
-		getAnnunciInEdificio().remove(annunciInEdificio);
-		annunciInEdificio.setAnnuncio(null);
-
-		return annunciInEdificio;
-	}
-
-	public Utente getUtente() {
-		return this.utente;
-	}
-
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
-
-	public Indirizzo getIndirizzo() {
-		return this.indirizzo;
-	}
-
-	public void setIndirizzo(Indirizzo indirizzo) {
-		this.indirizzo = indirizzo;
-	}
-
-	public Foto getFoto() {
-		return this.foto;
-	}
-
-	public void setFoto(Foto foto) {
-		this.foto = foto;
-	}
-
-	public List<Foto> getFotos() {
-		return this.fotos;
-	}
-
-	public void setFotos(List<Foto> fotos) {
-		this.fotos = fotos;
-	}
-
-	public Foto addFoto(Foto foto) {
-		getFotos().add(foto);
-		foto.setAnnuncio(this);
-
-		return foto;
-	}
-
-	public Foto removeFoto(Foto foto) {
-		getFotos().remove(foto);
-		foto.setAnnuncio(null);
-
-		return foto;
 	}
 
 	public List<Utente> getSalvatoDa() {
@@ -443,4 +156,259 @@ public class Annuncio  {
 		this.salvatoDa = salvatoDa;
 	}
 
+	public Integer getAnnoCostruzione() {
+		return annoCostruzione;
+	}
+
+	public void setAnnoCostruzione(Integer annoCostruzione) {
+		this.annoCostruzione = annoCostruzione;
+	}
+
+	public AriaCondizionata getAriaCondizionata() {
+		return ariaCondizionata;
+	}
+
+	public void setAriaCondizionata(AriaCondizionata ariaCondizionata) {
+		this.ariaCondizionata = ariaCondizionata;
+	}
+
+	public String getArredamento() {
+		return arredamento;
+	}
+
+	public void setArredamento(String arredamento) {
+		this.arredamento = arredamento;
+	}
+
+	public Boolean getAscensore() {
+		return ascensore;
+	}
+
+	public void setAscensore(Boolean ascensore) {
+		this.ascensore = ascensore;
+	}
+
+	public Integer getBagni() {
+		return bagni;
+	}
+
+	public void setBagni(Integer bagni) {
+		this.bagni = bagni;
+	}
+
+	public Boolean getBalcone() {
+		return balcone;
+	}
+
+	public void setBalcone(Boolean balcone) {
+		this.balcone = balcone;
+	}
+
+	public ClasseEnergetica getClasseEnergetica() {
+		return classeEnergetica;
+	}
+
+	public void setClasseEnergetica(ClasseEnergetica classeEnergetica) {
+		this.classeEnergetica = classeEnergetica;
+	}
+
+	public Condizione getCondizione() {
+		return condizione;
+	}
+
+	public void setCondizione(Condizione condizione) {
+		this.condizione = condizione;
+	}
+
+	public Timestamp getCreateTimestamp() {
+		return createTimestamp;
+	}
+
+	public void setCreateTimestamp(Timestamp createTimestamp) {
+		this.createTimestamp = createTimestamp;
+	}
+
+	public String getDescrizioneLunga() {
+		return descrizioneLunga;
+	}
+
+	public void setDescrizioneLunga(String descrizioneLunga) {
+		this.descrizioneLunga = descrizioneLunga;
+	}
+
+	public Giardino getGiardino() {
+		return giardino;
+	}
+
+	public void setGiardino(Giardino giardino) {
+		this.giardino = giardino;
+	}
+
+	public Integer getLocali() {
+		return locali;
+	}
+
+	public void setLocali(Integer locali) {
+		this.locali = locali;
+	}
+
+	public Integer getMq() {
+		return mq;
+	}
+
+	public void setMq(Integer mq) {
+		this.mq = mq;
+	}
+
+	public Integer getPiano() {
+		return piano;
+	}
+
+	public void setPiano(Integer piano) {
+		this.piano = piano;
+	}
+
+	public Boolean getPiscina() {
+		return piscina;
+	}
+
+	public void setPiscina(Boolean piscina) {
+		this.piscina = piscina;
+	}
+
+	public Boolean getPortineria() {
+		return portineria;
+	}
+
+	public void setPortineria(Boolean portineria) {
+		this.portineria = portineria;
+	}
+
+	public Integer getPostiAuto() {
+		return postiAuto;
+	}
+
+	public void setPostiAuto(Integer postiAuto) {
+		this.postiAuto = postiAuto;
+	}
+
+	public Integer getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(Integer prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public Riscaldamento getRiscaldamento() {
+		return riscaldamento;
+	}
+
+	public void setRiscaldamento(Riscaldamento riscaldamento) {
+		this.riscaldamento = riscaldamento;
+	}
+
+	public String getStatoRogito() {
+		return statoRogito;
+	}
+
+	public void setStatoRogito(String statoRogito) {
+		this.statoRogito = statoRogito;
+	}
+
+	public Boolean getTerrazzo() {
+		return terrazzo;
+	}
+
+	public void setTerrazzo(Boolean terrazzo) {
+		this.terrazzo = terrazzo;
+	}
+
+	public TipoAnnuncio getTipoAnnuncio() {
+		return tipoAnnuncio;
+	}
+
+	public void setTipoAnnuncio(TipoAnnuncio tipoAnnuncio) {
+		this.tipoAnnuncio = tipoAnnuncio;
+	}
+
+	public TipoImmobile getTipoImmobile() {
+		return tipoImmobile;
+	}
+
+	public void setTipoImmobile(TipoImmobile tipoImmobile) {
+		this.tipoImmobile = tipoImmobile;
+	}
+
+	public Integer getTotPiani() {
+		return totPiani;
+	}
+
+	public void setTotPiani(Integer totPiani) {
+		this.totPiani = totPiani;
+	}
+
+	public Boolean getVirtualTour() {
+		return virtualTour;
+	}
+
+	public void setVirtualTour(Boolean virtualTour) {
+		this.virtualTour = virtualTour;
+	}
+
+	public Boolean getVisitaGuidata() {
+		return visitaGuidata;
+	}
+
+	public void setVisitaGuidata(Boolean visitaGuidata) {
+		this.visitaGuidata = visitaGuidata;
+	}
+
+	public Annuncio getAnnuncio() {
+		return annuncio;
+	}
+
+	public void setAnnuncio(Annuncio annuncio) {
+		this.annuncio = annuncio;
+	}
+
+	public List<Annuncio> getAnnunciInEdificio() {
+		return annunciInEdificio;
+	}
+
+	public void setAnnunciInEdificio(List<Annuncio> annunciInEdificio) {
+		this.annunciInEdificio = annunciInEdificio;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(Indirizzo indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
+	public List<Foto> getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(List<Foto> fotos) {
+		this.fotos = fotos;
+	}
 }

@@ -31,11 +31,11 @@ public class Indirizzo {
 	public Indirizzo() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

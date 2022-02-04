@@ -26,12 +26,12 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private byte amministratore;
+	private Boolean amministratore;
 
 	@Column(name = "avatar_url")
 	private String avatarUrl;
 
-	@Column(name = "commerciale_id")
+	@Column(name="commerciale_id")
 	private Integer commercialeId;
 
 	@Column(name = "create_timestamp")
@@ -78,12 +78,16 @@ public class Utente {
 		this.id = id;
 	}
 
-	public byte getAmministratore() {
-		return this.amministratore;
+	public Boolean getAmministratore() {
+		return amministratore;
 	}
 
-	public void setAmministratore(byte amministratore) {
+	public void setAmministratore(Boolean amministratore) {
 		this.amministratore = amministratore;
+	}
+
+	public void setCommercialeId(Integer commercialeId) {
+		this.commercialeId = commercialeId;
 	}
 
 	public String getAvatarUrl() {
