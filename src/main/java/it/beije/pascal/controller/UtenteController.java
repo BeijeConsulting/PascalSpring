@@ -32,11 +32,11 @@ public class UtenteController {
 	@Autowired
 	IndirizzoService indirizzoService;
 
-	@GetMapping(value = "/")
-	public String homepage() {
-		// TODO cambia in homepage
-		return "index";
-	}
+//	@GetMapping(value = "/")
+//	public String homepage() {
+//		// TODO cambia in homepage
+//		return "index";
+//	}
 
 	@RequestMapping(value = "/form_privato", method = RequestMethod.GET)
 	public String formPrivate() {
@@ -57,10 +57,9 @@ public class UtenteController {
 	@RequestMapping(value = "/form_login", method = RequestMethod.GET)
 	public String formLogin() {
 		return "login";
-
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
 			@RequestParam String password) {
 

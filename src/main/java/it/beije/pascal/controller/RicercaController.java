@@ -27,6 +27,9 @@ public class RicercaController {
 				//annuncioService.metodo(tipoAnnuncio, tipoImmobile, comune);
 			
 		model.addAttribute("annunci", annunci);
+		model.addAttribute("tipoImmobile", tipoImmobile);
+		model.addAttribute("tipoAnnuncio", tipoAnnuncio);
+		model.addAttribute("comune", comune);
 		
 		return "ricercaAnnunci";
 	}
