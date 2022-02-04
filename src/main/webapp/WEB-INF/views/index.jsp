@@ -28,7 +28,10 @@
 <form action="loginUser" method="get">
   <input type="submit" value="Accesso Utenti"></input>
 </form>
-
+<br>
+<form action="formLoginCommerciale" method="get">
+  <input type="submit" value="Accesso Commerciali"></input>
+</form>
 
 </div>
 </body>
