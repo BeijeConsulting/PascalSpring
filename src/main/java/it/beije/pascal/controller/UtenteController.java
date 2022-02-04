@@ -1,5 +1,8 @@
 package it.beije.pascal.controller;
 
+
+import javax.servlet.http.HttpServlet;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +62,10 @@ public class UtenteController {
 
 	}
 
+
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
-			@RequestParam String password) {
+	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,@RequestParam String password) {
+
 		Utente loggedUser = null;
 
 		try {
@@ -88,12 +92,15 @@ public class UtenteController {
 		utenteService.save(utente);
 		return "login";
 	}
+
+
 	
 	
 	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
 	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
 			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
+
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
@@ -118,6 +125,20 @@ public class UtenteController {
 
 	}
 
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logOut(Model model, HttpServletRequest request) {
+		try {
+			request.getSession().removeAttribute("loggedUser");
+			
+		} catch (Exception e) {
+			System.out.println("Failed to login");
+			e.printStackTrace();
+		}
+		return "index.jsp";
+
+	}
+	
 	@RequestMapping(value = "/registerCostruttore", method = RequestMethod.POST)
 	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
 			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,
