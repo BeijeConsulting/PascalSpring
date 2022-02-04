@@ -13,27 +13,38 @@ import it.beije.pascal.service.CommercialeService;
 
 @Controller
 public class CommercialeController {
-	
+
 	@Autowired
 	CommercialeService commercialeService;
-	
-	@RequestMapping(value = "commercialeLogin", method = RequestMethod.GET)	
-	public String commercialLogin(HttpSession session, @RequestParam String email, @RequestParam String password) {
-		Commerciale loggedCommercial = commercialeService.commercialLogin(email, password) ;
-		session.setAttribute("loggedCommercial", loggedCommercial);
-		
-		// TODO cambaiare in homepage
-		return "index";		
+
+	@RequestMapping(value = "/formLoginCommerciale", method = RequestMethod.GET)
+	public String formLogin() {
+		return "login_commerciale";
 	}
-	
+
+	@RequestMapping(value = "commercialeLogin", method = RequestMethod.POST)
+	public String commercialLogin(HttpSession session, @RequestParam String email, @RequestParam String password) {
+		Commerciale loggedCommercial = null;
+		try {
+			loggedCommercial = commercialeService.commercialLogin(email, password);
+			session.setAttribute("loggedUser", loggedCommercial);
+			//System.out.println(loggedCommercial.getEmail() + " " + loggedCommercial.getPassword());
+		} catch (Exception e) {
+			//System.out.println("credenziali sbagliate");
+			return "index";
+		}
+		
+
+		// TODO cambaiare in homepage
+		return "index";
+	}
+
 	public String commercialLogut(HttpSession session) {
 		session.removeAttribute("loggedCommercial");
-		
+
 		// TODO cambaiare in homepage
-				return "index";
-		
+		return "index";
+
 	}
-	
-	
 
 }
