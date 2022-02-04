@@ -29,7 +29,10 @@
 
 </head>
 <body>
-
+	<form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+	<form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
+	<form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
+	<form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
 <div>
 	<form class="form_ricerca" action="ricerca" method="GET">
 	
@@ -57,8 +60,9 @@
 	</select>
 	
 	<input class="cerca" type="submit" value="Cerca" />
-	
 	</form>
+	
+
 </div>
 
 <h1>ANNUNCI IN PRIMO PIANO</h1>

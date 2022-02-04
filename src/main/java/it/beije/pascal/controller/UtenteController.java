@@ -32,10 +32,10 @@ public class UtenteController {
 	@Autowired
 	IndirizzoService indirizzoService;
 
-	@GetMapping(value = "/")
+	@GetMapping(value = "/utente")
 	public String homepage() {
 		// TODO cambia in homepage
-		return "index";
+		return "homepage";
 	}
 
 	@RequestMapping(value = "/form_privato", method = RequestMethod.GET)
