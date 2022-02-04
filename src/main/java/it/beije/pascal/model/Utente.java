@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the utente database table.
@@ -20,6 +21,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u")
+@Table(name = "utente")
 public class Utente {
 
 	@Id

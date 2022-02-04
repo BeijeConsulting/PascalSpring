@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the indirizzo database table.
@@ -13,6 +14,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "Indirizzo.findAll", query = "SELECT i FROM Indirizzo i")
+@Table(name = "indirizzo")
 public class Indirizzo {
 
 	@Id

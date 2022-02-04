@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the commerciale database table. Il campo manager_id
@@ -14,6 +15,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "Commerciale.findAll", query = "SELECT c FROM Commerciale c")
+@Table(name = "commerciale")
 public class Commerciale {
 
 	@Column(name = "cognome_ref")

@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import it.beije.pascal.model.enums.AriaCondizionata;
 import it.beije.pascal.model.enums.ClasseEnergetica;
@@ -33,6 +34,7 @@ import it.beije.pascal.model.enums.TipoRicerca;
  */
 @Entity
 @NamedQuery(name="Ricerca.findAll", query="SELECT r FROM Ricerca r")
+@Table(name = "ricerca")
 public class Ricerca  {
 
 	@Id

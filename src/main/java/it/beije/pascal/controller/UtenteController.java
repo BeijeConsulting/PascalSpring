@@ -59,7 +59,7 @@ public class UtenteController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
 			@RequestParam String password) {
 
@@ -75,7 +75,7 @@ public class UtenteController {
 			return "login";
 		}
 
-		return "home";
+		return "homepage";
 	}
 
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)

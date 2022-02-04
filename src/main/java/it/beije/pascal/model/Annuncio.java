@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import it.beije.pascal.model.enums.AriaCondizionata;
 import it.beije.pascal.model.enums.ClasseEnergetica;
@@ -32,6 +33,7 @@ import it.beije.pascal.model.enums.TipoImmobile;
  */
 @Entity
 @NamedQuery(name="Annuncio.findAll", query="SELECT a FROM Annuncio a")
+@Table(name = "annuncio")
 public class Annuncio  {
 
 	@Id

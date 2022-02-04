@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name="Punto.findAll", query="SELECT p FROM Punto p")
+@Table(name = "punto")
 public class Punto  {
 
 	@Id
