@@ -16,5 +16,10 @@ public class CommercialeService {
 		commercialeRepository.save(commerciale);
 	}
 	
+	public Commerciale commercialLogin(String email, String password) {
+		Commerciale commerciale = commercialeRepository.findByEmailAndPassword(email, password);
+		return commerciale;
+	}
+	
 	
 }

@@ -1,8 +1,5 @@
 package it.beije.pascal.controller;
 
-
-import javax.servlet.http.HttpServlet;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +29,6 @@ public class UtenteController {
 	@Autowired
 	IndirizzoRepository indirizzoRepository;
 
-	
-
 	@GetMapping(value = "/")
 	public String homepage() {
 		// TODO cambia in homepage
@@ -62,9 +57,9 @@ public class UtenteController {
 
 	}
 
-
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,@RequestParam String password) {
+	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
+			@RequestParam String password) {
 
 		Utente loggedUser = null;
 
@@ -82,7 +77,8 @@ public class UtenteController {
 	}
 
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)
-	public String registerPrivate(@RequestParam(required = false) String username, String email, String password,String spam) {
+	public String registerPrivate(@RequestParam(required = false) String username, String email, String password,
+			String spam) {
 		Utente utente = null;
 		if (spam == null) {
 			utente = new Utente(email, password, (byte) 0, username);
@@ -93,14 +89,10 @@ public class UtenteController {
 		return "login";
 	}
 
-
-	
-	
 	@RequestMapping(value = "/registerAgenzia", method = RequestMethod.POST)
 	public String registerAgenzia(Model model, @RequestParam String pIva, @RequestParam String ragioneSociale,
 			@RequestParam String telefono, @RequestParam String cap, @RequestParam String comune,
 			@RequestParam String indirizzo, @RequestParam Integer nCivico) {
-
 
 		Indirizzo ind = new Indirizzo();
 		ind.setCap(cap);
@@ -125,12 +117,11 @@ public class UtenteController {
 
 	}
 
-	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logOut(Model model, HttpServletRequest request) {
 		try {
 			request.getSession().removeAttribute("loggedUser");
-			
+
 		} catch (Exception e) {
 			System.out.println("Failed to login");
 			e.printStackTrace();
@@ -138,7 +129,7 @@ public class UtenteController {
 		return "index.jsp";
 
 	}
-	
+
 	@RequestMapping(value = "/registerCostruttore", method = RequestMethod.POST)
 	public String registerCostruttore(Model model, @RequestParam String nomeRef, @RequestParam String cognomeRef,
 			@RequestParam String ragioneSociale, @RequestParam String telefono, @RequestParam String cap,

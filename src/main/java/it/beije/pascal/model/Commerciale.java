@@ -8,38 +8,57 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
-
 /**
- * The persistent class for the commerciale database table.
- * Il campo manager_id riferisce ad Utente, e un utente può registrare un commerciale
+ * The persistent class for the commerciale database table. Il campo manager_id
+ * riferisce ad Utente, e un utente può registrare un commerciale
  */
 @Entity
-@NamedQuery(name="Commerciale.findAll", query="SELECT c FROM Commerciale c")
-public class Commerciale  {
+@NamedQuery(name = "Commerciale.findAll", query = "SELECT c FROM Commerciale c")
+public class Commerciale {
 
-	@Column(name="cognome_ref")
+	@Column(name = "cognome_ref")
 	private String cognomeRef;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name="nome_ref")
+	@Column(name = "nome_ref")
 	private String nomeRef;
 
-	@Column(name="p_iva")
+	@Column(name = "p_iva")
 	private String pIva;
 
-	@Column(name="ragione_sociale")
+	@Column(name = "ragione_sociale")
 	private String ragioneSociale;
 
 	private String telefono;
 
-	//uni-directional many-to-one association to Indirizzo
+	private String email;
+
+	private String password;
+
+	// uni-directional many-to-one association to Indirizzo
 	@ManyToOne
 	private Indirizzo indirizzo;
 
 	public Commerciale() {
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getCognomeRef() {

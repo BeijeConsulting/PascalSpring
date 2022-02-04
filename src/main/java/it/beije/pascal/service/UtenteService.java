@@ -6,6 +6,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import it.beije.pascal.model.Utente;
@@ -19,7 +20,7 @@ public class UtenteService {
 	
 	public Utente login(String email, String password) throws Exception {
 		Utente utente = null;
-		
+
 		List<Utente> uList = utenteRepository.findByEmailAndPassword(email, password);
 		if(uList.size() != 1 ) throw new Exception("Utente non trovato");
 		
