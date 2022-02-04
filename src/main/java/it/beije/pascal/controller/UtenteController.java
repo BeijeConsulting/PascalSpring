@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import it.beije.pascal.model.Indirizzo;
 import it.beije.pascal.model.Utente;
 import it.beije.pascal.repository.IndirizzoRepository;
 import it.beije.pascal.service.CommercialeService;
+import it.beije.pascal.service.IndirizzoService;
 import it.beije.pascal.service.UtenteService;
 
 @Controller
@@ -28,9 +30,10 @@ public class UtenteController {
 
 	@Autowired
 	CommercialeService commercialeService;
+	
 
 	@Autowired
-	IndirizzoRepository indirizzoRepository;
+	IndirizzoService indirizzoService;
 
 	
 
@@ -113,8 +116,7 @@ public class UtenteController {
 		comm.setRagioneSociale(ragioneSociale);
 		comm.setTelefono(telefono);
 
-		// TODO passa per un service
-		indirizzoRepository.save(ind);
+		indirizzoService.save(ind);
 		comm.setIndirizzo(ind);
 
 		commercialeService.insertCommerciale(comm);
@@ -156,8 +158,7 @@ public class UtenteController {
 		comm.setRagioneSociale(ragioneSociale);
 		comm.setTelefono(telefono);
 
-		// TODO passa per un service
-		indirizzoRepository.save(ind);
+		indirizzoService.save(ind);
 		comm.setIndirizzo(ind);
 
 		commercialeService.insertCommerciale(comm);
