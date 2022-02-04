@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<form action="salvaRicerca" method="POST">
+	<input type="hidden" value="${ricerca.id}" name="annuncioId" />
+	<input type="hidden" value="${utente.id}" name="utenteId" />
+	<input type="submit" value="Salva Ricerca" />
+</form>
+
+
 <h1>ANNUNCI TROVATI</h1>
 	
 		<c:forEach items="${annunci}" var="annuncio">

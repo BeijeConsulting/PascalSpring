@@ -41,8 +41,8 @@ public class Annuncio  {
 	@ManyToMany(mappedBy = "annunciSalvati")
 	private List<Utente> salvatoDa;
 
-	@Column(name="anno_costruzione")
-	private Integer annoCostruzione;
+//	@Column(name="anno_costruzione")
+//	private Integer annoCostruzione;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
@@ -156,13 +156,13 @@ public class Annuncio  {
 		this.salvatoDa = salvatoDa;
 	}
 
-	public Integer getAnnoCostruzione() {
-		return annoCostruzione;
-	}
-
-	public void setAnnoCostruzione(Integer annoCostruzione) {
-		this.annoCostruzione = annoCostruzione;
-	}
+//	public Integer getAnnoCostruzione() {
+//		return annoCostruzione;
+//	}
+//
+//	public void setAnnoCostruzione(Integer annoCostruzione) {
+//		this.annoCostruzione = annoCostruzione;
+//	}
 
 	public AriaCondizionata getAriaCondizionata() {
 		return ariaCondizionata;
