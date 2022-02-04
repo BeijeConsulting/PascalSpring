@@ -32,7 +32,7 @@ public class UtenteController {
 	@Autowired
 	IndirizzoService indirizzoService;
 
-	@GetMapping(value = "/")
+	@GetMapping(value = "/index")
 	public String homepage() {
 		// TODO cambia in homepage
 		return "index";
