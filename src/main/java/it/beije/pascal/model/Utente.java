@@ -86,10 +86,6 @@ public class Utente {
 		this.amministratore = amministratore;
 	}
 
-	public void setCommercialeId(Integer commercialeId) {
-		this.commercialeId = commercialeId;
-	}
-
 	public String getAvatarUrl() {
 		return this.avatarUrl;
 	}

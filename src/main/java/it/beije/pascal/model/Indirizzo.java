@@ -71,9 +71,6 @@ public class Indirizzo {
 		this.nCivico = nCivico;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public int getNCivico() {
 		return this.nCivico;
