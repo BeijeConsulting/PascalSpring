@@ -10,11 +10,16 @@
 	div{
 		border: 1px solid black;
 		padding: 1%;
+		margin: 10px;
 	}
 </style>
 	
 </head>
 <body>
+
+<form action="home" method="GET">
+	<input type="submit" value="Home">
+</form>
 
 <div>
 	<form class="form_ricerca" action="ricerca" method="GET">
@@ -47,11 +52,11 @@
 	</form>
 </div>
 
-<form action="salvaRicerca" method="POST">
+<!-- <form action="salvaRicerca" method="POST">
 	<input type="hidden" value="${ricerca.id}" name="annuncioId" />
 	<input type="hidden" value="${utente.id}" name="utenteId" />
 	<input type="submit" value="Salva Ricerca" />
-</form>
+</form> -->
 
 
 <h1>ANNUNCI TROVATI</h1>
@@ -74,12 +79,16 @@
 			<p>BAGNI: <c:out value="${annuncio.bagni}" /> </p>
 			
 			
+			<c:out value="${annuncio.descrizioneLunga}" />
+			
+			<br />
+			<br />
+			
 			<form action="visualizzaDettagli" action="GET">
 				<input type="hidden" value="${annuncio.id}" name="id" />
 				<input type="submit" value="Dettagli" />
 			</form>
 			
-			<c:out value="${annuncio.descrizioneLunga}" />
 				</div>
 		</c:forEach>
 

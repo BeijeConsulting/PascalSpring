@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Annuncio;
-import it.beije.pascal.model.Ricerca;
-import it.beije.pascal.service.AnnuncioService;
 import it.beije.pascal.service.RicercaService;
 
 @Controller

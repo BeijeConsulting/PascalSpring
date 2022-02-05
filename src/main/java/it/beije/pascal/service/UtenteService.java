@@ -6,7 +6,6 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import it.beije.pascal.model.Utente;
@@ -30,7 +29,5 @@ public class UtenteService {
 
 	public void save(Utente utente) {
 		utenteRepository.save(utente);
-		
-
 	}
 }

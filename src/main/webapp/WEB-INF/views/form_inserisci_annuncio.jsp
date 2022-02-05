@@ -20,6 +20,11 @@
 <div>
 <h1>Aggiunta di un nuovo annuncio</h1>
 <div>
+
+<form action="home" method="GET">
+	<input type="submit" value="Home">
+</form>
+
 <form action="inserisciAnnuncio" method="post">
 
 	  <label for="tipo_immobile">Tipo immobile:</label>
@@ -137,8 +142,8 @@
 	  <label for="indirizzo">Via:</label><br>
 	  <input type="text" name="indirizzo"><br><br>
 	 
-	  <label for="numeroCivico">Numero civico:</label><br>
-	  <input type="text" name="numeroCivico"><br><br>
+	  <label for="numero_civico">Numero civico:</label><br>
+	  <input type="text" name="numero_civico"><br><br>
 	 
 	  <label for="cap">CAP:</label><br>
 	  <input type="text" name="cap"><br><br>
@@ -164,11 +169,11 @@
 	  <label for="piano">Piano:</label><br>
 	  <input type="text" name="piano"><br><br>
 	 
-	  <label for="ascensore">Ascensore:</label>
+	  <label for="ascensore">Ascensore:</label> 
 	  <input type="checkbox" name="ascensore"><br><br>
 	 
-	  <label for="postiAuto">Posti auto:</label><br>
-	  <input type="text" name="postiAuto"><br><br>
+	  <label for="posti_auto">Posti auto:</label><br>
+	  <input type="text" name="posti_auto"><br><br>
 	 
 	  <label for="balcone">Balcone:</label>
 	  <input type="checkbox" name="balcone"><br><br>
@@ -182,22 +187,22 @@
 	  <label for="portineria">Presenza portineria:</label>
 	  <input type="checkbox" name="portineria"><br><br>
 	 
-	  <label for="annoCostruzione">Anno di costruzione:</label><br>
-	  <input type="text" name="annoCostruzione"><br><br>
+	  <label for="anno_costruzione">Anno di costruzione:</label><br>
+	  <input type="text" name="anno_costruzione"><br><br>
 	 
 	  <br><br>
 	 
-	  <label for="visitaGuidata">Disponibilità di visita guidata:</label>
-	  <input type="checkbox" name="visitaGuidata"><br><br>
+	  <label for="visita_guidata">Disponibilità di visita guidata:</label>
+	  <input type="checkbox" name="visita_guidata"><br><br>
 	 
-	  <label for="descrizioneLunga">Descrizione dell'immobile:</label><br>
-	  <textarea id="descrizioneLunga" name="descrizioneLunga" rows="10" cols="50">Inserire qui la descrizione completa dell'immobile...
+	  <label for="descrizione_lunga">Descrizione dell'immobile:</label><br>
+	  <textarea id="descrizioneLunga" name="descrizione_lunga" rows="10" cols="50">Inserire qui la descrizione completa dell'immobile...
  	  </textarea><br><br>
  	 
- 	  <label for="virtualTour">Disponibilità di visita virtuale:</label>
-	  <input type="checkbox" name="virtualTour"><br><br>
+ 	  <label for="virtual_tour">Disponibilità di visita virtuale:</label>
+	  <input type="checkbox" name="virtual_tour"><br><br>
 	 
-	  <input type="submit" value="Submit">
+	  <input type="submit" value="Crea Annuncio">
 	 
 </form>
 </div>

@@ -26,4 +26,8 @@ public class AnnuncioService {
 //	public List<Annuncio> metodo(String tipoAnnuncio, String tipoImmobile, String comune) {
 //		return annuncioRepository.findAllByTipoImmobileAndTipoAnnuncioAndIndirizzo_Comune(tipoImmobile, tipoAnnuncio, comune);
 //	}
+	
+	public void saveAnnuncio(Annuncio annuncio) {
+		annuncioRepository.save(annuncio);
+	}
 }

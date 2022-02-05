@@ -3,10 +3,8 @@ package it.beije.pascal.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.beije.pascal.model.Commerciale;
 import it.beije.pascal.model.Indirizzo;
 import it.beije.pascal.model.Utente;
-import it.beije.pascal.repository.IndirizzoRepository;
 import it.beije.pascal.service.CommercialeService;
 import it.beije.pascal.service.IndirizzoService;
 import it.beije.pascal.service.UtenteService;
@@ -75,7 +72,7 @@ public class UtenteController {
 			return "login";
 		}
 
-		return "homepage";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)
@@ -124,10 +121,10 @@ public class UtenteController {
 			request.getSession().removeAttribute("loggedUser");
 
 		} catch (Exception e) {
-			System.out.println("Failed to login");
+			System.out.println("Failed to logout");
 			e.printStackTrace();
 		}
-		return "index.jsp";
+		return "redirect:/";
 
 	}
 

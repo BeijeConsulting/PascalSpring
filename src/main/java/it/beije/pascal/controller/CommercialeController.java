@@ -31,11 +31,11 @@ public class CommercialeController {
 		} catch (Exception e) {
 			return "homepage";
 		}		
-		return "homepage";
+		return "redirect:/";
 	}
 
 	public String commercialLogut(HttpSession session) {
 		session.removeAttribute("loggedCommercial");
-		return "homepage";
+		return "redirect:/";
 	}
 }
