@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import it.beije.pascal.model.enums.AriaCondizionata;
 import it.beije.pascal.model.enums.ClasseEnergetica;
@@ -32,6 +33,7 @@ import it.beije.pascal.model.enums.TipoImmobile;
  */
 @Entity
 @NamedQuery(name="Annuncio.findAll", query="SELECT a FROM Annuncio a")
+@Table(name = "annuncio")
 public class Annuncio  {
 
 	@Id
@@ -41,8 +43,8 @@ public class Annuncio  {
 	@ManyToMany(mappedBy = "annunciSalvati")
 	private List<Utente> salvatoDa;
 
-	@Column(name="anno_costruzione")
-	private Integer annoCostruzione;
+//	@Column(name="anno_costruzione")
+//	private Integer annoCostruzione;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="aria_condizionata")
@@ -156,13 +158,13 @@ public class Annuncio  {
 		this.salvatoDa = salvatoDa;
 	}
 
-	public Integer getAnnoCostruzione() {
-		return annoCostruzione;
-	}
-
-	public void setAnnoCostruzione(Integer annoCostruzione) {
-		this.annoCostruzione = annoCostruzione;
-	}
+//	public Integer getAnnoCostruzione() {
+//		return annoCostruzione;
+//	}
+//
+//	public void setAnnoCostruzione(Integer annoCostruzione) {
+//		this.annoCostruzione = annoCostruzione;
+//	}
 
 	public AriaCondizionata getAriaCondizionata() {
 		return ariaCondizionata;

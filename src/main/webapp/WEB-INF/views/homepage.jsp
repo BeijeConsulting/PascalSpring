@@ -25,11 +25,60 @@
 	.cerca {
 		margin-left: 50px;
 	}
+	.form-container {
+		display: flex;
+	}
+	.form-container form {
+		margin: 5px;
+	}
 </style>
 
 </head>
 <body>
 
+<c:if test="${sessionScope.loggedUser == null}">
+<div class="form-container">
+<form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+
+<!--<form action="formLoginCommerciale" method="get">
+ 
+  <input type="submit" value="Login Commerciali"></input>
+</form>
+ -->
+
+<form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
+<!--  
+<form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
+<form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
+-->
+
+</div>
+
+</c:if>
+
+<!-- <div class="form-container">
+<form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+<form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
+<form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
+<form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
+<form action="formLoginCommerciale" method="get">
+  <input type="submit" value="Accesso Commerciali"></input>
+</form>
+</div>
+ -->
+ 
+ <c:if test="${sessionScope.loggedUser != null}">
+<div>
+	
+	<h2>Benvenuto <c:out value="${loggedUser.username}"></c:out> !</h2>
+	
+	<form action="logout" method="POST">
+	<input type="submit" value="Logout" />
+	</form>
+</div>
+</c:if>
+ 
+ 
 <div>
 	<form class="form_ricerca" action="ricerca" method="GET">
 	
@@ -62,15 +111,24 @@
 </div>
 
 <h1>ANNUNCI IN PRIMO PIANO</h1>
-	
+
+<c:if test="${sessionScope.loggedUser != null}">
+<div>
+	<form action="inserisciAnnuncio" method="GET">
+	<input type="submit" value="Aggiungi un annuncio" />
+	</form>
+</div>
+</c:if>
 		<c:forEach items="${annunci}" var="annuncio">
 		<div>
 			<c:out value="${annuncio.tipoAnnuncio}" /> <c:out value="${annuncio.tipoImmobile}" />
 			
 			<hr />
+			<p>COMUNE: <c:out value="${annuncio.indirizzo.comune}" /> </p>
 			<p>INDIRIZZO: <c:out value="${annuncio.indirizzo.indirizzo}" /> </p>
 			<p>CAP: <c:out value="${annuncio.indirizzo.cap}" /> </p>
 			<p>NUMERO CIVICO: <c:out value="${annuncio.indirizzo.NCivico}" /> </p>
+			
 			
 			<hr />
 			
@@ -80,13 +138,14 @@
 			<p>LOCALI: <c:out value="${annuncio.locali}" /> </p>
 			<p>BAGNI: <c:out value="${annuncio.bagni}" /> </p>
 			
+			<c:out value="${annuncio.descrizioneLunga}" />
 			
+			<br />
+			<br />
 			<form action="visualizzaDettagli" action="GET">
 				<input type="hidden" value="${annuncio.id}" name="id" />
 				<input type="submit" value="Dettagli" />
 			</form>
-			
-			<c:out value="${annuncio.descrizioneLunga}" />
 				</div>
 		</c:forEach>
 

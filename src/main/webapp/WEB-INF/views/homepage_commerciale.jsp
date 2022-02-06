@@ -5,22 +5,75 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Annunci Cercati</title>
+<title>Homepage Commerciale</title>
+
 <style>
-	div{
-		border: 1px solid black;
+	body {
+		text-align: center;
+	}
+	div {
+		text-align:left;
+		border: 1px solid gray;
 		padding: 1%;
-		margin: 10px;
+		margin: 1%;
+	}
+	label {
+		margin-left: 20px;
+	}
+	label:first-child {
+		margin-left: 0px;
+	}
+	.cerca {
+		margin-left: 50px;
+	}
+	.form-container {
+		display: flex;
+	}
+	.form-container form {
+		margin: 5px;
 	}
 </style>
-	
 </head>
 <body>
 
-<form action="home" method="GET">
-	<input type="submit" value="Home">
+<c:if test="${sessionScope.loggedUser == null}">
+<div class="form-container">
+<form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+<form action="formLoginCommerciale" method="get">
+  <input type="submit" value="Login Commerciali"></input>
 </form>
 
+<form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
+<form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
+<form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
+
+</div>
+
+</c:if>
+
+<!-- <div class="form-container">
+<form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
+<form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
+<form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
+<form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
+<form action="formLoginCommerciale" method="get">
+  <input type="submit" value="Accesso Commerciali"></input>
+</form>
+</div>
+ -->
+ 
+ <c:if test="${sessionScope.loggedUser != null}">
+<div>
+	
+	<h2>Benvenuto <c:out value="${loggedUser.email}"></c:out> !</h2>
+	
+	<form action="logout" method="POST">
+	<input type="submit" value="Logout" />
+	</form>
+</div>
+</c:if>
+ 
+ 
 <div>
 	<form class="form_ricerca" action="ricerca" method="GET">
 	
@@ -52,15 +105,15 @@
 	</form>
 </div>
 
-<!-- <form action="salvaRicerca" method="POST">
-	<input type="hidden" value="${ricerca.id}" name="annuncioId" />
-	<input type="hidden" value="${utente.id}" name="utenteId" />
-	<input type="submit" value="Salva Ricerca" />
-</form> -->
+<h1>ANNUNCI IN PRIMO PIANO</h1>
 
-
-<h1>ANNUNCI TROVATI</h1>
-	
+<c:if test="${sessionScope.loggedUser != null}">
+<div>
+	<form action="inserisciAnnuncio" method="GET">
+	<input type="submit" value="Aggiungi un annuncio" />
+	</form>
+</div>
+</c:if>
 		<c:forEach items="${annunci}" var="annuncio">
 		<div>
 			<c:out value="${annuncio.tipoAnnuncio}" /> <c:out value="${annuncio.tipoImmobile}" />
@@ -78,20 +131,16 @@
 			<p>LOCALI: <c:out value="${annuncio.locali}" /> </p>
 			<p>BAGNI: <c:out value="${annuncio.bagni}" /> </p>
 			
-			
 			<c:out value="${annuncio.descrizioneLunga}" />
 			
 			<br />
 			<br />
-			
 			<form action="visualizzaDettagli" action="GET">
 				<input type="hidden" value="${annuncio.id}" name="id" />
 				<input type="submit" value="Dettagli" />
 			</form>
-			
 				</div>
 		</c:forEach>
-
 
 </body>
 </html>
