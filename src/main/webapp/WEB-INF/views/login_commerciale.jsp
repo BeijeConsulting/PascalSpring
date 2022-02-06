@@ -15,7 +15,7 @@
 	  <input type="email" name="email"><br>
 	  <label for="password">Password:</label><br>
 	  <input type="password" name="password"><br><br>
-	  <input type="submit" value="Submit">
+	  <input type="submit" value="Login">
 </fieldset>
 </form>
 

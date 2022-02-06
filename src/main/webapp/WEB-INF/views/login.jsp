@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<form action="home" action="GET">
+		<input type="submit" value="Home" />
+	</form>
+
 <form action="login" method="post">
 <fieldset >
 <legend>login</legend>

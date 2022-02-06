@@ -34,6 +34,13 @@ public class AnnuncioController {
 		return "homepage";
 	}
 	
+	@RequestMapping(value = "/home_commerciale", method = RequestMethod.GET)
+	public String homeCommerciale(Model model) {
+		model.addAttribute("annunci", annuncioService.findAllAnnunci());
+		
+		return "homepage_commerciale";
+	}
+	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home() {
 		return "redirect:/";

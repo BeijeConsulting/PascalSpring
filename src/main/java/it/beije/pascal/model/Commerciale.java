@@ -35,7 +35,15 @@ public class Commerciale {
 	private String ragioneSociale;
 
 	private String telefono;
-
+	
+//	private String username;
+//	
+//	public String getUsername() {
+//		return this.username;	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
 	private String email;
 
 	private String password;

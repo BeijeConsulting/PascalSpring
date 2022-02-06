@@ -22,20 +22,23 @@ public class CommercialeController {
 		return "login_commerciale";
 	}
 
-	@RequestMapping(value = "commercialeLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "/commercialeLogin", method = RequestMethod.POST)
 	public String commercialLogin(HttpSession session, @RequestParam String email, @RequestParam String password) {
 		Commerciale loggedCommercial = null;
 		try {
+			System.out.println(email + " " + password);
 			loggedCommercial = commercialeService.commercialLogin(email, password);
 			session.setAttribute("loggedUser", loggedCommercial);
 		} catch (Exception e) {
-			return "homepage";
-		}		
-		return "redirect:/";
+			System.out.println("login fallito");
+			return "redirect:/";
+		}
+		System.out.println("login avvenuto");
+		return "redirect:/home_commerciale";
 	}
 
 	public String commercialLogut(HttpSession session) {
-		session.removeAttribute("loggedCommercial");
+		session.removeAttribute("loggedUser");
 		return "redirect:/";
 	}
 }

@@ -31,6 +31,8 @@
 			<p>ARREDAMENTO: <c:out value="${annuncio.arredamento}" /> </p>
 			<p>PISCINA: <c:out value="${annuncio.piscina}" /> </p>
 			<p>PORTINERIA: <c:out value="${annuncio.portineria}" /> </p>
+			
+			<p>COMUNE: <c:out value="${annuncio.indirizzo.comune}" /> </p>
 			<!-- qui ci dovrebbe essere l'anno di costruzione, ma causa un errore  -->
 			
 			<p>INDIRIZZO: <c:out value="${annuncio.indirizzo.indirizzo}" /> </p>

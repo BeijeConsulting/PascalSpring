@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Homepage Commerciale</title>
+
 <style>
 	body {
 		text-align: center;
@@ -32,25 +33,19 @@
 		margin: 5px;
 	}
 </style>
-
 </head>
 <body>
 
 <c:if test="${sessionScope.loggedUser == null}">
 <div class="form-container">
 <form action = "form_login" method = "get">	<input type= "submit" value ="Login"></form>
-
-<!--<form action="formLoginCommerciale" method="get">
- 
+<form action="formLoginCommerciale" method="get">
   <input type="submit" value="Login Commerciali"></input>
 </form>
- -->
 
 <form action ="form_privato" method= "get" ><input type= "submit" value ="Registrati"></form>
-<!--  
 <form action ="form_agenzia" method= "get" ><input type= "submit" value ="Registra agenzia"></form>
 <form action ="form_costruttore" method= "get" ><input type= "submit" value ="Registra costruttore"></form>
--->
 
 </div>
 
@@ -70,7 +65,7 @@
  <c:if test="${sessionScope.loggedUser != null}">
 <div>
 	
-	<h2>Benvenuto <c:out value="${loggedUser.username}"></c:out> !</h2>
+	<h2>Benvenuto <c:out value="${loggedUser.email}"></c:out> !</h2>
 	
 	<form action="logout" method="POST">
 	<input type="submit" value="Logout" />
@@ -124,11 +119,9 @@
 			<c:out value="${annuncio.tipoAnnuncio}" /> <c:out value="${annuncio.tipoImmobile}" />
 			
 			<hr />
-			<p>COMUNE: <c:out value="${annuncio.indirizzo.comune}" /> </p>
 			<p>INDIRIZZO: <c:out value="${annuncio.indirizzo.indirizzo}" /> </p>
 			<p>CAP: <c:out value="${annuncio.indirizzo.cap}" /> </p>
 			<p>NUMERO CIVICO: <c:out value="${annuncio.indirizzo.NCivico}" /> </p>
-			
 			
 			<hr />
 			
