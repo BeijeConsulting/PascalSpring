@@ -17,6 +17,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
 	public List<Order> findByDateTimeGreaterThanEqual(LocalDateTime dateTime);
 	
+	public List<Order> findByUserId(Integer userId);
+	
 	//@Query(nativeQuery = true, value = "SELECT * FROM Order WHERE creation_datetime >= :dateTime")
 	@Query(value = "SELECT o FROM Order o WHERE dateTime >= :dateTime")
 	public List<Order> searchByDateTimeGreaterThanEqual(@Param("dateTime") LocalDateTime dateTime);
