@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.beije.pascal.model.Contatto;
+import it.beije.pascal.model.Order;
 import it.beije.pascal.repository.RubricaRepository;
 
 
@@ -51,4 +52,6 @@ public class RubricaService {
 		return contatti;
 	}
 
+	
 }
+

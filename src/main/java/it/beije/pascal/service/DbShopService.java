@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import it.beije.pascal.model.*;
 
 import it.beije.pascal.repository.ShopUserRepository;
-import it.beije.pascal.repository.ShopProductRepository;
+import it.beije.pascal.repository.ProdottiRepository;
 
 @Service
 public class DbShopService {
@@ -17,7 +17,7 @@ public class DbShopService {
 	private ShopUserRepository userRepository;
 	
 	@Autowired
-	private ShopProductRepository productRepository;
+	private ProdottiRepository productRepository;
 	
 	public User login(String email, String password) throws Exception {
 		User user = null;
