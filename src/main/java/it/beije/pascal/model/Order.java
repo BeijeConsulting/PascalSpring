@@ -16,6 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 
 @Entity
 @Table(name = "`order`")
@@ -26,6 +31,7 @@ public class Order {
 	@Column(name="id")
 	private Integer id;
 
+	@JsonProperty(value = "user_id")
 	@Column(name="user_id")
 	private Integer userId;
 	
@@ -39,6 +45,7 @@ public class Order {
 	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
 	@JoinColumn(name="order_id")
+	//@JsonIgnore
 	private List<OrderItem> items;
 
 	
@@ -72,15 +79,15 @@ public class Order {
 	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
-
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
-	
+	@JsonGetter(value = "date_time")
 	public String getDateTimeAsString() {
 		return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
 	}
 
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+	@JsonSetter(value = "date_time")
 	public void setDateTime(String dateTime) {
 		this.dateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_DATE_TIME);
 	}
