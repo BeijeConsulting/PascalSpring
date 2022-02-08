@@ -2,17 +2,24 @@ package it.beije.pascal.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 /**
@@ -28,6 +35,11 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonProperty(value = "user_id")
+	@Column(name="user_id")
+	private Integer userId;
+	
+	@Column(name="amount")
 	private Double amount;
 
 	@Column(name="creation_datetime")
@@ -36,6 +48,12 @@ public class Order implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
+	
+	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
+	@JoinColumn(name="order_id")
+	//@JsonIgnore
+	private List<OrderItem> items;
 
 	//bi-directional many-to-one association to OrderItem
 	@OneToMany(mappedBy="order")
@@ -67,9 +85,26 @@ public class Order implements Serializable {
 	public void setCreationDatetime(LocalDateTime creationDatetime) {
 		this.creationDatetime = creationDatetime;
 	}
+	
+	@JsonGetter(value = "date_time")
+	public String getDateTimeAsString() {
+		return creationDatetime.format(DateTimeFormatter.ISO_DATE_TIME);
+	}
 
 	public User getUser() {
 		return this.user;
+	}
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.creationDatetime = dateTime;
+	}
+	@JsonSetter(value = "date_time")
+	public void setDateTime(String dateTime) {
+		this.creationDatetime = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_DATE_TIME);
+	}
+	
+	public List<OrderItem> getItems() {
+		return items;
 	}
 
 	public void setUser(User user) {

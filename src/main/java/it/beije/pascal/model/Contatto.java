@@ -2,6 +2,26 @@ package it.beije.pascal.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+/*
+CREATE TABLE `rubrica`.`contatti` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`cognome` VARCHAR(45) NULL,
+`nome` VARCHAR(45) NULL,
+`telefono` VARCHAR(20) NULL,
+`email` VARCHAR(100) NULL,
+`note` VARCHAR(200) NULL,
+PRIMARY KEY (`id`));
+*/
 
 
 /**
@@ -9,11 +29,10 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="contatti")
-@NamedQuery(name="Contatti.findAll", query="SELECT c FROM Contatto c")
-public class Contatto implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+@Table(name = "contatti")
+@JsonInclude(Include.NON_NULL)
+public class Contatto {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
