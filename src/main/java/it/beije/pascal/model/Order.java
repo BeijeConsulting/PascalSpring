@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
@@ -35,6 +36,7 @@ public class Order {
 	@Column(name="user_id")
 	private Integer userId;
 	
+	
 	@Column(name="amount")
 	private Double amount;
 	
@@ -43,7 +45,7 @@ public class Order {
 
 	
 	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)//, fetch = FetchType.LAZY
 	@JoinColumn(name="order_id")
 	//@JsonIgnore
 	private List<OrderItem> items;
@@ -57,7 +59,7 @@ public class Order {
 		this.id = id;
 	}
 
-	
+	//@JsonInclude
 	public Integer getUserId() {
 		return userId;
 	}

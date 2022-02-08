@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table(name = "user")
+//@JsonInclude(Include.NON_NULL)
 public class User {
 
 	@Id
@@ -19,12 +24,14 @@ public class User {
 	@Column(name = "email")	
 	private String email;
 
+	//@JsonIgnore
 	@Column(name = "name")
 	private String name;
 
 	@Column(name = "surname")
 	private String surname;
 
+//	@JsonProperty(value = "pass_word")
 	@Column(name = "password")
 	private String password;
 	
@@ -73,10 +80,11 @@ public class User {
 		this.surname = surname;
 	}
 
+//	@JsonGetter(value = "pass_word")
 	public String getPassword() {
 		return password;
 	}
-
+//	@JsonSetter(value = "date_time")
 	public void setPassword(String password) {
 		this.password = password;
 	}
