@@ -31,7 +31,7 @@ public class AnnunciSalvati  {
 
 	//bi-directional many-to-one association to Utente 
 	@ManyToOne
-	private Utente utente;
+	private User utente;
 
 	//uni-directional one-to-one association to Annuncio
 	@OneToOne
@@ -56,11 +56,11 @@ public class AnnunciSalvati  {
 		this.commento = commento;
 	}
 
-	public Utente getUtente() {
+	public User getUtente() {
 		return this.utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public void setUtente(User utente) {
 		this.utente = utente;
 	}
 

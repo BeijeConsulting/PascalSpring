@@ -20,21 +20,21 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u")
-@Table(name = "utente")
-public class Utente {
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+@Table(name = "user")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Boolean amministratore;
+	private Boolean admin;
 
 	@Column(name = "avatar_url")
 	private String avatarUrl;
 
-	@Column(name="commerciale_id")
-	private Integer commercialeId;
+	@Column(name="commercial_id")
+	private Integer commercialId;
 
 	@Column(name = "create_timestamp")
 	private Timestamp createTimestamp;
@@ -53,7 +53,7 @@ public class Utente {
 	private List<Annuncio> annunciSalvati;
 
 	// bi-directional many-to-one association to Annuncio
-	@OneToMany(mappedBy = "utente")
+	@OneToMany(mappedBy = "user")
 	private List<Annuncio> annunciPubblicati;
 
 	// bi-directional many-to-one association to RicercaSalvata
@@ -61,10 +61,10 @@ public class Utente {
 	@JoinTable(name = "ricerca_salvata", joinColumns = @JoinColumn(name = "utente_id"), inverseJoinColumns = @JoinColumn(name = "ricerca_id"))
 	private List<Ricerca> ricercheSalvate;
 
-	public Utente() {
+	public User() {
 	}
 
-	public Utente(String email, String password, byte spamCheck, String username) {
+	public User(String email, String password, byte spamCheck, String username) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -80,12 +80,12 @@ public class Utente {
 		this.id = id;
 	}
 
-	public Boolean getAmministratore() {
-		return amministratore;
+	public Boolean getadmin() {
+		return admin;
 	}
 
-	public void setAmministratore(Boolean amministratore) {
-		this.amministratore = amministratore;
+	public void setadmin(Boolean admin) {
+		this.admin = admin;
 	}
 
 	public String getAvatarUrl() {
@@ -96,12 +96,12 @@ public class Utente {
 		this.avatarUrl = avatarUrl;
 	}
 
-	public Integer getCommercialeId() {
-		return commercialeId;
+	public Integer getCommercialId() {
+		return commercialId;
 	}
 
-	public void setCommercialeId(Integer commercialeId) {
-		this.commercialeId = commercialeId;
+	public void setCommercialId(Integer commercialId) {
+		this.commercialId = commercialId;
 	}
 
 	public Timestamp getCreateTimestamp() {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Annuncio;
 import it.beije.pascal.model.Indirizzo;
-import it.beije.pascal.model.Utente;
+import it.beije.pascal.model.User;
 import it.beije.pascal.model.enums.TipoAnnuncio;
 import it.beije.pascal.model.enums.TipoImmobile;
 import it.beije.pascal.service.AnnuncioService;
@@ -127,7 +127,7 @@ public class AnnuncioController {
 		annuncio.setIndirizzo(indirizzoObj);
 		
 		
-		Utente utente = (Utente) request.getSession().getAttribute("loggedUser");
+		User utente = (User) request.getSession().getAttribute("loggedUser");
 		annuncio.setUtente(utente);
 		
 		annuncioService.saveAnnuncio(annuncio);

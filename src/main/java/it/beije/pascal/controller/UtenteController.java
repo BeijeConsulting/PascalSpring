@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.pascal.model.Commerciale;
 import it.beije.pascal.model.Indirizzo;
-import it.beije.pascal.model.Utente;
+import it.beije.pascal.model.User;
 import it.beije.pascal.service.CommercialeService;
 import it.beije.pascal.service.IndirizzoService;
 import it.beije.pascal.service.UtenteService;
@@ -60,7 +60,7 @@ public class UtenteController {
 	public String userLogin(Model model, HttpServletRequest request, @RequestParam String email,
 			@RequestParam String password) {
 
-		Utente loggedUser = null;
+		User loggedUser = null;
 
 		try {
 			loggedUser = utenteService.login(email, password);
@@ -78,11 +78,11 @@ public class UtenteController {
 	@RequestMapping(value = "/registrazione_privato", method = RequestMethod.POST)
 	public String registerPrivate(@RequestParam(required = false) String username, String email, String password,
 			String spam) {
-		Utente utente = null;
+		User utente = null;
 		if (spam == null) {
-			utente = new Utente(email, password, (byte) 0, username);
+			utente = new User(email, password, (byte) 0, username);
 		} else {
-			utente = new Utente(email, password, (byte) 1, username);
+			utente = new User(email, password, (byte) 1, username);
 		}
 		utenteService.save(utente);
 		return "login";

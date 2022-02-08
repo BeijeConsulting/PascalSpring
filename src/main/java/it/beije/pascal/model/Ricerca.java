@@ -42,7 +42,7 @@ public class Ricerca  {
 	private int id;
 	
 	@ManyToMany(mappedBy = "ricercheSalvate")
-	private List<Utente> salvatoDa;
+	private List<User> salvatoDa;
 
 	@Column(name="anno_costruzione")
 	private short annoCostruzione;
@@ -147,7 +147,7 @@ public class Ricerca  {
 
 	//uni-directional many-to-one association to Utente
 	@ManyToOne
-	private Utente utente;
+	private User utente;
 
 	public Ricerca() {
 	}
@@ -178,11 +178,11 @@ public class Ricerca  {
 	}
 
 
-	public Utente getUtente() {
+	public User getUtente() {
 		return this.utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public void setUtente(User utente) {
 		this.utente = utente;
 	}
 
@@ -527,12 +527,12 @@ public class Ricerca  {
 	}
 
 
-	public List<Utente> getSalvatoDa() {
+	public List<User> getSalvatoDa() {
 		return salvatoDa;
 	}
 
 
-	public void setSalvatoDa(List<Utente> salvatoDa) {
+	public void setSalvatoDa(List<User> salvatoDa) {
 		this.salvatoDa = salvatoDa;
 	}
 

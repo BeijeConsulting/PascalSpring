@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import it.beije.pascal.model.Utente;
+import it.beije.pascal.model.User;
 
 @Repository
-public interface UtenteRepository extends JpaRepository<Utente, Integer>{
+public interface UtenteRepository extends JpaRepository<User, Integer>{
 
-	List<Utente> findByEmailAndPassword(String email, String password);
+	List<User> findByEmailAndPassword(String email, String password);
 
 }

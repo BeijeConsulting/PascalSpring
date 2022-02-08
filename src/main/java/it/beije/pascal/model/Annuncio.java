@@ -41,7 +41,7 @@ public class Annuncio  {
 	private Integer id;
 	
 	@ManyToMany(mappedBy = "annunciSalvati")
-	private List<Utente> salvatoDa;
+	private List<User> salvatoDa;
 
 //	@Column(name="anno_costruzione")
 //	private Integer annoCostruzione;
@@ -127,7 +127,7 @@ public class Annuncio  {
 	//bi-directional many-to-one association to Utente
 	@ManyToOne
 	@JoinColumn(name="venditore_id")
-	private Utente utente;
+	private User utente;
 
 	//uni-directional many-to-one association to Indirizzo
 	@ManyToOne
@@ -150,11 +150,11 @@ public class Annuncio  {
 		this.id = id;
 	}
 
-	public List<Utente> getSalvatoDa() {
+	public List<User> getSalvatoDa() {
 		return salvatoDa;
 	}
 
-	public void setSalvatoDa(List<Utente> salvatoDa) {
+	public void setSalvatoDa(List<User> salvatoDa) {
 		this.salvatoDa = salvatoDa;
 	}
 
@@ -382,11 +382,11 @@ public class Annuncio  {
 		this.annunciInEdificio = annunciInEdificio;
 	}
 
-	public Utente getUtente() {
+	public User getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public void setUtente(User utente) {
 		this.utente = utente;
 	}
 
