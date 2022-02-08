@@ -9,7 +9,7 @@
 <body>
 
 <h1>Benvenuto</h1>
-<p>Utente: <span style=color:green>${utente.getNome()}</span></p>
+<p>Utente: <span style=color:green>${utente.getName()}</span></p>
 
 <form action="vediProdotti" method="get">
   <input type="submit" value="Vedi prodotti">
