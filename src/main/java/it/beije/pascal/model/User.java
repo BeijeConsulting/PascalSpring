@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /*
  * CREATE TABLE `user` (
   `id` Integer(11) NOT NULL AUTO_INCREMENT,
@@ -21,6 +24,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
+@JsonInclude(Include.NON_NULL)
 public class User {
 	
 	@Id

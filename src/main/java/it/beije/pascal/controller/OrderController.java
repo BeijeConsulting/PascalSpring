@@ -17,7 +17,7 @@ public class OrderController {
 	@Autowired
 	public OrderRepository orderRepository;
 
-	@RequestMapping(value = "/orders", method = RequestMethod.GET)
+	@RequestMapping(value = "/orderssssssssssssssss", method = RequestMethod.GET)
 	public String orders() {
 		System.out.println("GET orders");
 		
