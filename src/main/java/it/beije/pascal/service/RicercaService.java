@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.beije.pascal.model.Annuncio;
+import it.beije.pascal.model.Ricerca;
 import it.beije.pascal.repository.AnnuncioRepository;
 
 @Service
@@ -16,6 +17,11 @@ public class RicercaService {
 	
 	public List<Annuncio> search(String tipoAnnuncio, String tipoImmobile, String comune) {
 		return annuncioRepository.searchAnnuncio(tipoImmobile, tipoAnnuncio, comune);
+	}
+
+	public List<Annuncio> findAll() {
+		
+		return annuncioRepository.findAll();
 	}
 	
 }
