@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 
-
 @Entity
 @Table(name = "order")
 public class Order {
@@ -31,11 +30,6 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-
-
-	@JsonProperty(value = "user_id")
-	@Column(name="user_id")
-	private Integer userId;
 	
 	@Column(name="amount")
 	private Double amount;
@@ -43,13 +37,12 @@ public class Order {
 	@Column(name="creation_datetime")
 	private LocalDateTime dateTime;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 
 	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
 	@JoinColumn(name="order_id")
-	//@JsonIgnore
 	private List<OrderItem> items;
 
 	public Integer getId() {

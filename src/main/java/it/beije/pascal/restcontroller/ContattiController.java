@@ -36,7 +36,6 @@ public class ContattiController {
 
 //	@RequestMapping(value = "/contatti", method = RequestMethod.GET)
 //	public @ResponseBody List<Contatto> getList(@RequestParam(value = "surname", required = false) String cognome) {
-	/*
 	@GetMapping(value = "/contatti")
 	public List<Contatto> getList(@RequestParam(value = "surname", required = false) String cognome) {
 		System.out.println("GET contatti");
@@ -46,7 +45,7 @@ public class ContattiController {
 		System.out.println("contatti : " + contatti.size());
 		
 		return contatti;
-	}*/
+	}
 	
 //	@RequestMapping(value = "/contatto/{id}", method = RequestMethod.GET)
 //	public @ResponseBody Contatto getDetail(@PathVariable Integer id) {

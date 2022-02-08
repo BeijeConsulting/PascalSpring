@@ -14,8 +14,7 @@ import it.beije.pascal.service.OrderService;
 
 @Controller
 public class OrderController {
-	@Autowired
-	private OrderService orderService;
+/*
 
 	@Autowired
 	public OrderRepository orderRepository;
@@ -30,6 +29,6 @@ public class OrderController {
 		System.out.println("order items : " + orders.get(0));
 
 		return "hello";
-	}
+	}*/
 
 }
