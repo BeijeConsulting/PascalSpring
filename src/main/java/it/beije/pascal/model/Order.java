@@ -1,6 +1,7 @@
 package it.beije.pascal.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,6 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+
+
 @Entity
 @Table(name = "order")
 public class Order {
@@ -23,17 +31,25 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "creation_datetime")
+
+
+	@JsonProperty(value = "user_id")
+	@Column(name="user_id")
+	private Integer userId;
+	
+	@Column(name="amount")
+	private Double amount;
+	
+	@Column(name="creation_datetime")
 	private LocalDateTime dateTime;
-	@Column(name = "amount")
-	private double amount;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 
-	// SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // , fetch = FetchType.LAZY
-	@JoinColumn(name = "order_id")
+	//SELECT * FROM order o JOIN order_item i ON o.id = i.order_id WHERE id = X
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//, fetch = FetchType.LAZY
+	@JoinColumn(name="order_id")
+	//@JsonIgnore
 	private List<OrderItem> items;
 
 	public Integer getId() {
@@ -48,16 +64,23 @@ public class Order {
 		return dateTime;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
-
 	public double getAmount() {
 		return amount;
 	}
 
+	@JsonGetter(value = "date_time")
+	public String getDateTimeAsString() {
+		return dateTime.format(DateTimeFormatter.ISO_DATE_TIME);
+	}
+
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+
+	@JsonSetter(value = "date_time")
+	public void setDateTime(String dateTime) {
+		this.dateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_DATE_TIME);
 	}
 
 	public User getUser() {
