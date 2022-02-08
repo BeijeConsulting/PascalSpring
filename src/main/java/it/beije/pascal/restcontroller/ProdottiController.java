@@ -60,37 +60,37 @@ public class ProdottiController {
 	}
 	
 	
-	@PutMapping(value = "/prodotto/{id}")
-	public Product insert(@RequestBody Product prodotto, @PathVariable Integer id) {
-		System.out.println("PUT contatto : " + prodotto);
-		
-		Product c = null;
-		if (prodotto.getId() != null && prodotto.getId() == id) {
-			Optional<Product> o = prodottiRepository.findById(id);
-			
-			if (o.isPresent()) {
-				c = o.get();
-//				c.setCognome(contatto.getCognome());
-//				c.setNome(contatto.getNome());
-				//....
-				BeanUtils.copyProperties(prodotto, c);
-				prodottiRepository.save(c);
-			} else throw new RuntimeException("id errato");
-		}		
-		
-		return c;
-	}
+//	@PutMapping(value = "/prodotto/{id}")
+//	public Product insert(@RequestBody Product prodotto, @PathVariable Integer id) {
+//		System.out.println("PUT contatto : " + prodotto);
+//		
+//		Product c = null;
+//		if (prodotto.getId() != null && prodotto.getId() == id) {
+//			Optional<Product> o = prodottiRepository.findById(id);
+//			
+//			if (o.isPresent()) {
+//				c = o.get();
+////				c.setCognome(contatto.getCognome());
+////				c.setNome(contatto.getNome());
+//				//....
+//				BeanUtils.copyProperties(prodotto, c);
+//				prodottiRepository.save(c);
+//			} else throw new RuntimeException("id errato");
+//		}		
+//		
+//		return c;
+//	}
 	
-	@DeleteMapping(value = "/prodotto/{id}")
-	public Boolean insert(@PathVariable Integer id) {
-		System.out.println("DELETE prodotto : " + id);
-		
-		Optional<Product> o = prodottiRepository.findById(id);
-			
-		if (o.isPresent()) {
-				prodottiRepository.delete(o.get());
-		} else throw new RuntimeException("id errato");
-				
-		return Boolean.TRUE;
-	}
+//	@DeleteMapping(value = "/prodotto/{id}")
+//	public Boolean insert(@PathVariable Integer id) {
+//		System.out.println("DELETE prodotto : " + id);
+//		
+//		Optional<Product> o = prodottiRepository.findById(id);
+//			
+//		if (o.isPresent()) {
+//				prodottiRepository.delete(o.get());
+//		} else throw new RuntimeException("id errato");
+//				
+//		return Boolean.TRUE;
+//	}
 }

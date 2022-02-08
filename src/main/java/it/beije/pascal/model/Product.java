@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@Table(name = "contatti")
+@Table(name = "product")
 @JsonInclude(Include.NON_NULL)
 public class Product {
 	
@@ -21,7 +21,7 @@ public class Product {
 	private Integer id;
 	
 	@Column(name = "name")
-	private String nome;
+	private String name;
 	
 	@Column(name = "description")
 	private String description;
@@ -40,12 +40,12 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {

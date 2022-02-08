@@ -3,13 +3,12 @@ package it.beije.pascal.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import it.beije.pascal.model.Contatto;
-import it.beije.pascal.model.Order;
 import it.beije.pascal.model.Product;
 import it.beije.pascal.repository.ProdottiRepository;
-import it.beije.pascal.repository.RubricaRepository;
 
+@Service
 public class ProdottiService {
 	
 	@Autowired
@@ -20,7 +19,7 @@ public class ProdottiService {
 	}
 	
 	public List<Product> getList(String nome) {
-		List<Product> prodotti = nome != null ? prodottiRepository.findByNome(nome) : prodottiRepository.findAll();
+		List<Product> prodotti = nome != null ? prodottiRepository.findByName(nome) : prodottiRepository.findAll();
 		return prodotti;
 	}
 
